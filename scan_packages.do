@@ -4,19 +4,37 @@
 * Step 1: Preliminaries   *
 ***************************
 clear all
+local pwd : pwd
+
 
 // Set globals below
 
+global savefiles = 1 // Set to 1 if you want to save the list of files that was parsed. Useful
+global createlog = 0 // If you wish to create a log file of the parsing/matching process,
+global saveexcel = 0 // Set to 1 if you want to save the Excel report into the original directory (codedir)
+global savehot   = 0 // Set to 1 if you want to save the "whatshot" report. Usually not needed.
+
 // Point to location of "final_framework" folder which contains scanning code, package list, and stopwords & subwords files
-global rootdir "U:/Documents/AEA_Workspace/Statapackagesearch/final_framework/code"
+// global rootdir "U:/Documents/AEA_Workspace/Statapackagesearch"
+global rootdir "`pwd'"
+
+// DO NOT CHANGE Points to location of subwords and stopwords 
+global auxdir "$rootdir/ado/auxiliary"
 
 // Point to location of folder with .do files to scan:
-global codedir "U:/Documents/AEA_Workspace/aearep-994\119684\CODE"
-cd "$codedir"
+// global codedir "U:/Documents/AEA_Workspace/aearep-994/119684/CODE"
+global codedir "$rootdir/test"
 
-
+//################## NO NEED TO CHANGE ANYTHING BELOW THIS ###############################
 // Install packages, provide system info
-local pwd : pwd
+
+global reportexcel "missingpackages.xlsx"
+if ( $saveexcel == 1 ) { 
+	global reportfile "$codedir/$reportexcel"
+}
+else {
+	global reportfile "$rootdir/$reportexcel"
+}
 
 /* It will provide some info about how and when the program was run */
 /* See https://www.stata.com/manuals13/pcreturn.pdf#pcreturn */
@@ -44,7 +62,7 @@ sysdir
 /* add necessary packages to perform the scan & analysis to the macro */
 
 * *** Add required packages from SSC to this list ***
-    local ssc_packages "fs txttool"
+    local ssc_packages "fs filelist txttool"
     // local ssc_packages "estout boottest"
     
     if !missing("`ssc_packages'") {
@@ -63,18 +81,20 @@ set more off
 ********************************************************
 * Step 2: Collect list of all packages hosted at SSC   *
 ********************************************************
-cap log close
-
 // Collect top hits at SSC for the past month 
-log using "whatshot.log", replace
+tempfile whatshot
+tempfile packagelist
+
+cap log close
+log using "`whatshot'", replace text
 * if the # of available packages ever exceeds 10000, adjust the line below
 ssc whatshot, n(10000)
 log close
 
 // Data cleaning (import log file, export cleaned .dta file)
 
-*May need to adjust the starting value for rowrange- target the first line where a package is mentioned
-import delimited whitespace rank hits packagename authors using "whatshot.log", rowrange(14:) delimiters("       ", collapse) clear
+*May need to adjust the starting value for rowrange- target the first line where the first package is mentioned
+import delimited whitespace rank hits packagename authors using "`whatshot'", rowrange(14:) delimiters("       ", collapse) clear
 
 gen byte notnumeric = real(hits)==.
 drop if notnumeric==1
@@ -93,11 +113,23 @@ sum hits, detail
 gen probFalsePos = rank/_N if _n>`r(p90)' 
 replace probFalsePos = 0 if _n<=`r(p90)'
 label var probFalsePos "likelihood of false positive based on package popularity"
+if ( $savehot == 1 ) {
+	save "$rootdir/package_list" , replace
+}
+/* old code = needed?
+tempfile package_list 
+use "$rootdir/packagelist_cleaned.dta"
+rename package word
+sort word
+save `package_list'
+*/
+gen word = packagename 
+sort word
+save "`packagelist'"
 
-save "packagelist.dta", replace
+// If you wish to create a log file of the parsing/matching process, set global "createlog" at top
 
-// If you wish to create a log file of the parsing/matching process, uncomment the section below
-/*
+if ( $createlog == 1 ) {
 global logdir "${rootdir}/logs"
 cap mkdir "$logdir"
 
@@ -107,7 +139,7 @@ local c_time = c(current_time)
 local ctime = subinstr("`c_time'", ":", "_", .)
 
 log using "$logdir/logfile_`cdate'-`ctime'.log", replace text
-*/
+}
 
 ***************************
 * Step 3: Parsing	      *
@@ -115,47 +147,59 @@ log using "$logdir/logfile_`cdate'-`ctime'.log", replace text
 
 *Parse each .do file in a directory, then append the parsed files
 
-local files : dir "$codedir" files "*.do"
+*local files : dir "$codedir" files "*.do"
+
+	tempfile file_list 
+	filelist, directory("$codedir") pattern("*.do")
+	gen temp="/"
+	egen file_path = concat(dirname temp filename)
+	save `file_list'
+	keep file_path
+	
+qui count
+	local total_files = `r(N)'
+	forvalues i=1/`total_files' {
+		local file_`i' = file_path[`i']
+	}
 
 * Read in each do file in the folder and split by line
-foreach v in `files' {
-	di "`v'"
+forvalues i=1/`total_files' {
+	di "file_`i'=`file_`i''"
+	local v = "`file_`i''"
+	
+	infix str300 txtstring 1-300 using "`v'", clear
 
-	infix str300 txtstring 1-300 using "$codedir/`v'", clear
-
-* indexes each line
-gen line = _n
-* drop blank lines
-drop if txtstring == ""
-
-
-*drop comments if the // occurs at the start of the line
-drop if regexm(txtstring,"^//")==1
-
-*cannot drop comments/lines using regexm because the asterisk is an operator in the command (doesn't work')
-drop if regexm(txtstring,"^/\*")==1
-drop if regexm(txtstring,"^\*")==1
-
-/* clean - this might be handled by the stopword file as well */
-
-* split on common delimiters- txttool can't handle long strings
-replace txtstring = subinstr(txtstring,"\", " ",.)
-replace txtstring = subinstr(txtstring,"{", " ",.)
-replace txtstring = subinstr(txtstring,"}", " ",.)
-replace txtstring = subinstr(txtstring,"="," ",.)
-replace txtstring = subinstr(txtstring, "$"," ",.)
-replace txtstring = subinstr(txtstring, "/"," ",.)
-replace txtstring = subinstr(txtstring, "_"," ",.)
-replace txtstring = subinstr(txtstring, "*"," ",.)
-replace txtstring = subinstr(txtstring, "-"," ",.)
-replace txtstring = subinstr(txtstring, ","," ",.)
+	* indexes each line
+	gen line = _n
+	* drop blank lines
+	drop if txtstring == ""
 
 
-* perform the txttool analysis- removes stopwords and duplicates
-txttool txtstring, sub("$rootdir/signalcommands.txt") stop("$rootdir/stopwords.txt") gen(bagged_words) bagwords prefix(w_)
+	*drop commented lines (drop if //, *, /* or \* appears at the start of the line)
+	drop if regexm(txtstring,"^//")==1
+	drop if regexm(txtstring,"^/\*")==1
+	drop if regexm(txtstring,"^\*")==1
 
-* saves the results as .dta file (one for each .do file in the folder)
-save "$codedir/parsed_data_`v'.dta", replace
+	/* clean - this is handled by the stopword file as well */
+
+	* split on common delimiters- txttool can't handle long strings
+	replace txtstring = subinstr(txtstring,"\", " ",.)
+	replace txtstring = subinstr(txtstring,"{", " ",.)
+	replace txtstring = subinstr(txtstring,"}", " ",.)
+	replace txtstring = subinstr(txtstring,"="," ",.)
+	replace txtstring = subinstr(txtstring, "$"," ",.)
+	replace txtstring = subinstr(txtstring, "/"," ",.)
+	replace txtstring = subinstr(txtstring, "_"," ",.)
+	replace txtstring = subinstr(txtstring, "*"," ",.)
+	replace txtstring = subinstr(txtstring, "-"," ",.)
+	replace txtstring = subinstr(txtstring, ","," ",.)
+
+
+	* perform the txttool analysis- removes stopwords and duplicates
+	txttool txtstring, sub("$auxdir/signalcommands.txt") stop("$auxdir/stopwords.txt") gen(bagged_words)  bagwords prefix(w_)
+
+	* saves the results as .dta file (one for each .do file in the folder)
+	save "$rootdir/parsed_data_`i'.dta", replace
  }
 
 **********************
@@ -205,18 +249,12 @@ erase "`v'"
 
 
 // Merge/match
-save "scanned_dofile.dta", replace
-tempfile package_list 
-use "$rootdir/packagelist_cleaned.dta"
-rename package word
 sort word
-save `package_list'
-use "scanned_dofile.dta"
-merge 1:1 word using `package_list' 
+merge 1:1 word using `packagelist' 
 list if _merge==3
 
 // More cleanup
-erase "scanned_dofile.dta"
+cap erase "scanned_dofile.dta"
 
 **************************************************************************
 * Step 5: Export output & install found missing packages (if desired) 	 *
@@ -231,7 +269,13 @@ keep if matchedpackage !=""
 gsort rank matchedpackage
 
 // Export missing package list to Excel
-export excel matchedpackage rank probFalsePos using "$rootdir/missingpackages.xlsx", firstrow(varlabels) keepcellfmt replace
+export excel matchedpackage rank probFalsePos using "$reportfile", firstrow(varlabels) keepcellfmt replace sheet("Missing packages")
+
+   * export file list to report
+    if ( $savefiles == 1 ) {
+	use `file_list', clear
+	export excel dirname filename  using "$reportfile", firstrow(varlabels) keepcellfmt sheet("Programs parsed", modify)
+	}
 
 // Uncomment the section below to install all packages found by the match
 ** Warning: Will install all packages found, including false positives!
@@ -244,5 +288,5 @@ levelsof matchedpackage, clean local(foundpackages)
             ssc install `pkg', replace
         }
     }
-
+*/
 
