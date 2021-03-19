@@ -9,8 +9,10 @@ local pwd : pwd
 
 // Set globals below
 
+global savefiles = 1 // Set to 1 if you want to save the list of files that was parsed. Useful
 global createlog = 0 // If you wish to create a log file of the parsing/matching process,
 global saveexcel = 0 // Set to 1 if you want to save the Excel report into the original directory (codedir)
+global savehot   = 0 // Set to 1 if you want to save the "whatshot" report. Usually not needed.
 
 // Point to location of "final_framework" folder which contains scanning code, package list, and stopwords & subwords files
 // global rootdir "U:/Documents/AEA_Workspace/Statapackagesearch"
@@ -23,7 +25,17 @@ global auxdir "$rootdir/ado/auxiliary"
 // global codedir "U:/Documents/AEA_Workspace/aearep-994/119684/CODE"
 global codedir "$rootdir/test"
 
+//################## NO NEED TO CHANGE ANYTHING BELOW THIS ###############################
 // Install packages, provide system info
+
+global reportexcel "missingpackages.xlsx"
+if ( $saveexcel == 1 ) { 
+	global reportfile "$codedir/$reportexcel"
+}
+else {
+	global reportfile "$rootdir/$reportexcel"
+}
+
 /* It will provide some info about how and when the program was run */
 /* See https://www.stata.com/manuals13/pcreturn.pdf#pcreturn */
 local variant = cond(c(MP),"MP",cond(c(SE),"SE",c(flavor)) )  
@@ -101,7 +113,9 @@ sum hits, detail
 gen probFalsePos = rank/_N if _n>`r(p90)' 
 replace probFalsePos = 0 if _n<=`r(p90)'
 label var probFalsePos "likelihood of false positive based on package popularity"
-
+if ( $savehot == 1 ) {
+	save "$rootdir/package_list" , replace
+}
 /* old code = needed?
 tempfile package_list 
 use "$rootdir/packagelist_cleaned.dta"
@@ -139,8 +153,8 @@ log using "$logdir/logfile_`cdate'-`ctime'.log", replace text
 	filelist, directory("$codedir") pattern("*.do")
 	gen temp="/"
 	egen file_path = concat(dirname temp filename)
-	keep file_path
 	save `file_list'
+	keep file_path
 	
 qui count
 	local total_files = `r(N)'
@@ -255,12 +269,13 @@ keep if matchedpackage !=""
 gsort rank matchedpackage
 
 // Export missing package list to Excel
-if ( $saveexcel == 1 ) { 
-export excel matchedpackage rank probFalsePos using "$codedir/missingpackages.xlsx", firstrow(varlabels) keepcellfmt replace
-} 
-else {
-export excel matchedpackage rank probFalsePos using "$rootdir/missingpackages.xlsx", firstrow(varlabels) keepcellfmt replace
-}
+export excel matchedpackage rank probFalsePos using "$reportfile", firstrow(varlabels) keepcellfmt replace sheet("Missing packages")
+
+   * export file list to report
+    if ( $savefiles == 1 ) {
+	use `file_list', clear
+	export excel dirname filename  using "$reportfile", firstrow(varlabels) keepcellfmt sheet("Programs parsed", modify)
+	}
 
 // Uncomment the section below to install all packages found by the match
 ** Warning: Will install all packages found, including false positives!
