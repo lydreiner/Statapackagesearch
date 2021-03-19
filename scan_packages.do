@@ -10,6 +10,7 @@ local pwd : pwd
 // Set globals below
 
 global createlog = 0 // If you wish to create a log file of the parsing/matching process,
+global saveexcel = 0 // Set to 1 if you want to save the Excel report into the original directory (codedir)
 
 // Point to location of "final_framework" folder which contains scanning code, package list, and stopwords & subwords files
 // global rootdir "U:/Documents/AEA_Workspace/Statapackagesearch"
@@ -101,6 +102,15 @@ gen probFalsePos = rank/_N if _n>`r(p90)'
 replace probFalsePos = 0 if _n<=`r(p90)'
 label var probFalsePos "likelihood of false positive based on package popularity"
 
+/* old code = needed?
+tempfile package_list 
+use "$rootdir/packagelist_cleaned.dta"
+rename package word
+sort word
+save `package_list'
+*/
+gen word = packagename 
+sort word
 save "`packagelist'"
 
 // If you wish to create a log file of the parsing/matching process, set global "createlog" at top
@@ -225,18 +235,12 @@ erase "`v'"
 
 
 // Merge/match
-save "scanned_dofile.dta", replace
-tempfile package_list 
-use "$rootdir/packagelist_cleaned.dta"
-rename package word
 sort word
-save `package_list'
-use "scanned_dofile.dta"
-merge 1:1 word using `package_list' 
+merge 1:1 word using `packagelist' 
 list if _merge==3
 
 // More cleanup
-erase "scanned_dofile.dta"
+cap erase "scanned_dofile.dta"
 
 **************************************************************************
 * Step 5: Export output & install found missing packages (if desired) 	 *
@@ -251,12 +255,17 @@ keep if matchedpackage !=""
 gsort rank matchedpackage
 
 // Export missing package list to Excel
+if ( $saveexcel == 1 ) { 
+export excel matchedpackage rank probFalsePos using "$codedir/missingpackages.xlsx", firstrow(varlabels) keepcellfmt replace
+} 
+else {
 export excel matchedpackage rank probFalsePos using "$rootdir/missingpackages.xlsx", firstrow(varlabels) keepcellfmt replace
+}
 
 // Uncomment the section below to install all packages found by the match
 ** Warning: Will install all packages found, including false positives!
 
-
+/*
 levelsof matchedpackage, clean local(foundpackages)
     if !missing("foundpackages") {
         foreach pkg in `foundpackages' {
@@ -264,5 +273,5 @@ levelsof matchedpackage, clean local(foundpackages)
             ssc install `pkg', replace
         }
     }
-
+*/
 
