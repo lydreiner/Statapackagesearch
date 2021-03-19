@@ -4,21 +4,25 @@
 * Step 1: Preliminaries   *
 ***************************
 clear all
+local pwd : pwd
+
 
 // Set globals below
 
+global createlog = 0 // If you wish to create a log file of the parsing/matching process,
+
 // Point to location of "final_framework" folder which contains scanning code, package list, and stopwords & subwords files
-global rootdir "U:/Documents/AEA_Workspace/Statapackagesearch/final_framework/"
+// global rootdir "U:/Documents/AEA_Workspace/Statapackagesearch"
+global rootdir "`pwd'"
 
 // DO NOT CHANGE Points to location of subwords and stopwords 
 global auxdir "$rootdir/ado/auxiliary"
 
 // Point to location of folder with .do files to scan:
-global codedir "U:/Documents/AEA_Workspace/aearep-994\119684\CODE"
+// global codedir "U:/Documents/AEA_Workspace/aearep-994/119684/CODE"
+global codedir "$rootdir/test"
 
 // Install packages, provide system info
-local pwd : pwd
-
 /* It will provide some info about how and when the program was run */
 /* See https://www.stata.com/manuals13/pcreturn.pdf#pcreturn */
 local variant = cond(c(MP),"MP",cond(c(SE),"SE",c(flavor)) )  
@@ -45,7 +49,7 @@ sysdir
 /* add necessary packages to perform the scan & analysis to the macro */
 
 * *** Add required packages from SSC to this list ***
-    local ssc_packages "fs txttool"
+    local ssc_packages "fs filelist txttool"
     // local ssc_packages "estout boottest"
     
     if !missing("`ssc_packages'") {
@@ -64,12 +68,11 @@ set more off
 ********************************************************
 * Step 2: Collect list of all packages hosted at SSC   *
 ********************************************************
-cap log close
-
 // Collect top hits at SSC for the past month 
 tempfile whatshot
 tempfile packagelist
 
+cap log close
 log using "`whatshot'", replace text
 * if the # of available packages ever exceeds 10000, adjust the line below
 ssc whatshot, n(10000)
@@ -100,8 +103,9 @@ label var probFalsePos "likelihood of false positive based on package popularity
 
 save "`packagelist'"
 
-// If you wish to create a log file of the parsing/matching process, uncomment the section below
-/*
+// If you wish to create a log file of the parsing/matching process, set global "createlog" at top
+
+if ( $createlog == 1 ) {
 global logdir "${rootdir}/logs"
 cap mkdir "$logdir"
 
@@ -111,7 +115,7 @@ local c_time = c(current_time)
 local ctime = subinstr("`c_time'", ":", "_", .)
 
 log using "$logdir/logfile_`cdate'-`ctime'.log", replace text
-*/
+}
 
 ***************************
 * Step 3: Parsing	      *
@@ -130,48 +134,48 @@ log using "$logdir/logfile_`cdate'-`ctime'.log", replace text
 	
 qui count
 	local total_files = `r(N)'
-	forvalues i=1/`r(N)' {
+	forvalues i=1/`total_files' {
 		local file_`i' = file_path[`i']
 	}
 
 * Read in each do file in the folder and split by line
 forvalues i=1/`total_files' {
-	di "file_`i'"
+	di "file_`i'=`file_`i''"
 	local v = "`file_`i''"
 	
 	infix str300 txtstring 1-300 using "`v'", clear
 
-* indexes each line
-gen line = _n
-* drop blank lines
-drop if txtstring == ""
+	* indexes each line
+	gen line = _n
+	* drop blank lines
+	drop if txtstring == ""
 
 
-*drop commented lines (drop if //, *, /* or \* appears at the start of the line)
-drop if regexm(txtstring,"^//")==1
-drop if regexm(txtstring,"^/\*")==1
-drop if regexm(txtstring,"^\*")==1
+	*drop commented lines (drop if //, *, /* or \* appears at the start of the line)
+	drop if regexm(txtstring,"^//")==1
+	drop if regexm(txtstring,"^/\*")==1
+	drop if regexm(txtstring,"^\*")==1
 
-/* clean - this is handled by the stopword file as well */
+	/* clean - this is handled by the stopword file as well */
 
-* split on common delimiters- txttool can't handle long strings
-replace txtstring = subinstr(txtstring,"\", " ",.)
-replace txtstring = subinstr(txtstring,"{", " ",.)
-replace txtstring = subinstr(txtstring,"}", " ",.)
-replace txtstring = subinstr(txtstring,"="," ",.)
-replace txtstring = subinstr(txtstring, "$"," ",.)
-replace txtstring = subinstr(txtstring, "/"," ",.)
-replace txtstring = subinstr(txtstring, "_"," ",.)
-replace txtstring = subinstr(txtstring, "*"," ",.)
-replace txtstring = subinstr(txtstring, "-"," ",.)
-replace txtstring = subinstr(txtstring, ","," ",.)
+	* split on common delimiters- txttool can't handle long strings
+	replace txtstring = subinstr(txtstring,"\", " ",.)
+	replace txtstring = subinstr(txtstring,"{", " ",.)
+	replace txtstring = subinstr(txtstring,"}", " ",.)
+	replace txtstring = subinstr(txtstring,"="," ",.)
+	replace txtstring = subinstr(txtstring, "$"," ",.)
+	replace txtstring = subinstr(txtstring, "/"," ",.)
+	replace txtstring = subinstr(txtstring, "_"," ",.)
+	replace txtstring = subinstr(txtstring, "*"," ",.)
+	replace txtstring = subinstr(txtstring, "-"," ",.)
+	replace txtstring = subinstr(txtstring, ","," ",.)
 
 
-* perform the txttool analysis- removes stopwords and duplicates
-txttool txtstring, sub("$auxdir/signalcommands.txt") stop("$auxdir/stopwords.txt") gen(bagged_words) bagwords prefix(w_)
+	* perform the txttool analysis- removes stopwords and duplicates
+	txttool txtstring, sub("$auxdir/signalcommands.txt") stop("$auxdir/stopwords.txt") gen(bagged_words)  bagwords prefix(w_)
 
-* saves the results as .dta file (one for each .do file in the folder)
-save "$rootdir/parsed_data_`i'.dta", replace
+	* saves the results as .dta file (one for each .do file in the folder)
+	save "$rootdir/parsed_data_`i'.dta", replace
  }
 
 **********************
