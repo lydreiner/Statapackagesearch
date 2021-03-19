@@ -8,14 +8,13 @@ clear all
 // Set globals below
 
 // Point to location of "final_framework" folder which contains scanning code, package list, and stopwords & subwords files
-global rootdir "U:/Documents/AEA_Workspace/Statapackagesearch/final_framework/code"
+global rootdir "U:/Documents/AEA_Workspace/Statapackagesearch/final_framework/"
 
-// Point to location of subwords and stopwords (no changes required)
+// DO NOT CHANGE Points to location of subwords and stopwords 
 global auxdir "$rootdir/ado/auxiliary"
 
 // Point to location of folder with .do files to scan:
 global codedir "U:/Documents/AEA_Workspace/aearep-994\119684\CODE"
-cd "$codedir"
 
 // Install packages, provide system info
 local pwd : pwd
