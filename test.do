@@ -1,10 +1,21 @@
 /* test code */
-include config.do
+global rootdir "U:/Documents/AEA_Workspace/Statapackagesearch"
 cap ssc install txttool
+cap ssc install filelist
 
 clear all
-* read in the lines (max line length 300)
-infix str300 txtstring 1-300 using "Tables_copy_test.do"
+
+*Scans entire directory and stores output as 3 variables- we care about the second variable named "filename" which stores names of all do files 
+filelist, directory("$rootdir") pat ("*.do")
+drop dirname
+drop fsize
+
+* for each element of variable filename, read in the do file 
+**problem- must start with empty dataset
+foreach v in filename {
+	infix str300 txtstring 1-300 using "$rootdir/`v'"
+
+
 * indexes each line
 gen line = _n
 * drop blank lines
@@ -27,8 +38,12 @@ replace txtstring = subinstr(txtstring, ","," ",.)
 * perform the txttool analysis
 txttool txtstring, sub("signalcommands.txt") stop("stopwords.txt") gen(bagged)  bagwords prefix(w_)
 
-save "raw_data_parsed.dta", replace
+
+save "raw_data_parsed_`v'.dta", replace
+}
 *use for diagnostics- see lines where false positives occurred- do I need to change the cleaning? do I need to add something?
+append using raw_data_parsed_`v'.dta, replace
+ 
 
 *Shows count of each unique word and collapses into 1 observation
 collapse (sum) w_* 
