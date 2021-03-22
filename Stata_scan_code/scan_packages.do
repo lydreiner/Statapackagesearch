@@ -256,12 +256,13 @@ cap erase "scanned_dofile.dta"
 gen matchedpackage = word if _merge==3
 label var matchedpackage "(Potential) missing package found"
 keep if matchedpackage !=""
+gen confirmed_is_used = .
 
 // Sort by rank (incorporates false positive probability) from packagelist file
 gsort rank matchedpackage
 
 // Export missing package list to Excel
-export excel matchedpackage rank probFalsePos using "$reportfile", firstrow(varlabels) keepcellfmt replace sheet("Missing packages")
+export excel matchedpackage rank probFalsePos confirmed_is_used using "$reportfile", firstrow(varlabels) keepcellfmt replace sheet("Missing packages")
 
    * export file list to report
     if ( $savefiles == 1 ) {
