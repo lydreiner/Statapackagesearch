@@ -21,7 +21,7 @@ global rootdir "`pwd'"
 global auxdir "$rootdir/ado/auxiliary"
 
 // Point to location of folder with .do files to scan for potential packages:
- global codedir ""
+ global codedir "U:/Documents/AEA_Workspace/aearep-1787/130804"
 
 //################## NO NEED TO CHANGE ANYTHING BELOW THIS ###############################
 // Install packages, provide system info
@@ -74,6 +74,7 @@ sysdir
 
 
 set more off
+set maxvar 120000
 
 ********************************************************
 * Step 2: Collect list of all packages hosted at SSC   *
@@ -132,14 +133,15 @@ local ctime = subinstr("`c_time'", ":", "_", .)
 log using "$logdir/logfile_`cdate'-`ctime'.log", replace text
 }
 
+
+
 ***************************
 * Step 3: Parsing	      *
 ***************************
 
 *Parse each .do file in a directory, then append the parsed files
 
-*local files : dir "$codedir" files "*.do"
-
+* Scan files in subdirectories
 	tempfile file_list 
 	filelist, directory("$codedir") pattern("*.do")
 	gen temp="/"
@@ -185,8 +187,15 @@ forvalues i=1/`total_files' {
 	replace txtstring = subinstr(txtstring, "-"," ",.)
 	replace txtstring = subinstr(txtstring, ","," ",.)
 	replace txtstring = subinstr(txtstring, "+"," ",.)
-
-
+	replace txtstring = subinstr(txtstring, "("," ",.)
+	replace txtstring = subinstr(txtstring, ")"," ",.)
+	replace txtstring = subinstr(txtstring, "#"," ",.)
+	replace txtstring = subinstr(txtstring, "~"," ",.)
+	replace txtstring = subinstr(txtstring, "."," ",.)
+	replace txtstring = subinstr(txtstring, "<"," ",.)
+	replace txtstring = subinstr(txtstring, ">"," ",.)
+	
+	
 	* perform the txttool analysis- removes stopwords and duplicates
 	txttool txtstring, sub("$auxdir/signalcommands.txt") stop("$auxdir/stopwords.txt") gen(bagged_words)  bagwords prefix(w_)
 
