@@ -1,30 +1,24 @@
 program packagesearch
     version 16.1
     syntax anything , [ FILESave EXCELsave FALSEPos INSTALLfounds]
-	*anything(name = "$codedir" id= "code directory to scan for missing Stata packages")
-	*name = $codedir id = "code directory to scan for missing Stata packages"
-	*, [ FILESave EXCELsave(string) FALSEPos INSTALLfounds]
-	*dirtoscan , [ FILESave EXCELsave(string) FALSEPos INSTALLfounds]
-	*name = $codedir
-	*id = "code directory to scan for missing Stata packages"
 	
 // Options
 /*
-if ("`filesave'"== "filesave")
-    * save list of parsed files
+filesave = save list of parsed files
 
-if ("`excelsave'"== "excelsave")
-    * save list of candidate packages as an excel spreadsheet
+excelsave = save list of candidate packages as an excel spreadsheet
 
-if ("`falsepos'"== "falsepos")
-    * rm common FPs according to us
+falsepos = rm common FPs according to us 
+- right now, this is: "white missing index dash title cluster pre bys" None of these are in the top 10% of package popularity at SSC 
+	
+installfounds = install missing package found by the match
 */
 
 
 ***************************
 * Step 1: Preliminaries   *
 ***************************
-di " Step 1 (preliminaries): Installing necessary packages:"
+di " Step 1 (preliminaries): Installing necessary dependencies:"
 
 qui {
 clear all
@@ -41,18 +35,31 @@ sysdir set PLUS     "$rootdir/ado/plus"
 sysdir set SITE     "$rootdir/ado/site"
 sysdir
 
+
 /* add necessary packages to perform the scan & analysis to the macro */
 
-* *** Add required packages from SSC to this list ***
     local ssc_packages "fs filelist txttool"
     
     if !missing("`ssc_packages'") {
         foreach pkg in `ssc_packages' {
             n dis "Installing `pkg'"
-            ssc install `pkg', replace
-        }
-    }
+          cap ssc install `pkg', replace
+    	if _rc==603 {
+		di "Package `x' is required, but was not installed successfully. Please install before proceeding. "
+		}
+	
+	}
+	}
+	** If error- print need to install dependencies
 
+	foreach x of local ssc_packages {
+	
+	findfile `x'.ado		
+	if _rc==601 {
+		di "Package `x' is required, but was not installed successfully. Please install before proceeding. "
+		}
+	}
+	
 /* after installing all packages, it may be necessary to issue the mata mlib index command */
 	mata: mata mlib index
 
@@ -245,6 +252,8 @@ keep if match !=""
 gsort rank match
 }
 
+
+
 if ("`falsepos'"== "falsepos") {
 	* rm common FPs according to us
 	
@@ -252,22 +261,21 @@ if ("`falsepos'"== "falsepos") {
 	foreach word in `commonFPs' {
 		drop if match == "`word'"
 	}
-	
-	
 }
     
-
-
-list match rank probFalsePos, ab(25)
 	
-
+	
+preserve
 if ("`filesave'"== "filesave") { 
    	* display list of parsed files with match results
 di "Programs parsed:"	
 	use `file_list', clear
-	list filename 
-}
-
+	list dirname filename, table div
+	}
+restore
+	
+	list match rank probFalsePos, ab(25)
+	
 // More cleanup
 cap erase "scanned_dofile.dta"
 
@@ -276,6 +284,8 @@ cap erase "scanned_dofile.dta"
 **************************************************************************
 * Step 5: Export output & install found missing packages (if desired) 	 *
 **************************************************************************
+preserve
+
 if ("`excelsave'"== "excelsave") {
 di "Optional Step 5: Export results of the match (candidate packages) to Excel sheet"
 
@@ -297,21 +307,25 @@ export excel match rank probFalsePos confirmed_is_used using "$reportfile", firs
 	}
 	
 di "Excel sheet saved"	
+	}
 
-}
-
+restore	
+	
+	qui{
 if ("`installfounds'"== "installfounds") {
     * Install all found packages (including FPs)
 levelsof match, clean local(foundpackages)
     if !missing("foundpackages") {
         foreach pkg in `foundpackages' {
-            dis "Installing `pkg'"
+            n dis "Installing `pkg'"
             ssc install `pkg', replace
         }
-    }	
-
-
+    } 
+	n di "All packages found during the scan successfully installed"	
+	}
+	
 
 }
+
 
 end
