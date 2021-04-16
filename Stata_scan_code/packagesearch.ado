@@ -1,6 +1,7 @@
-program packagesearch
-    version 16.1
-    syntax anything , [ FILESave EXCELsave FALSEPos INSTALLfounds]
+program packagesearch 
+*! version 1.0.0  16april2021
+    version 14
+    syntax , codedir(string) [  FILESave EXCELsave FALSEPos INSTALLfounds]
 	
 // Options
 /*
@@ -25,16 +26,16 @@ clear all
 local pwd : pwd
 
 global rootdir "`pwd'"
-global codedir "U:/Documents/AEA_Workspace/aearep-1967/cocoa_data_codes_AEJ"
+global codedir "`codedir'"
 global auxdir "$rootdir/ado/auxiliary"
 
-
+/*
 capture mkdir "$rootdir/ado"
 sysdir set PERSONAL "$rootdir/ado/personal"
 sysdir set PLUS     "$rootdir/ado/plus"
 sysdir set SITE     "$rootdir/ado/site"
 sysdir
-
+*/
 
 /* add necessary packages to perform the scan & analysis to the macro */
 
@@ -44,7 +45,8 @@ sysdir
         foreach pkg in `ssc_packages' {
             n dis "Installing `pkg'"
           cap ssc install `pkg', replace
-    	if _rc==603 {
+    	
+		if _rc==603 {
 		di "Package `x' is required, but was not installed successfully. Please install before proceeding. "
 		}
 	
@@ -132,7 +134,7 @@ qui {
 
 * Scan files in subdirectories
 	tempfile file_list 
-	filelist, directory("$codedir") pattern("*.do")
+	filelist, directory("`codedir'") pattern("*.do")
 	gen temp="/"
 	egen file_path = concat(dirname temp filename)
 	save `file_list'
@@ -259,7 +261,7 @@ if ("`falsepos'"== "falsepos") {
 	
 	local commonFPs "white missing index dash title cluster pre bys" 
 	foreach word in `commonFPs' {
-		drop if match == "`word'"
+		qui drop if match == "`word'"
 	}
 }
     
@@ -289,7 +291,7 @@ preserve
 if ("`excelsave'"== "excelsave") {
 di "Optional Step 5: Export results of the match (candidate packages) to Excel sheet"
 
-global reportfile "$codedir/candidatepackages.xlsx"
+global reportfile "`codedir'/candidatepackages.xlsx"
 
 // Set up output export
 gen confirmed_is_used = .
