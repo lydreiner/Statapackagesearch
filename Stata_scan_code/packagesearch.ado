@@ -29,13 +29,13 @@ global rootdir "`pwd'"
 global codedir "`codedir'"
 global auxdir "$rootdir/ado/auxiliary"
 
-/*
+
 capture mkdir "$rootdir/ado"
 sysdir set PERSONAL "$rootdir/ado/personal"
 sysdir set PLUS     "$rootdir/ado/plus"
 sysdir set SITE     "$rootdir/ado/site"
 sysdir
-*/
+
 
 /* add necessary packages to perform the scan & analysis to the macro */
 
@@ -54,13 +54,6 @@ sysdir
 	}
 	** If error- print need to install dependencies
 
-	foreach x of local ssc_packages {
-	
-	findfile `x'.ado		
-	if _rc==601 {
-		di "Package `x' is required, but was not installed successfully. Please install before proceeding. "
-		}
-	}
 	
 /* after installing all packages, it may be necessary to issue the mata mlib index command */
 	mata: mata mlib index
