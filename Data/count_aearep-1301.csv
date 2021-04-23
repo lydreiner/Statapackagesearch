@@ -1,0 +1,11 @@
+aearep,key,value
+aearep-1301,docount,42
+aearep-1301,adocount,8
+aearep-1301,adofile,filelist.ado
+aearep-1301,adofile,allocation_scores.ado
+aearep-1301,adofile,allocation_2009.ado
+aearep-1301,adofile,allocation_tiers.ado
+aearep-1301,adofile,frontier_search.ado
+aearep-1301,adofile,searcher.ado
+aearep-1301,adofile,allocation_quota.ado
+aearep-1301,adofile,allocation_top10.ado

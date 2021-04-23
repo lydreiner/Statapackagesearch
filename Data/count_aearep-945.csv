@@ -1,0 +1,12 @@
+aearep,key,value
+aearep-945,docount,6
+aearep-945,adocount,9
+aearep-945,adofile,decomp_by_age.ado
+aearep-945,adofile,summarize_by_age_det.ado
+aearep-945,adofile,summarize_by_age_educ_det.ado
+aearep-945,adofile,decomp_by_age_educ.ado
+aearep-945,adofile,summarize_by_age.ado
+aearep-945,adofile,summarize_by_age_educ.ado
+aearep-945,adofile,summarize_by_total.ado
+aearep-945,adofile,decomp_by_total.ado
+aearep-945,adofile,filelist.ado

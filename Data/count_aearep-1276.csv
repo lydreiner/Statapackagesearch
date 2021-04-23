@@ -1,0 +1,13 @@
+aearep,key,value
+aearep-1276,docount,5
+aearep-1276,adocount,10
+aearep-1276,adofile,preliminaries.ado
+aearep-1276,adofile,matrix_to_txt.ado
+aearep-1276,adofile,_eststo.ado
+aearep-1276,adofile,estadd.ado
+aearep-1276,adofile,estpost.ado
+aearep-1276,adofile,esttab.ado
+aearep-1276,adofile,eststo.ado
+aearep-1276,adofile,estout.ado
+aearep-1276,adofile,yaml.ado
+aearep-1276,adofile,filelist.ado

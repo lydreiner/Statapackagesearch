@@ -1,0 +1,16 @@
+aearep,key,value
+aearep-163,docount,9
+aearep-163,adocount,13
+aearep-163,adofile,matload.ado
+aearep-163,adofile,matsave.ado
+aearep-163,adofile,tex.ado
+aearep-163,adofile,ted.ado
+aearep-163,adofile,texdoc.ado
+aearep-163,adofile,rdplot.ado
+aearep-163,adofile,rddensity.ado
+aearep-163,adofile,rdbwdensity.ado
+aearep-163,adofile,rdbwselect_2014.ado
+aearep-163,adofile,rdbwselect.ado
+aearep-163,adofile,rdrobust.ado
+aearep-163,adofile,rdbwselect_2014_kconst.ado
+aearep-163,adofile,filelist.ado

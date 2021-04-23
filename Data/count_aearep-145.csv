@@ -1,0 +1,9 @@
+aearep,key,value
+aearep-145,docount,8
+aearep-145,adocount,6
+aearep-145,adofile,artest.ado
+aearep-145,adofile,boottest.ado
+aearep-145,adofile,scoretest.ado
+aearep-145,adofile,coefplot.ado
+aearep-145,adofile,waldtest.ado
+aearep-145,adofile,filelist.ado

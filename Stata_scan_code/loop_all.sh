@@ -70,3 +70,4 @@ else
    fi
 done
 
+exit

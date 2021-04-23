@@ -1,0 +1,15 @@
+aearep,key,value
+aearep-641,docount,25
+aearep-641,adocount,12
+aearep-641,adofile,load_guidelines.ado
+aearep-641,adofile,gen_var.ado
+aearep-641,adofile,gen_income.ado
+aearep-641,adofile,merge_hs_schedules.ado
+aearep-641,adofile,make_cost_dataset.ado
+aearep-641,adofile,kreg_by_ym.ado
+aearep-641,adofile,gen_sd_plot_data.ado
+aearep-641,adofile,kreg_by_pgy.ado
+aearep-641,adofile,plot_tenure_profile.ado
+aearep-641,adofile,hs_est_model.ado
+aearep-641,adofile,kxtmixed.ado
+aearep-641,adofile,gen_working_data.ado
