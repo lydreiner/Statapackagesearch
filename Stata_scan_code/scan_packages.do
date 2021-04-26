@@ -29,6 +29,9 @@ global savehot   = 0 // Set to 1 if you want to save the "whatshot" report. Usua
 //################## NO NEED TO CHANGE ANYTHING BELOW THIS ###############################
 // DO NOT CHANGE Points to location of subwords and stopwords 
 global auxdir "$rootdir/ado/auxiliary"
+tempfile a
+local parsed "`a'.d"
+mkdir `parsed' 
 
 // Install packages, provide system info
 
@@ -66,7 +69,7 @@ sysdir
 /* add necessary packages to perform the scan & analysis to the macro */
 
 * *** Add required packages from SSC to this list ***
-    local ssc_packages "fs filelist txttool"
+    local ssc_packages "filelist txttool"
     
     if !missing("`ssc_packages'") {
         foreach pkg in `ssc_packages' {
@@ -206,7 +209,7 @@ forvalues i=1/`total_files' {
 	txttool txtstring, sub("$auxdir/signalcommands.txt") stop("$auxdir/stopwords.txt") gen(bagged_words)  bagwords prefix(w_)
 
 	* saves the results as .dta file (one for each .do file in the folder)
-	save "$rootdir/parsed_data_`i'.dta", replace
+	save "`parsed'/parsed_data_`i'.dta", replace
  }
 
 **********************
@@ -219,8 +222,15 @@ forvalues i=1/`total_files' {
 
 
  *List all generated .dta files and append them to prepare for the match
- fs "parsed_data*.dta"
- append using `r(files)'
+* fs "`parsed'/parsed_data*.dta"
+local parsedfiles : dir "`parsed'" files "parsed_data_*.dta"
+local allfiles ""
+
+foreach v in `parsedfiles' {
+   local allfiles `allfiles' `parsed'/`v'
+}
+
+ append using `allfiles'
  
  
 *Collapses unique words into 1 observation
@@ -248,12 +258,12 @@ drop w_*
 sort word
 
 // Cleanup
-local datafiles : dir "$rootdir" files "parsed_data_*.dta"
+local datafiles : dir "`parsed'" files "parsed_data_*.dta"
 
 foreach v in `datafiles' {
-erase "`v'"
+erase "`parsed'/`v'"
 }
-
+rmdir `parsed'
 
 // Merge/match
 sort word
