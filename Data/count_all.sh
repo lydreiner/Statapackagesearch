@@ -47,18 +47,26 @@ do
 
    if [[ "$skip" == "no" ]]
    then
+     echo "Processing $aearep"
      outfile=count_$aearep.csv
      echo "aearep,key,value" > $outfile 
-     echo "$aearep,docount,$(find $scandir/$aearep -type f -name \*.do | wc -l)"  >> $outfile
-     echo "$aearep,adocount,$(find $scandir/$aearep -type f -name \*.ado | wc -l)"  >> $outfile
-     # check for ado dirs
-     adodirs=$(find $scandir/$aearep -type d -name ado)
-     if [[ $(echo "$adodirs" | wc -l) -gt 0 ]]
-     then
-        find $scandir/$aearep -type d -name ado | \
+     docount=$(find $scandir/$aearep -type f -name \*.do | wc -l)
+     echo "$aearep,docount,$docount"  >> $outfile
+     if [[ $docount -gt 0 ]]
+     then 
+       #count lines
+       lines=$(find $scandir/$aearep -type f -name \*.do -exec wc -l {} \; | awk ' { sum+=$1 } END { print sum } ')
+       echo "$aearep,dolines,$lines"  >> $outfile
+       echo "$aearep,adocount,$(find $scandir/$aearep -type f -name \*.ado | wc -l)"  >> $outfile
+       # check for ado dirs
+       adodirs=$(find $scandir/$aearep -type d -name ado)
+       if [[ $(echo "$adodirs" | wc -l) -gt 0 ]]
+       then
+          find $scandir/$aearep -type d -name ado | \
              xargs -d '\n' -I % find % -type f -name \*.ado -exec basename {} \; |\
              awk -v aearep=$aearep ' { print aearep ",adofile," $0 } ' >> $outfile
-     fi
+       fi # end adodirs
+     fi # end docount >0
    else
    # nothing to do
       echo "Skipping $arg"
