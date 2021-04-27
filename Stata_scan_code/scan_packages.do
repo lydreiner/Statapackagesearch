@@ -69,7 +69,7 @@ sysdir
 /* add necessary packages to perform the scan & analysis to the macro */
 
 * *** Add required packages from SSC to this list ***
-    local ssc_packages "filelist txttool"
+    local ssc_packages "filelist txttool ftools"
     
     if !missing("`ssc_packages'") {
         foreach pkg in `ssc_packages' {
@@ -234,7 +234,7 @@ foreach v in `parsedfiles' {
  
  
 *Collapses unique words into 1 observation
-collapse (sum) w_* 
+fcollapse (sum) w_* 
 
 * create a new var and count to capture frequency
 gen word = ""

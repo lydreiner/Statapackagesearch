@@ -28,7 +28,7 @@ Notes:
 . global aearep  "aearep-672"
 
 . di "Timer on: `c(current_date)' `c(current_time)'"
-Timer on: 24 Apr 2021 11:05:27
+Timer on: 27 Apr 2021 11:18:44
 
 . include scan_packages.do
 
@@ -154,7 +154,7 @@ OLDPLACE:  ~/ado/
 . /* add necessary packages to perform the scan & analysis to the macro */
 . 
 . * *** Add required packages from SSC to this list ***
-.     local ssc_packages "filelist txttool"
+.     local ssc_packages "filelist txttool ftools"
 
 .     
 .     if !missing("`ssc_packages'") {
@@ -168,6 +168,11 @@ all files already exist and are up to date.
 Installing txttool
 checking txttool consistency and verifying not already installed...
 all files already exist and are up to date.
+Installing ftools
+checking ftools consistency and verifying not already installed...
+installing into /home/lv39/Workspace/AEA/all/Statapackagesearch/Stata_scan_code
+> /ado/plus/...
+installation complete.
 .     }
 
 . 
@@ -199,12 +204,12 @@ all files already exist and are up to date.
 . cap log close
 
 . log using "`whatshot'", replace text
-(note: file /tmp/St26043.000003 not found)
+(note: file /tmp/St24699.000003 not found)
 -------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /tmp/St26043.000003
+       log:  /tmp/St24699.000003
   log type:  text
- opened on:  24 Apr 2021, 11:05:28
+ opened on:  27 Apr 2021, 11:18:47
 
 . * if the # of available packages ever exceeds 10000, adjust the line below
 . ssc whatshot, n(10000)
@@ -3520,9 +3525,9 @@ Top 10000 packages at SSC
 
 . log close
       name:  <unnamed>
-       log:  /tmp/St26043.000003
+       log:  /tmp/St24699.000003
   log type:  text
- closed on:  24 Apr 2021, 11:05:28
+ closed on:  27 Apr 2021, 11:18:47
 -------------------------------------------------------------------------------
 
 . 
@@ -3595,7 +3600,7 @@ hits: all characters numeric; replaced as double
 . sort word
 
 . save "`packagelist'"
-file /tmp/St26043.000004 saved
+file /tmp/St24699.000004 saved
 
 . 
 . // If you wish to create a log file of the parsing/matching process, set glob
@@ -3633,7 +3638,7 @@ Number of files found = 24
 .         egen file_path = concat(dirname temp filename)
 
 .         save `file_list'
-file /tmp/St26043.000005 saved
+file /tmp/St24699.000005 saved
 
 .         keep file_path
 
@@ -3723,9 +3728,9 @@ file_1=/home/lv39/Workspace/AEA/all//aearep-672/PII_stata_scan.do
 (4 real changes made)
 Input:   486 unique words, 1852 total words
 Output:  338 unique words, 1985 total words
-Total time: .491 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_1.dta not found)
-file /tmp/St26043.000001.d/parsed_data_1.dta saved
+Total time: .488 seconds
+(note: file /tmp/St24699.000001.d/parsed_data_1.dta not found)
+file /tmp/St24699.000001.d/parsed_data_1.dta saved
 file_2=/home/lv39/Workspace/AEA/all//aearep-672/config.do
 (68 observations read)
 (21 observations deleted)
@@ -3752,9 +3757,9 @@ file_2=/home/lv39/Workspace/AEA/all//aearep-672/config.do
 (0 real changes made)
 Input:   79 unique words, 121 total words
 Output:  71 unique words, 152 total words
-Total time: .012 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_2.dta not found)
-file /tmp/St26043.000001.d/parsed_data_2.dta saved
+Total time: .011 seconds
+(note: file /tmp/St24699.000001.d/parsed_data_2.dta not found)
+file /tmp/St24699.000001.d/parsed_data_2.dta saved
 file_3=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/FAM1993.do
 (2,371 observations read)
 (7 observations deleted)
@@ -3779,674 +3784,3 @@ file_3=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/FAM1993.do
 (8 real changes made)
 (2 real changes made)
 (0 real changes made)
-Input:   5845 unique words, 14139 total words
-Output:  5219 unique words, 23277 total words
-Total time: 138.614 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_3.dta not found)
-file /tmp/St26043.000001.d/parsed_data_3.dta saved
-file_4=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/FAM1995ER.
-> do
-(2,738 observations read)
-(7 observations deleted)
-(0 observations deleted)
-(0 observations deleted)
-(2 observations deleted)
-(1 real change made)
-(0 real changes made)
-(0 real changes made)
-(0 real changes made)
-(6 real changes made)
-(219 real changes made)
-(0 real changes made)
-(0 real changes made)
-(1,343 real changes made)
-(2 real changes made)
-(9 real changes made)
-(457 real changes made)
-(448 real changes made)
-(76 real changes made)
-(0 real changes made)
-(1 real change made)
-(1 real change made)
-(0 real changes made)
-Input:   6810 unique words, 16344 total words
-Output:  5895 unique words, 22401 total words
-Total time: 190.11 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_4.dta not found)
-file /tmp/St26043.000001.d/parsed_data_4.dta saved
-file_5=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/FAM1997ER.
-> do
-(3,028 observations read)
-(7 observations deleted)
-(0 observations deleted)
-(0 observations deleted)
-(2 observations deleted)
-(1 real change made)
-(0 real changes made)
-(0 real changes made)
-(0 real changes made)
-(13 real changes made)
-(273 real changes made)
-(0 real changes made)
-(0 real changes made)
-(1,572 real changes made)
-(2 real changes made)
-(13 real changes made)
-(439 real changes made)
-(430 real changes made)
-(58 real changes made)
-(0 real changes made)
-(1 real change made)
-(0 real changes made)
-(0 real changes made)
-Input:   7539 unique words, 18088 total words
-Output:  6582 unique words, 24950 total words
-Total time: 259.007 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_5.dta not found)
-file /tmp/St26043.000001.d/parsed_data_5.dta saved
-file_6=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/FAM1999ER.
-> do
-(4,731 observations read)
-(6 observations deleted)
-(0 observations deleted)
-(0 observations deleted)
-(2 observations deleted)
-(0 real changes made)
-(1 real change made)
-(1 real change made)
-(0 real changes made)
-(3 real changes made)
-(384 real changes made)
-(22 real changes made)
-(0 real changes made)
-(2,232 real changes made)
-(105 real changes made)
-(30 real changes made)
-(453 real changes made)
-(444 real changes made)
-(449 real changes made)
-(0 real changes made)
-(3 real changes made)
-(2 real changes made)
-(0 real changes made)
-Input:   11862 unique words, 28312 total words
-Output:  10731 unique words, 39946 total words
-Total time: 990.474 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_6.dta not found)
-file /tmp/St26043.000001.d/parsed_data_6.dta saved
-file_7=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/FAM2001ER.
-> do
-(4,653 observations read)
-(6 observations deleted)
-(0 observations deleted)
-(0 observations deleted)
-(2 observations deleted)
-(0 real changes made)
-(1 real change made)
-(1 real change made)
-(0 real changes made)
-(1 real change made)
-(395 real changes made)
-(1 real change made)
-(0 real changes made)
-(2,232 real changes made)
-(117 real changes made)
-(20 real changes made)
-(562 real changes made)
-(553 real changes made)
-(442 real changes made)
-(0 real changes made)
-(2 real changes made)
-(2 real changes made)
-(9 real changes made)
-Input:   11602 unique words, 27840 total words
-Output:  10439 unique words, 39476 total words
-Total time: 890.698 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_7.dta not found)
-file /tmp/St26043.000001.d/parsed_data_7.dta saved
-file_8=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/FAM2003ER.
-> do
-(4,286 observations read)
-(7 observations deleted)
-(0 observations deleted)
-(0 observations deleted)
-(2 observations deleted)
-(0 real changes made)
-(1 real change made)
-(1 real change made)
-(0 real changes made)
-(1 real change made)
-(412 real changes made)
-(1 real change made)
-(0 real changes made)
-(1,684 real changes made)
-(120 real changes made)
-(24 real changes made)
-(116 real changes made)
-(116 real changes made)
-(412 real changes made)
-(0 real changes made)
-(2 real changes made)
-(2 real changes made)
-(6 real changes made)
-Input:   10601 unique words, 25632 total words
-Output:  9605 unique words, 36688 total words
-Total time: 727.781 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_8.dta not found)
-file /tmp/St26043.000001.d/parsed_data_8.dta saved
-file_9=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/FAM2005ER.
-> do
-(4,110 observations read)
-(6 observations deleted)
-(0 observations deleted)
-(0 observations deleted)
-(2 observations deleted)
-(0 real changes made)
-(1 real change made)
-(1 real change made)
-(0 real changes made)
-(20 real changes made)
-(366 real changes made)
-(1 real change made)
-(0 real changes made)
-(2,110 real changes made)
-(129 real changes made)
-(29 real changes made)
-(130 real changes made)
-(130 real changes made)
-(315 real changes made)
-(0 real changes made)
-(5 real changes made)
-(1 real change made)
-(1 real change made)
-Input:   10209 unique words, 24584 total words
-Output:  9257 unique words, 35903 total words
-Total time: 673.336 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_9.dta not found)
-file /tmp/St26043.000001.d/parsed_data_9.dta saved
-file_10=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/FAM2007ER
-> .do
-(6,781 observations read)
-(6 observations deleted)
-(0 observations deleted)
-(0 observations deleted)
-(2 observations deleted)
-(0 real changes made)
-(1 real change made)
-(1 real change made)
-(0 real changes made)
-(16 real changes made)
-(471 real changes made)
-(1 real change made)
-(0 real changes made)
-(4,918 real changes made)
-(276 real changes made)
-(99 real changes made)
-(130 real changes made)
-(130 real changes made)
-(482 real changes made)
-(0 real changes made)
-(5 real changes made)
-(1 real change made)
-(4 real changes made)
-Input:   16220 unique words, 40608 total words
-Output:  13182 unique words, 63641 total words
-Total time: 2194.807 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_10.dta not found)
-file /tmp/St26043.000001.d/parsed_data_10.dta saved
-file_11=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/FAM2009ER
-> .do
-(6,704 observations read)
-(5 observations deleted)
-(0 observations deleted)
-(0 observations deleted)
-(2 observations deleted)
-(0 real changes made)
-(1 real change made)
-(1 real change made)
-(0 real changes made)
-(16 real changes made)
-(478 real changes made)
-(3 real changes made)
-(0 real changes made)
-(4,947 real changes made)
-(274 real changes made)
-(99 real changes made)
-(172 real changes made)
-(172 real changes made)
-(501 real changes made)
-(0 real changes made)
-(5 real changes made)
-(1 real change made)
-(4 real changes made)
-Input:   16051 unique words, 40152 total words
-Output:  13084 unique words, 62621 total words
-Total time: 2087.769 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_11.dta not found)
-file /tmp/St26043.000001.d/parsed_data_11.dta saved
-file_12=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/FAM2011ER
-> .do
-(6,875 observations read)
-(6 observations deleted)
-(0 observations deleted)
-(0 observations deleted)
-(2 observations deleted)
-(0 real changes made)
-(1 real change made)
-(1 real change made)
-(0 real changes made)
-(16 real changes made)
-(485 real changes made)
-(3 real changes made)
-(0 real changes made)
-(5,185 real changes made)
-(268 real changes made)
-(91 real changes made)
-(208 real changes made)
-(208 real changes made)
-(499 real changes made)
-(0 real changes made)
-(5 real changes made)
-(1 real change made)
-(4 real changes made)
-Input:   16445 unique words, 41176 total words
-Output:  13324 unique words, 64656 total words
-Total time: 2185.272 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_12.dta not found)
-file /tmp/St26043.000001.d/parsed_data_12.dta saved
-file_13=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/FAM2013ER
-> .do
-(7,029 observations read)
-(6 observations deleted)
-(0 observations deleted)
-(0 observations deleted)
-(2 observations deleted)
-(0 real changes made)
-(1 real change made)
-(1 real change made)
-(0 real changes made)
-(18 real changes made)
-(466 real changes made)
-(3 real changes made)
-(0 real changes made)
-(5,882 real changes made)
-(275 real changes made)
-(97 real changes made)
-(228 real changes made)
-(228 real changes made)
-(492 real changes made)
-(0 real changes made)
-(5 real changes made)
-(1 real change made)
-(4 real changes made)
-Input:   16796 unique words, 42096 total words
-Output:  13546 unique words, 66119 total words
-Total time: 2308.333 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_13.dta not found)
-file /tmp/St26043.000001.d/parsed_data_13.dta saved
-file_14=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/FAM2015ER
-> .do
-(7,340 observations read)
-(4 observations deleted)
-(0 observations deleted)
-(0 observations deleted)
-(2 observations deleted)
-(0 real changes made)
-(1 real change made)
-(1 real change made)
-(0 real changes made)
-(18 real changes made)
-(488 real changes made)
-(3 real changes made)
-(0 real changes made)
-(6,150 real changes made)
-(272 real changes made)
-(97 real changes made)
-(233 real changes made)
-(233 real changes made)
-(513 real changes made)
-(0 real changes made)
-(5 real changes made)
-(1 real change made)
-(4 real changes made)
-Input:   17594 unique words, 43974 total words
-Output:  14211 unique words, 68910 total words
-Total time: 2621.102 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_14.dta not found)
-file /tmp/St26043.000001.d/parsed_data_14.dta saved
-file_15=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/config.do
-(68 observations read)
-(21 observations deleted)
-(2 observations deleted)
-(8 observations deleted)
-(5 observations deleted)
-(0 real changes made)
-(2 real changes made)
-(2 real changes made)
-(7 real changes made)
-(0 real changes made)
-(6 real changes made)
-(11 real changes made)
-(0 real changes made)
-(2 real changes made)
-(6 real changes made)
-(0 real changes made)
-(12 real changes made)
-(12 real changes made)
-(0 real changes made)
-(0 real changes made)
-(5 real changes made)
-(0 real changes made)
-(0 real changes made)
-Input:   76 unique words, 118 total words
-Output:  69 unique words, 149 total words
-Total time: .013 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_15.dta not found)
-file /tmp/St26043.000001.d/parsed_data_15.dta saved
-file_16=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/marriage_
-> data.do
-(67 observations read)
-(15 observations deleted)
-(2 observations deleted)
-(0 observations deleted)
-(7 observations deleted)
-(0 real changes made)
-(21 real changes made)
-(21 real changes made)
-(28 real changes made)
-(15 real changes made)
-(13 real changes made)
-(16 real changes made)
-(0 real changes made)
-(2 real changes made)
-(7 real changes made)
-(0 real changes made)
-(5 real changes made)
-(5 real changes made)
-(0 real changes made)
-(0 real changes made)
-(12 real changes made)
-(0 real changes made)
-(0 real changes made)
-Input:   85 unique words, 357 total words
-Output:  77 unique words, 322 total words
-Total time: .019 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_16.dta not found)
-file /tmp/St26043.000001.d/parsed_data_16.dta saved
-file_17=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/mle_data_
-> wages.do
-(85 observations read)
-(14 observations deleted)
-(2 observations deleted)
-(0 observations deleted)
-(7 observations deleted)
-(0 real changes made)
-(34 real changes made)
-(34 real changes made)
-(35 real changes made)
-(24 real changes made)
-(15 real changes made)
-(23 real changes made)
-(0 real changes made)
-(2 real changes made)
-(10 real changes made)
-(0 real changes made)
-(7 real changes made)
-(7 real changes made)
-(0 real changes made)
-(0 real changes made)
-(14 real changes made)
-(0 real changes made)
-(0 real changes made)
-Input:   101 unique words, 384 total words
-Output:  92 unique words, 356 total words
-Total time: .026 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_17.dta not found)
-file /tmp/St26043.000001.d/parsed_data_17.dta saved
-file_18=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/mwp_estim
-> ation_data.do
-(78 observations read)
-(25 observations deleted)
-(1 observation deleted)
-(0 observations deleted)
-(2 observations deleted)
-(0 real changes made)
-(4 real changes made)
-(4 real changes made)
-(26 real changes made)
-(3 real changes made)
-(5 real changes made)
-(24 real changes made)
-(4 real changes made)
-(1 real change made)
-(14 real changes made)
-(7 real changes made)
-(16 real changes made)
-(16 real changes made)
-(1 real change made)
-(0 real changes made)
-(4 real changes made)
-(1 real change made)
-(1 real change made)
-Input:   129 unique words, 372 total words
-Output:  116 unique words, 377 total words
-Total time: .026 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_18.dta not found)
-file /tmp/St26043.000001.d/parsed_data_18.dta saved
-file_19=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/mwp_main.
-> do
-(37 observations read)
-(12 observations deleted)
-(0 observations deleted)
-(0 observations deleted)
-(8 observations deleted)
-(0 real changes made)
-(6 real changes made)
-(6 real changes made)
-(0 real changes made)
-(6 real changes made)
-(11 real changes made)
-(8 real changes made)
-(0 real changes made)
-(2 real changes made)
-(0 real changes made)
-(0 real changes made)
-(0 real changes made)
-(0 real changes made)
-(0 real changes made)
-(0 real changes made)
-(5 real changes made)
-(0 real changes made)
-(0 real changes made)
-Input:   53 unique words, 95 total words
-Output:  55 unique words, 106 total words
-Total time: .008 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_19.dta not found)
-file /tmp/St26043.000001.d/parsed_data_19.dta saved
-file_20=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/mwp_regre
-> ssions.do
-(128 observations read)
-(25 observations deleted)
-(2 observations deleted)
-(0 observations deleted)
-(5 observations deleted)
-(20 real changes made)
-(43 real changes made)
-(43 real changes made)
-(21 real changes made)
-(40 real changes made)
-(48 real changes made)
-(47 real changes made)
-(10 real changes made)
-(4 real changes made)
-(18 real changes made)
-(3 real changes made)
-(25 real changes made)
-(25 real changes made)
-(23 real changes made)
-(0 real changes made)
-(23 real changes made)
-(0 real changes made)
-(12 real changes made)
-Input:   122 unique words, 654 total words
-Output:  134 unique words, 874 total words
-Total time: .059 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_20.dta not found)
-file /tmp/St26043.000001.d/parsed_data_20.dta saved
-file_21=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/mwp_sampl
-> e.do
-(192 observations read)
-(69 observations deleted)
-(4 observations deleted)
-(0 observations deleted)
-(12 observations deleted)
-(0 real changes made)
-(33 real changes made)
-(33 real changes made)
-(74 real changes made)
-(31 real changes made)
-(29 real changes made)
-(58 real changes made)
-(6 real changes made)
-(3 real changes made)
-(37 real changes made)
-(6 real changes made)
-(35 real changes made)
-(35 real changes made)
-(2 real changes made)
-(0 real changes made)
-(27 real changes made)
-(4 real changes made)
-(4 real changes made)
-Input:   176 unique words, 990 total words
-Output:  161 unique words, 938 total words
-Total time: .07 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_21.dta not found)
-file /tmp/St26043.000001.d/parsed_data_21.dta saved
-file_22=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/plot_weal
-> th_distributions_bymarital.do
-(173 observations read)
-(34 observations deleted)
-(12 observations deleted)
-(2 observations deleted)
-(23 observations deleted)
-(0 real changes made)
-(27 real changes made)
-(27 real changes made)
-(41 real changes made)
-(29 real changes made)
-(18 real changes made)
-(55 real changes made)
-(1 real change made)
-(9 real changes made)
-(38 real changes made)
-(0 real changes made)
-(24 real changes made)
-(24 real changes made)
-(1 real change made)
-(0 real changes made)
-(34 real changes made)
-(1 real change made)
-(1 real change made)
-Input:   219 unique words, 536 total words
-Output:  203 unique words, 676 total words
-Total time: .066 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_22.dta not found)
-file /tmp/St26043.000001.d/parsed_data_22.dta saved
-file_23=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/process_f
-> amily_files.do
-(1,096 observations read)
-(122 observations deleted)
-(18 observations deleted)
-(9 observations deleted)
-(102 observations deleted)
-(0 real changes made)
-(33 real changes made)
-(33 real changes made)
-(45 real changes made)
-(33 real changes made)
-(588 real changes made)
-(90 real changes made)
-(9 real changes made)
-(80 real changes made)
-(120 real changes made)
-(18 real changes made)
-(130 real changes made)
-(130 real changes made)
-(9 real changes made)
-(0 real changes made)
-(164 real changes made)
-(0 real changes made)
-(0 real changes made)
-Input:   1090 unique words, 5516 total words
-Output:  1071 unique words, 5635 total words
-Total time: 2.671 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_23.dta not found)
-file /tmp/St26043.000001.d/parsed_data_23.dta saved
-file_24=/home/lv39/Workspace/AEA/all//aearep-672/118064/stata_scripts/Family-cr
-> oss-sections/fam1999er/FAM1999ER.do
-(4,731 observations read)
-(6 observations deleted)
-(0 observations deleted)
-(0 observations deleted)
-(2 observations deleted)
-(0 real changes made)
-(1 real change made)
-(1 real change made)
-(0 real changes made)
-(3 real changes made)
-(384 real changes made)
-(22 real changes made)
-(0 real changes made)
-(2,232 real changes made)
-(105 real changes made)
-(30 real changes made)
-(453 real changes made)
-(444 real changes made)
-(449 real changes made)
-(0 real changes made)
-(3 real changes made)
-(2 real changes made)
-(0 real changes made)
-Input:   11862 unique words, 28312 total words
-Output:  10731 unique words, 39946 total words
-Total time: 990.326 seconds
-(note: file /tmp/St26043.000001.d/parsed_data_24.dta not found)
-file /tmp/St26043.000001.d/parsed_data_24.dta saved
-
-. 
-. **********************
-. * Step 4: Matching       *
-. **********************
-. 
-. ** Inputs: parsed .dta files from parsing code and list of freshly obtained s
-> sc packages
-. 
-. ** Outputs: list of missing packages
-. 
-. 
-.  *List all generated .dta files and append them to prepare for the match
-. * fs "`parsed'/parsed_data*.dta"
-. local parsedfiles : dir "`parsed'" files "parsed_data_*.dta"
-
-. local allfiles ""
-
-. 
-. foreach v in `parsedfiles' {
-  2.    local allfiles `allfiles' `parsed'/`v'
-  3. }
-
-. 
-.  append using `allfiles'
-(note: variable bagged_words was str68, now str112 to accommodate using
-       data's values)
-(note: variable bagged_words was str112, now str114 to accommodate using
-       data's values)
-(note: variable bagged_words was str114, now str202 to accommodate using
-       data's values)
-(note: variable bagged_words was str202, now str238 to accommodate using
-       data's values)
-
-.  
-.  
-. *Collapses unique words into 1 observation
