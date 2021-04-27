@@ -1,0 +1,41 @@
+% readme.tex -- a short example of how each Stata Journal insert should be
+% organized.
+
+\inserttype[st0001]{article}
+\author{Reiner and Vilhuber}{%
+  Lydia Reiner\\Cornell University\\Ithaca, NY, USA\\lr397@cornell.edu
+  \and
+  Lars Vilhuber\\Cornell University\\Ithaca, NY, USA\\lars.vilhuber@cornell.edu
+}
+\title[{\tt packagesearch}]{Identifying packages used in Stata code}
+\maketitle
+
+\begin{abstract}
+This is an example article.  You should change the \verb+\input{}+ line in
+\texttt{main.tex} to point to your file.  If this is your first submission to
+the {\sl Stata Journal}, please read the following ``getting started''
+information.
+
+\keywords{\inserttag, command name(s), keyword(s)}
+\end{abstract}
+
+% discussion of the Stata Journal document class.
+\input sj.tex
+% discussion of the Stata Press LaTeX package for Stata output.
+\input stata.tex
+
+\bibliographystyle{sj}
+\bibliography{sj}
+
+\begin{aboutauthors}
+Some background information about the first author.
+
+Some background information about the second author.
+
+\textbf{Author Contributions}
+LR came up with the idea, did the research, implemented and tested the code, and wrote the manuscript.
+
+LV assisted with the code, tested the code, and wrote the manuscript.
+\end{aboutauthors}
+
+\endinput

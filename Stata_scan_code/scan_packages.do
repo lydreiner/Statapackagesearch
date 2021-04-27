@@ -4,26 +4,35 @@
 * Step 1: Preliminaries   *
 ***************************
 clear all
-local pwd : pwd
 
+// Point to location of folder with .do files to scan for potential packages:
+// Probably the only thing you need to change:
+
+global codedir "$scandir/$aearep"
+// Point to location of "scanning_framework" folder which contains scanning 
+// code, package list, and stopwords & subwords files
+// Might need to create an absolute path, but normally not necessary
+
+local pwd : pwd
+global rootdir "`pwd'"
 
 // Set globals below
+// Configure a few features. Probably not necessary unless you know what 
+// you are doing.
 
 global savefiles = 1 // Set to 1 if you want to save the list of files that was parsed. Useful
 global createlog = 0 // If you wish to create a log file of the parsing/matching process,
 global saveexcel = 1 // Set to 1 if you want to save the Excel report into the original directory (codedir)
 global savehot   = 0 // Set to 1 if you want to save the "whatshot" report. Usually not needed.
 
-// Point to location of "scanning_framework" folder which contains scanning code, package list, and stopwords & subwords files
-global rootdir "`pwd'"
-
-// DO NOT CHANGE Points to location of subwords and stopwords 
-global auxdir "$rootdir/ado/auxiliary"
-
-// Point to location of folder with .do files to scan for potential packages:
- global codedir "U:/Documents/AEA_Workspace/aearep-1787/130804"
 
 //################## NO NEED TO CHANGE ANYTHING BELOW THIS ###############################
+// DO NOT CHANGE Points to location of subwords and stopwords 
+global auxdir "$rootdir/ado/auxiliary"
+tempfile a
+local parsed "`a'.d"
+mkdir `parsed' 
+
 // Install packages, provide system info
 
 global reportexcel "candidatepackages.xlsx"
@@ -60,7 +69,7 @@ sysdir
 /* add necessary packages to perform the scan & analysis to the macro */
 
 * *** Add required packages from SSC to this list ***
-    local ssc_packages "fs filelist txttool"
+    local ssc_packages "filelist txttool ftools"
     
     if !missing("`ssc_packages'") {
         foreach pkg in `ssc_packages' {
@@ -200,7 +209,7 @@ forvalues i=1/`total_files' {
 	txttool txtstring, sub("$auxdir/signalcommands.txt") stop("$auxdir/stopwords.txt") gen(bagged_words)  bagwords prefix(w_)
 
 	* saves the results as .dta file (one for each .do file in the folder)
-	save "$rootdir/parsed_data_`i'.dta", replace
+	save "`parsed'/parsed_data_`i'.dta", replace
  }
 
 **********************
@@ -213,12 +222,19 @@ forvalues i=1/`total_files' {
 
 
  *List all generated .dta files and append them to prepare for the match
- fs "parsed_data*.dta"
- append using `r(files)'
+* fs "`parsed'/parsed_data*.dta"
+local parsedfiles : dir "`parsed'" files "parsed_data_*.dta"
+local allfiles ""
+
+foreach v in `parsedfiles' {
+   local allfiles `allfiles' `parsed'/`v'
+}
+
+ append using `allfiles'
  
  
 *Collapses unique words into 1 observation
-collapse (sum) w_* 
+fcollapse (sum) w_* 
 
 * create a new var and count to capture frequency
 gen word = ""
@@ -242,12 +258,12 @@ drop w_*
 sort word
 
 // Cleanup
-local datafiles : dir "$rootdir" files "parsed_data_*.dta"
+local datafiles : dir "`parsed'" files "parsed_data_*.dta"
 
 foreach v in `datafiles' {
-erase "`v'"
+erase "`parsed'/`v'"
 }
-
+rmdir `parsed'
 
 // Merge/match
 sort word
