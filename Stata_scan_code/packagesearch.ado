@@ -27,7 +27,7 @@ local pwd : pwd
 
 global rootdir "`pwd'"
 global codedir "`codedir'"
-global auxdir "$rootdir/ado/auxiliary"
+*global auxdir "$rootdir/ado/auxiliary"
 
 
 capture mkdir "$rootdir/ado"
@@ -181,7 +181,7 @@ forvalues i=1/`total_files' {
 	
 
 	* perform the txttool analysis- removes stopwords and duplicates
-	n txttool txtstring, sub("$auxdir/signalcommands.txt") stop("$auxdir/stopwords.txt") gen(bagged_words)  bagwords prefix(w_)
+	n txttool txtstring, sub("$rootdir/ado/auxiliary/signalcommands.txt") stop("$rootdir/ado/auxiliary/stopwords.txt") gen(bagged_words)  bagwords prefix(w_)
 
 	* saves the results as .dta file (one for each .do file in the folder)
 	save "$rootdir/parsed_data_`i'.dta", replace
@@ -192,14 +192,18 @@ forvalues i=1/`total_files' {
 * Step 4: Matching 	 *
 **********************
 
-di "Step 4: Match parsed files to package list and show candidate packages"
 
  *List all generated .dta files and append them to prepare for the match
  
  qui{
  fs "parsed_data*.dta"
- append using `r(files)'
+ cap append using `r(files)'
+ }
  
+ if _rc ==0 {
+
+ di "Step 4: Match parsed files to package list and show candidate packages"
+
  
 *Collapses unique words into 1 observation
 collapse (sum) w_* 
@@ -231,12 +235,40 @@ local datafiles : dir "$rootdir" files "parsed_data_*.dta"
 foreach v in `datafiles' {
 erase "`v'"
 }
+ }
 
+ else {
+ 	di as input "No Stata .do files found in this directory. Please specify another location."
+	exit
  }
 
 // Merge/match
 sort word
-merge 1:1 word using `packagelist' 
+merge 1:1 word using `packagelist'
+
+
+** Procedure for identifying if no matched packages are found
+qui {
+return list
+
+*calculate and store # of obs that weren't matched
+gen success2= r(N)
+egen success1 = count(_merge ==3), by(_merge) 
+replace success1 = success1 + success2
+di success1
+
+* calc total number of obs and subtract
+egen success = count("matched (3)") 
+replace success = success - success1
+}
+ // If no matched packages found, output message and exit
+if success == 0 {
+	di as input "No matched packages found"
+	exit
+}
+
+// Otherwise keep going
+else{
 
 di "Candidate packages listed below:"
 
@@ -246,6 +278,7 @@ label var match "Candidate package found"
 keep if match !=""
 gsort rank match
 }
+
 
 
 
@@ -321,6 +354,6 @@ levelsof match, clean local(foundpackages)
 	
 
 }
-
+}
 
 end
