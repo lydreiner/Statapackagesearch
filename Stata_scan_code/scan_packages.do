@@ -69,7 +69,7 @@ sysdir
 /* add necessary packages to perform the scan & analysis to the macro */
 
 * *** Add required packages from SSC to this list ***
-    local ssc_packages "filelist txttool ftools"
+    local ssc_packages "filelist txttool ftools moremata"
     
     if !missing("`ssc_packages'") {
         foreach pkg in `ssc_packages' {
