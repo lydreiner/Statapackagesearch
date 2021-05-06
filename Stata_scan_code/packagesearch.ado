@@ -46,13 +46,14 @@ sysdir
             n dis "Installing `pkg'"
           cap ssc install `pkg', replace
     	
+		** If error- print need to install dependencies
 		if _rc==603 {
-		di "Package `x' is required, but was not installed successfully. Please install before proceeding. "
+		di as err "Packages fs, filelist, and txttool are required, but could not be successfully installed. Please install before proceeding. "
+		exit
 		}
 	
 	}
 	}
-	** If error- print need to install dependencies
 
 	
 /* after installing all packages, it may be necessary to issue the mata mlib index command */
@@ -62,8 +63,8 @@ sysdir
 set more off
 set maxvar 120000
 }
-di "Required packages installed"
 
+di "Required packages installed"
 
 ********************************************************
 * Step 2: Collect list of all packages hosted at SSC   *
@@ -120,7 +121,7 @@ di "Package list generated successfully"
 * Step 3: Parsing	      *
 ***************************
 
-di "Step 3 : Parse all .do files in specified directory (split them into words)"
+di as input "Step 3 : Parse all .do files in specified directory (split them into words)"
 
 qui {
 *Parse each .do file in a directory, then append the parsed files
@@ -202,7 +203,7 @@ forvalues i=1/`total_files' {
  
  if _rc ==0 {
 
- di "Step 4: Match parsed files to package list and show candidate packages"
+ di as input "Step 4: Match parsed files to package list and show candidate packages"
 
  
 *Collapses unique words into 1 observation
@@ -264,13 +265,16 @@ replace success = success - success1
  // If no matched packages found, output message and exit
 if success == 0 {
 	di as input "No matched packages found"
+	
+	qui drop success success1 success2
 	exit
 }
 
 // Otherwise keep going
 else{
+qui drop success success1 success2
 
-di "Candidate packages listed below:"
+di as input "Candidate packages listed below:"
 
 qui{
 gen match = word if _merge==3
@@ -315,7 +319,7 @@ cap erase "scanned_dofile.dta"
 preserve
 
 if ("`excelsave'"== "excelsave") {
-di "Optional Step 5: Export results of the match (candidate packages) to Excel sheet"
+di as input "Optional Step 5: Export results of the match (candidate packages) to Excel sheet"
 
 global reportfile "`codedir'/candidatepackages.xlsx"
 
