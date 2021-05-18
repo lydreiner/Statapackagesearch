@@ -160,6 +160,8 @@ forvalues i=1/`total_files' {
 
 	/* clean - this is handled by the stopword file as well */
 
+	
+	
 	* split on common delimiters- txttool can't handle long strings
 	replace txtstring = subinstr(txtstring,"\", " ",.)
 	replace txtstring = subinstr(txtstring,"{", " ",.)
@@ -167,7 +169,7 @@ forvalues i=1/`total_files' {
 	replace txtstring = subinstr(txtstring,"="," ",.)
 	replace txtstring = subinstr(txtstring, "$"," ",.)
 	replace txtstring = subinstr(txtstring, "/"," ",.)
-	replace txtstring = subinstr(txtstring, "_"," ",.)
+	replace txtstring = subinstr(txtstring, "_","",.)
 	replace txtstring = subinstr(txtstring, "*"," ",.)
 	replace txtstring = subinstr(txtstring, "-"," ",.)
 	replace txtstring = subinstr(txtstring, ","," ",.)
@@ -256,7 +258,7 @@ return list
 gen success2= r(N)
 egen success1 = count(_merge ==3), by(_merge) 
 replace success1 = success1 + success2
-di success1
+
 
 * calc total number of obs and subtract
 egen success = count("matched (3)") 
