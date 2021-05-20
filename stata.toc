@@ -1,0 +1,4 @@
+v 3
+
+d Lydia Reiner and Lars Vilhuber, Cornell University
+p Module to scan Stata .do files and return list of user-written packages necessary to run the code
