@@ -3773,3 +3773,2413 @@ file_2=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/analysis/replicati
 (726 real changes made)
 (392 real changes made)
 (105 real changes made)
+Input:   2415 unique words, 35381 total words
+Output:  1742 unique words, 41813 total words
+Total time: 92.492 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_2.dta not found)
+file /tmp/St11856.000001.d/parsed_data_2.dta saved
+file_3=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/analysis/helper/ad
+> d_depmean.do
+(2 observations read)
+(0 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(2 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   12 unique words, 13 total words
+Output:  10 unique words, 11 total words
+Total time: .004 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_3.dta not found)
+file /tmp/St11856.000001.d/parsed_data_3.dta saved
+file_4=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/analysis/helper/lo
+> ad_analysis.do
+(28 observations read)
+(7 observations deleted)
+(1 observation deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(10 real changes made)
+(4 real changes made)
+(4 real changes made)
+(17 real changes made)
+(0 real changes made)
+(0 real changes made)
+(4 real changes made)
+(2 real changes made)
+(8 real changes made)
+(8 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   51 unique words, 104 total words
+Output:  53 unique words, 122 total words
+Total time: .009 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_4.dta not found)
+file /tmp/St11856.000001.d/parsed_data_4.dta saved
+file_5=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/analysis/helper/lo
+> ad_child_outcomes.do
+(150 observations read)
+(25 observations deleted)
+(1 observation deleted)
+(0 observations deleted)
+(2 observations deleted)
+(0 real changes made)
+(6 real changes made)
+(6 real changes made)
+(59 real changes made)
+(3 real changes made)
+(10 real changes made)
+(94 real changes made)
+(36 real changes made)
+(0 real changes made)
+(8 real changes made)
+(3 real changes made)
+(49 real changes made)
+(49 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(2 real changes made)
+(0 real changes made)
+Input:   181 unique words, 683 total words
+Output:  158 unique words, 813 total words
+Total time: .076 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_5.dta not found)
+file /tmp/St11856.000001.d/parsed_data_5.dta saved
+file_6=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/analysis/helper/lo
+> ad_parent_indicator.do
+(21 observations read)
+(1 observation deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(2 real changes made)
+(2 real changes made)
+(1 real change made)
+(2 real changes made)
+(2 real changes made)
+(6 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(1 real change made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   29 unique words, 55 total words
+Output:  31 unique words, 73 total words
+Total time: .008 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_6.dta not found)
+file /tmp/St11856.000001.d/parsed_data_6.dta saved
+file_7=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/analysis/helper/lo
+> ad_sib_def_incar_yr_mo.do
+(43 observations read)
+(12 observations deleted)
+(2 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(9 real changes made)
+(2 real changes made)
+(4 real changes made)
+(20 real changes made)
+(2 real changes made)
+(2 real changes made)
+(6 real changes made)
+(4 real changes made)
+(9 real changes made)
+(9 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(2 real changes made)
+(0 real changes made)
+Input:   61 unique words, 172 total words
+Output:  62 unique words, 188 total words
+Total time: .014 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_7.dta not found)
+file /tmp/St11856.000001.d/parsed_data_7.dta saved
+file_8=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/analysis/helper/lo
+> ad_sibling_outcomes.do
+(58 observations read)
+(19 observations deleted)
+(3 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(4 real changes made)
+(4 real changes made)
+(19 real changes made)
+(2 real changes made)
+(6 real changes made)
+(24 real changes made)
+(0 real changes made)
+(3 real changes made)
+(1 real change made)
+(8 real changes made)
+(13 real changes made)
+(13 real changes made)
+(0 real changes made)
+(0 real changes made)
+(3 real changes made)
+(3 real changes made)
+(4 real changes made)
+Input:   89 unique words, 284 total words
+Output:  83 unique words, 297 total words
+Total time: .021 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_8.dta not found)
+file /tmp/St11856.000001.d/parsed_data_8.dta saved
+file_9=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/analysis/helper/pr
+> epSummary.do
+(52 observations read)
+(6 observations deleted)
+(1 observation deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(1 real change made)
+(1 real change made)
+(19 real changes made)
+(1 real change made)
+(0 real changes made)
+(33 real changes made)
+(0 real changes made)
+(0 real changes made)
+(5 real changes made)
+(0 real changes made)
+(8 real changes made)
+(8 real changes made)
+(0 real changes made)
+(0 real changes made)
+(8 real changes made)
+(1 real change made)
+(2 real changes made)
+Input:   89 unique words, 265 total words
+Output:  72 unique words, 292 total words
+Total time: .022 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_9.dta not found)
+file /tmp/St11856.000001.d/parsed_data_9.dta saved
+file_10=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/analysis/helper/p
+> rep_child_school.do
+(42 observations read)
+(13 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(2 real changes made)
+(2 real changes made)
+(13 real changes made)
+(2 real changes made)
+(2 real changes made)
+(25 real changes made)
+(4 real changes made)
+(1 real change made)
+(3 real changes made)
+(0 real changes made)
+(9 real changes made)
+(9 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   71 unique words, 182 total words
+Output:  73 unique words, 195 total words
+Total time: .015 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_10.dta not found)
+file /tmp/St11856.000001.d/parsed_data_10.dta saved
+file_11=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/analysis/helper/s
+> tringify_coef_dollars.do
+(12 observations read)
+(2 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(2 real changes made)
+(3 real changes made)
+(3 real changes made)
+(3 real changes made)
+(1 real change made)
+(1 real change made)
+(9 real changes made)
+(3 real changes made)
+(0 real changes made)
+(2 real changes made)
+(1 real change made)
+(6 real changes made)
+(6 real changes made)
+(0 real changes made)
+(0 real changes made)
+(5 real changes made)
+(0 real changes made)
+(1 real change made)
+Input:   33 unique words, 80 total words
+Output:  22 unique words, 88 total words
+Total time: .007 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_11.dta not found)
+file /tmp/St11856.000001.d/parsed_data_11.dta saved
+file_12=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/master_c
+> leaning.do
+(46 observations read)
+(15 observations deleted)
+(14 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(15 real changes made)
+(15 real changes made)
+(13 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+Input:   22 unique words, 35 total words
+Output:  39 unique words, 98 total words
+Total time: .009 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_12.dta not found)
+file /tmp/St11856.000001.d/parsed_data_12.dta saved
+file_13=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/bc/add_a
+> ddresses.do
+(10 observations read)
+(3 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(3 real changes made)
+(3 real changes made)
+(6 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   27 unique words, 31 total words
+Output:  31 unique words, 44 total words
+Total time: .005 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_13.dta not found)
+file /tmp/St11856.000001.d/parsed_data_13.dta saved
+file_14=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/bc/clean
+> _bc.do
+(521 observations read)
+(88 observations deleted)
+(35 observations deleted)
+(6 observations deleted)
+(6 observations deleted)
+(1 real change made)
+(27 real changes made)
+(27 real changes made)
+(102 real changes made)
+(27 real changes made)
+(106 real changes made)
+(76 real changes made)
+(3 real changes made)
+(87 real changes made)
+(62 real changes made)
+(18 real changes made)
+(76 real changes made)
+(76 real changes made)
+(1 real change made)
+(0 real changes made)
+(31 real changes made)
+(3 real changes made)
+(7 real changes made)
+Input:   517 unique words, 1751 total words
+Output:  475 unique words, 1853 total words
+Total time: .588 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_14.dta not found)
+file /tmp/St11856.000001.d/parsed_data_14.dta saved
+file_15=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/bc/geoco
+> de_oh_bc.do
+(885 observations read)
+(160 observations deleted)
+(0 observations deleted)
+(1 observation deleted)
+(88 observations deleted)
+(9 real changes made)
+(22 real changes made)
+(22 real changes made)
+(362 real changes made)
+(62 real changes made)
+(52 real changes made)
+(182 real changes made)
+(10 real changes made)
+(20 real changes made)
+(125 real changes made)
+(17 real changes made)
+(114 real changes made)
+(114 real changes made)
+(0 real changes made)
+(0 real changes made)
+(87 real changes made)
+(11 real changes made)
+(10 real changes made)
+Input:   373 unique words, 3590 total words
+Output:  317 unique words, 3885 total words
+Total time: 1.022 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_15.dta not found)
+file /tmp/St11856.000001.d/parsed_data_15.dta saved
+file_16=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/bc/maste
+> r_bc.do
+(16 observations read)
+(5 observations deleted)
+(4 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(5 real changes made)
+(5 real changes made)
+(3 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   12 unique words, 15 total words
+Output:  17 unique words, 30 total words
+Total time: .006 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_16.dta not found)
+file /tmp/St11856.000001.d/parsed_data_16.dta saved
+file_17=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/bc/helpe
+> r/make_input_dictionary.do
+(28 observations read)
+(10 observations deleted)
+(1 observation deleted)
+(0 observations deleted)
+(0 observations deleted)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(12 real changes made)
+(0 real changes made)
+(3 real changes made)
+(4 real changes made)
+(2 real changes made)
+(3 real changes made)
+(7 real changes made)
+(5 real changes made)
+(11 real changes made)
+(11 real changes made)
+(0 real changes made)
+(0 real changes made)
+(3 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   42 unique words, 93 total words
+Output:  35 unique words, 84 total words
+Total time: .008 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_17.dta not found)
+file /tmp/St11856.000001.d/parsed_data_17.dta saved
+file_18=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/censusda
+> ta/clean_ohio_census.do
+(212 observations read)
+(34 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(29 observations deleted)
+(0 real changes made)
+(9 real changes made)
+(9 real changes made)
+(33 real changes made)
+(25 real changes made)
+(35 real changes made)
+(119 real changes made)
+(4 real changes made)
+(18 real changes made)
+(22 real changes made)
+(12 real changes made)
+(18 real changes made)
+(18 real changes made)
+(0 real changes made)
+(0 real changes made)
+(26 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   170 unique words, 696 total words
+Output:  192 unique words, 963 total words
+Total time: .102 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_18.dta not found)
+file /tmp/St11856.000001.d/parsed_data_18.dta saved
+file_19=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuya_juv
+> enile/clean_cuya_juvenile.do
+(425 observations read)
+(89 observations deleted)
+(5 observations deleted)
+(9 observations deleted)
+(35 observations deleted)
+(1 real change made)
+(10 real changes made)
+(10 real changes made)
+(104 real changes made)
+(17 real changes made)
+(78 real changes made)
+(107 real changes made)
+(9 real changes made)
+(14 real changes made)
+(125 real changes made)
+(7 real changes made)
+(143 real changes made)
+(143 real changes made)
+(1 real change made)
+(0 real changes made)
+(28 real changes made)
+(2 real changes made)
+(5 real changes made)
+Input:   323 unique words, 1669 total words
+Output:  317 unique words, 1691 total words
+Total time: .46 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_19.dta not found)
+file /tmp/St11856.000001.d/parsed_data_19.dta saved
+file_20=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuya_sch
+> ools/student_info.do
+(472 observations read)
+(98 observations deleted)
+(33 observations deleted)
+(11 observations deleted)
+(11 observations deleted)
+(2 real changes made)
+(14 real changes made)
+(14 real changes made)
+(142 real changes made)
+(15 real changes made)
+(39 real changes made)
+(217 real changes made)
+(5 real changes made)
+(30 real changes made)
+(73 real changes made)
+(11 real changes made)
+(96 real changes made)
+(96 real changes made)
+(1 real change made)
+(0 real changes made)
+(43 real changes made)
+(7 real changes made)
+(9 real changes made)
+Input:   333 unique words, 1966 total words
+Output:  292 unique words, 1998 total words
+Total time: .377 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_20.dta not found)
+file /tmp/St11856.000001.d/parsed_data_20.dta saved
+file_21=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /arraigned_indicator.do
+(10 observations read)
+(1 observation deleted)
+(0 observations deleted)
+(1 observation deleted)
+(1 observation deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(2 real changes made)
+(2 real changes made)
+(3 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   27 unique words, 32 total words
+Output:  32 unique words, 42 total words
+Total time: .005 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_21.dta not found)
+file /tmp/St11856.000001.d/parsed_data_21.dta saved
+file_22=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /case_costs_mun.do
+(44 observations read)
+(17 observations deleted)
+(2 observations deleted)
+(0 observations deleted)
+(1 observation deleted)
+(0 real changes made)
+(1 real change made)
+(1 real change made)
+(10 real changes made)
+(5 real changes made)
+(6 real changes made)
+(17 real changes made)
+(0 real changes made)
+(0 real changes made)
+(12 real changes made)
+(0 real changes made)
+(8 real changes made)
+(9 real changes made)
+(0 real changes made)
+(0 real changes made)
+(6 real changes made)
+(0 real changes made)
+(1 real change made)
+Input:   59 unique words, 147 total words
+Output:  61 unique words, 171 total words
+Total time: .013 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_22.dta not found)
+file /tmp/St11856.000001.d/parsed_data_22.dta saved
+file_23=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /case_dates.do
+(135 observations read)
+(39 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(8 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(28 real changes made)
+(2 real changes made)
+(7 real changes made)
+(64 real changes made)
+(3 real changes made)
+(3 real changes made)
+(19 real changes made)
+(0 real changes made)
+(29 real changes made)
+(29 real changes made)
+(3 real changes made)
+(0 real changes made)
+(6 real changes made)
+(0 real changes made)
+(3 real changes made)
+Input:   102 unique words, 460 total words
+Output:  103 unique words, 495 total words
+Total time: .042 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_23.dta not found)
+file /tmp/St11856.000001.d/parsed_data_23.dta saved
+file_24=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /case_dates_mun.do
+(182 observations read)
+(48 observations deleted)
+(1 observation deleted)
+(0 observations deleted)
+(7 observations deleted)
+(0 real changes made)
+(2 real changes made)
+(2 real changes made)
+(49 real changes made)
+(2 real changes made)
+(25 real changes made)
+(99 real changes made)
+(1 real change made)
+(3 real changes made)
+(46 real changes made)
+(0 real changes made)
+(47 real changes made)
+(45 real changes made)
+(0 real changes made)
+(0 real changes made)
+(10 real changes made)
+(1 real change made)
+(20 real changes made)
+Input:   169 unique words, 762 total words
+Output:  168 unique words, 813 total words
+Total time: .079 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_24.dta not found)
+file /tmp/St11856.000001.d/parsed_data_24.dta saved
+file_25=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /clean_detainers.do
+(8 observations read)
+(0 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(2 real changes made)
+(2 real changes made)
+(6 real changes made)
+(0 real changes made)
+(0 real changes made)
+(4 real changes made)
+(0 real changes made)
+(3 real changes made)
+(3 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+Input:   25 unique words, 38 total words
+Output:  32 unique words, 49 total words
+Total time: .005 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_25.dta not found)
+file /tmp/St11856.000001.d/parsed_data_25.dta saved
+file_26=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /clean_judge.do
+(110 observations read)
+(7 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(1 observation deleted)
+(2 real changes made)
+(0 real changes made)
+(0 real changes made)
+(96 real changes made)
+(2 real changes made)
+(2 real changes made)
+(100 real changes made)
+(0 real changes made)
+(2 real changes made)
+(95 real changes made)
+(1 real change made)
+(95 real changes made)
+(95 real changes made)
+(0 real changes made)
+(0 real changes made)
+(3 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   235 unique words, 1003 total words
+Output:  217 unique words, 1152 total words
+Total time: .085 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_26.dta not found)
+file /tmp/St11856.000001.d/parsed_data_26.dta saved
+file_27=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /combine_clean_combined.do
+(1,047 observations read)
+(248 observations deleted)
+(65 observations deleted)
+(1 observation deleted)
+(32 observations deleted)
+(0 real changes made)
+(11 real changes made)
+(11 real changes made)
+(274 real changes made)
+(81 real changes made)
+(134 real changes made)
+(569 real changes made)
+(13 real changes made)
+(36 real changes made)
+(150 real changes made)
+(26 real changes made)
+(181 real changes made)
+(180 real changes made)
+(0 real changes made)
+(0 real changes made)
+(84 real changes made)
+(35 real changes made)
+(43 real changes made)
+Input:   468 unique words, 4195 total words
+Output:  369 unique words, 4607 total words
+Total time: 1.185 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_27.dta not found)
+file /tmp/St11856.000001.d/parsed_data_27.dta saved
+file_28=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /combine_docket_entries.do
+(182 observations read)
+(55 observations deleted)
+(21 observations deleted)
+(0 observations deleted)
+(1 observation deleted)
+(0 real changes made)
+(5 real changes made)
+(5 real changes made)
+(35 real changes made)
+(10 real changes made)
+(29 real changes made)
+(77 real changes made)
+(2 real changes made)
+(6 real changes made)
+(18 real changes made)
+(6 real changes made)
+(14 real changes made)
+(14 real changes made)
+(0 real changes made)
+(0 real changes made)
+(10 real changes made)
+(7 real changes made)
+(14 real changes made)
+Input:   85 unique words, 671 total words
+Output:  82 unique words, 725 total words
+Total time: .053 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_28.dta not found)
+file /tmp/St11856.000001.d/parsed_data_28.dta saved
+file_29=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /combine_docket_entries_mun.do
+(137 observations read)
+(35 observations deleted)
+(18 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(6 real changes made)
+(6 real changes made)
+(37 real changes made)
+(6 real changes made)
+(16 real changes made)
+(67 real changes made)
+(2 real changes made)
+(4 real changes made)
+(16 real changes made)
+(4 real changes made)
+(19 real changes made)
+(19 real changes made)
+(0 real changes made)
+(0 real changes made)
+(6 real changes made)
+(6 real changes made)
+(14 real changes made)
+Input:   80 unique words, 574 total words
+Output:  74 unique words, 603 total words
+Total time: .045 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_29.dta not found)
+file /tmp/St11856.000001.d/parsed_data_29.dta saved
+file_30=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /date_returned.do
+(13 observations read)
+(0 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(5 real changes made)
+(2 real changes made)
+(2 real changes made)
+(12 real changes made)
+(0 real changes made)
+(0 real changes made)
+(6 real changes made)
+(0 real changes made)
+(4 real changes made)
+(4 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(2 real changes made)
+(0 real changes made)
+Input:   35 unique words, 92 total words
+Output:  35 unique words, 100 total words
+Total time: .008 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_30.dta not found)
+file /tmp/St11856.000001.d/parsed_data_30.dta saved
+file_31=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /def_characteristics.do
+(412 observations read)
+(84 observations deleted)
+(5 observations deleted)
+(0 observations deleted)
+(40 observations deleted)
+(0 real changes made)
+(10 real changes made)
+(10 real changes made)
+(150 real changes made)
+(14 real changes made)
+(28 real changes made)
+(154 real changes made)
+(0 real changes made)
+(14 real changes made)
+(85 real changes made)
+(9 real changes made)
+(101 real changes made)
+(100 real changes made)
+(0 real changes made)
+(0 real changes made)
+(32 real changes made)
+(7 real changes made)
+(5 real changes made)
+Input:   336 unique words, 1682 total words
+Output:  277 unique words, 1626 total words
+Total time: .274 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_31.dta not found)
+file /tmp/St11856.000001.d/parsed_data_31.dta saved
+file_32=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /def_characteristics_mun.do
+(299 observations read)
+(64 observations deleted)
+(5 observations deleted)
+(0 observations deleted)
+(28 observations deleted)
+(4 real changes made)
+(7 real changes made)
+(7 real changes made)
+(118 real changes made)
+(22 real changes made)
+(18 real changes made)
+(111 real changes made)
+(2 real changes made)
+(17 real changes made)
+(60 real changes made)
+(11 real changes made)
+(69 real changes made)
+(69 real changes made)
+(0 real changes made)
+(0 real changes made)
+(26 real changes made)
+(5 real changes made)
+(1 real change made)
+Input:   270 unique words, 1139 total words
+Output:  234 unique words, 1144 total words
+Total time: .271 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_32.dta not found)
+file /tmp/St11856.000001.d/parsed_data_32.dta saved
+file_33=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /def_charges.do
+(364 observations read)
+(80 observations deleted)
+(20 observations deleted)
+(1 observation deleted)
+(20 observations deleted)
+(4 real changes made)
+(0 real changes made)
+(0 real changes made)
+(64 real changes made)
+(30 real changes made)
+(80 real changes made)
+(217 real changes made)
+(11 real changes made)
+(8 real changes made)
+(97 real changes made)
+(0 real changes made)
+(112 real changes made)
+(110 real changes made)
+(0 real changes made)
+(0 real changes made)
+(40 real changes made)
+(2 real changes made)
+(3 real changes made)
+Input:   223 unique words, 1489 total words
+Output:  216 unique words, 1686 total words
+Total time: .276 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_33.dta not found)
+file /tmp/St11856.000001.d/parsed_data_33.dta saved
+file_34=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /def_charges_mun.do
+(428 observations read)
+(95 observations deleted)
+(21 observations deleted)
+(1 observation deleted)
+(22 observations deleted)
+(4 real changes made)
+(1 real change made)
+(1 real change made)
+(77 real changes made)
+(34 real changes made)
+(90 real changes made)
+(256 real changes made)
+(14 real changes made)
+(12 real changes made)
+(109 real changes made)
+(1 real change made)
+(126 real changes made)
+(125 real changes made)
+(1 real change made)
+(0 real changes made)
+(49 real changes made)
+(2 real changes made)
+(3 real changes made)
+Input:   264 unique words, 1742 total words
+Output:  243 unique words, 2012 total words
+Total time: .41 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_34.dta not found)
+file /tmp/St11856.000001.d/parsed_data_34.dta saved
+file_35=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /def_disposition_mun.do
+(60 observations read)
+(20 observations deleted)
+(3 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(14 real changes made)
+(2 real changes made)
+(17 real changes made)
+(22 real changes made)
+(0 real changes made)
+(1 real change made)
+(20 real changes made)
+(0 real changes made)
+(27 real changes made)
+(25 real changes made)
+(0 real changes made)
+(0 real changes made)
+(3 real changes made)
+(1 real change made)
+(1 real change made)
+Input:   90 unique words, 198 total words
+Output:  90 unique words, 228 total words
+Total time: .02 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_35.dta not found)
+file /tmp/St11856.000001.d/parsed_data_35.dta saved
+file_36=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /drop_guilty.do
+(82 observations read)
+(16 observations deleted)
+(0 observations deleted)
+(1 observation deleted)
+(1 observation deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(9 real changes made)
+(5 real changes made)
+(9 real changes made)
+(29 real changes made)
+(0 real changes made)
+(0 real changes made)
+(18 real changes made)
+(0 real changes made)
+(11 real changes made)
+(11 real changes made)
+(0 real changes made)
+(0 real changes made)
+(3 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   80 unique words, 259 total words
+Output:  73 unique words, 284 total words
+Total time: .028 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_36.dta not found)
+file /tmp/St11856.000001.d/parsed_data_36.dta saved
+file_37=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /drop_same_plea.do
+(90 observations read)
+(11 observations deleted)
+(1 observation deleted)
+(1 observation deleted)
+(1 observation deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(9 real changes made)
+(2 real changes made)
+(2 real changes made)
+(39 real changes made)
+(0 real changes made)
+(0 real changes made)
+(8 real changes made)
+(0 real changes made)
+(5 real changes made)
+(5 real changes made)
+(0 real changes made)
+(0 real changes made)
+(4 real changes made)
+(1 real change made)
+(1 real change made)
+Input:   68 unique words, 286 total words
+Output:  61 unique words, 295 total words
+Total time: .029 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_37.dta not found)
+file /tmp/St11856.000001.d/parsed_data_37.dta saved
+file_38=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /dropped_cases.do
+(7 observations read)
+(0 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(2 real changes made)
+(5 real changes made)
+(0 real changes made)
+(0 real changes made)
+(3 real changes made)
+(0 real changes made)
+(1 real change made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+Input:   21 unique words, 25 total words
+Output:  34 unique words, 41 total words
+Total time: .006 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_38.dta not found)
+file /tmp/St11856.000001.d/parsed_data_38.dta saved
+file_39=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /find_pre_judge.do
+(50 observations read)
+(8 observations deleted)
+(3 observations deleted)
+(1 observation deleted)
+(1 observation deleted)
+(0 real changes made)
+(1 real change made)
+(1 real change made)
+(16 real changes made)
+(3 real changes made)
+(3 real changes made)
+(27 real changes made)
+(0 real changes made)
+(2 real changes made)
+(6 real changes made)
+(3 real changes made)
+(8 real changes made)
+(8 real changes made)
+(0 real changes made)
+(0 real changes made)
+(5 real changes made)
+(3 real changes made)
+(4 real changes made)
+Input:   72 unique words, 225 total words
+Output:  64 unique words, 231 total words
+Total time: .017 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_39.dta not found)
+file /tmp/St11856.000001.d/parsed_data_39.dta saved
+file_40=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /geocode_cuyahoga_mun.do
+(226 observations read)
+(67 observations deleted)
+(0 observations deleted)
+(1 observation deleted)
+(20 observations deleted)
+(1 real change made)
+(5 real changes made)
+(5 real changes made)
+(56 real changes made)
+(30 real changes made)
+(21 real changes made)
+(65 real changes made)
+(4 real changes made)
+(10 real changes made)
+(49 real changes made)
+(4 real changes made)
+(40 real changes made)
+(40 real changes made)
+(0 real changes made)
+(0 real changes made)
+(28 real changes made)
+(0 real changes made)
+(1 real change made)
+Input:   207 unique words, 743 total words
+Output:  194 unique words, 898 total words
+Total time: .098 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_40.dta not found)
+file /tmp/St11856.000001.d/parsed_data_40.dta saved
+file_41=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /judge_mun.do
+(102 observations read)
+(16 observations deleted)
+(1 observation deleted)
+(0 observations deleted)
+(3 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(33 real changes made)
+(3 real changes made)
+(42 real changes made)
+(12 real changes made)
+(0 real changes made)
+(0 real changes made)
+(41 real changes made)
+(0 real changes made)
+(32 real changes made)
+(30 real changes made)
+(0 real changes made)
+(0 real changes made)
+(3 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   152 unique words, 357 total words
+Output:  128 unique words, 475 total words
+Total time: .041 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_41.dta not found)
+file /tmp/St11856.000001.d/parsed_data_41.dta saved
+file_42=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /judge_transfers.do
+(90 observations read)
+(23 observations deleted)
+(4 observations deleted)
+(0 observations deleted)
+(5 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(20 real changes made)
+(5 real changes made)
+(14 real changes made)
+(32 real changes made)
+(0 real changes made)
+(2 real changes made)
+(22 real changes made)
+(2 real changes made)
+(20 real changes made)
+(20 real changes made)
+(0 real changes made)
+(0 real changes made)
+(7 real changes made)
+(2 real changes made)
+(3 real changes made)
+Input:   101 unique words, 298 total words
+Output:  98 unique words, 333 total words
+Total time: .029 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_42.dta not found)
+file /tmp/St11856.000001.d/parsed_data_42.dta saved
+file_43=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /make_id.do
+(50 observations read)
+(18 observations deleted)
+(5 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(9 real changes made)
+(4 real changes made)
+(4 real changes made)
+(17 real changes made)
+(0 real changes made)
+(0 real changes made)
+(5 real changes made)
+(1 real change made)
+(6 real changes made)
+(6 real changes made)
+(0 real changes made)
+(0 real changes made)
+(3 real changes made)
+(1 real change made)
+(0 real changes made)
+Input:   51 unique words, 131 total words
+Output:  56 unique words, 150 total words
+Total time: .012 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_43.dta not found)
+file /tmp/St11856.000001.d/parsed_data_43.dta saved
+file_44=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /master_clean_cuyahoga.do
+(88 observations read)
+(32 observations deleted)
+(7 observations deleted)
+(1 observation deleted)
+(7 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(31 real changes made)
+(31 real changes made)
+(30 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(8 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   57 unique words, 114 total words
+Output:  65 unique words, 259 total words
+Total time: .018 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_44.dta not found)
+file /tmp/St11856.000001.d/parsed_data_44.dta saved
+file_45=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/cuyahoga
+> /pred_black_cuyahoga.do
+(85 observations read)
+(19 observations deleted)
+(7 observations deleted)
+(1 observation deleted)
+(2 observations deleted)
+(0 real changes made)
+(7 real changes made)
+(7 real changes made)
+(16 real changes made)
+(6 real changes made)
+(6 real changes made)
+(29 real changes made)
+(4 real changes made)
+(2 real changes made)
+(5 real changes made)
+(0 real changes made)
+(11 real changes made)
+(11 real changes made)
+(0 real changes made)
+(0 real changes made)
+(4 real changes made)
+(2 real changes made)
+(2 real changes made)
+Input:   105 unique words, 334 total words
+Output:  107 unique words, 363 total words
+Total time: .03 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_45.dta not found)
+file /tmp/St11856.000001.d/parsed_data_45.dta saved
+file_46=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/eviction
+> /eviction_post_clean.do
+(177 observations read)
+(35 observations deleted)
+(10 observations deleted)
+(3 observations deleted)
+(3 observations deleted)
+(0 real changes made)
+(8 real changes made)
+(8 real changes made)
+(48 real changes made)
+(9 real changes made)
+(9 real changes made)
+(90 real changes made)
+(5 real changes made)
+(2 real changes made)
+(19 real changes made)
+(2 real changes made)
+(20 real changes made)
+(20 real changes made)
+(0 real changes made)
+(0 real changes made)
+(13 real changes made)
+(9 real changes made)
+(2 real changes made)
+Input:   137 unique words, 921 total words
+Output:  130 unique words, 916 total words
+Total time: .081 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_46.dta not found)
+file /tmp/St11856.000001.d/parsed_data_46.dta saved
+file_47=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/eviction
+> /eviction_post_clean_panel.do
+(166 observations read)
+(29 observations deleted)
+(10 observations deleted)
+(3 observations deleted)
+(3 observations deleted)
+(0 real changes made)
+(4 real changes made)
+(4 real changes made)
+(45 real changes made)
+(7 real changes made)
+(9 real changes made)
+(73 real changes made)
+(4 real changes made)
+(2 real changes made)
+(19 real changes made)
+(2 real changes made)
+(25 real changes made)
+(25 real changes made)
+(0 real changes made)
+(0 real changes made)
+(7 real changes made)
+(7 real changes made)
+(6 real changes made)
+Input:   159 unique words, 688 total words
+Output:  143 unique words, 714 total words
+Total time: .073 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_47.dta not found)
+file /tmp/St11856.000001.d/parsed_data_47.dta saved
+file_48=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/eviction
+> /eviction_post_id.do
+(61 observations read)
+(17 observations deleted)
+(2 observations deleted)
+(3 observations deleted)
+(3 observations deleted)
+(0 real changes made)
+(2 real changes made)
+(2 real changes made)
+(4 real changes made)
+(6 real changes made)
+(6 real changes made)
+(18 real changes made)
+(0 real changes made)
+(1 real change made)
+(9 real changes made)
+(0 real changes made)
+(3 real changes made)
+(3 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   80 unique words, 151 total words
+Output:  97 unique words, 202 total words
+Total time: .02 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_48.dta not found)
+file /tmp/St11856.000001.d/parsed_data_48.dta saved
+file_49=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/eviction
+> /master_evictions.do
+(13 observations read)
+(5 observations deleted)
+(1 observation deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(5 real changes made)
+(5 real changes made)
+(3 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   12 unique words, 15 total words
+Output:  16 unique words, 33 total words
+Total time: .005 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_49.dta not found)
+file /tmp/St11856.000001.d/parsed_data_49.dta saved
+file_50=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/family/c
+> hild_outcomes.do
+(672 observations read)
+(137 observations deleted)
+(45 observations deleted)
+(16 observations deleted)
+(16 observations deleted)
+(0 real changes made)
+(23 real changes made)
+(23 real changes made)
+(97 real changes made)
+(20 real changes made)
+(76 real changes made)
+(340 real changes made)
+(19 real changes made)
+(18 real changes made)
+(32 real changes made)
+(2 real changes made)
+(59 real changes made)
+(59 real changes made)
+(0 real changes made)
+(0 real changes made)
+(18 real changes made)
+(13 real changes made)
+(9 real changes made)
+Input:   463 unique words, 2682 total words
+Output:  385 unique words, 2916 total words
+Total time: .721 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_50.dta not found)
+file /tmp/St11856.000001.d/parsed_data_50.dta saved
+file_51=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/family/c
+> hild_school.do
+(257 observations read)
+(55 observations deleted)
+(15 observations deleted)
+(6 observations deleted)
+(6 observations deleted)
+(0 real changes made)
+(5 real changes made)
+(5 real changes made)
+(49 real changes made)
+(10 real changes made)
+(47 real changes made)
+(138 real changes made)
+(14 real changes made)
+(15 real changes made)
+(32 real changes made)
+(3 real changes made)
+(29 real changes made)
+(29 real changes made)
+(0 real changes made)
+(0 real changes made)
+(11 real changes made)
+(6 real changes made)
+(9 real changes made)
+Input:   292 unique words, 1220 total words
+Output:  284 unique words, 1274 total words
+Total time: .18 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_51.dta not found)
+file /tmp/St11856.000001.d/parsed_data_51.dta saved
+file_52=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/family/m
+> ake_panel_child.do
+(377 observations read)
+(84 observations deleted)
+(0 observations deleted)
+(1 observation deleted)
+(53 observations deleted)
+(0 real changes made)
+(11 real changes made)
+(11 real changes made)
+(93 real changes made)
+(9 real changes made)
+(56 real changes made)
+(189 real changes made)
+(37 real changes made)
+(10 real changes made)
+(29 real changes made)
+(11 real changes made)
+(79 real changes made)
+(80 real changes made)
+(0 real changes made)
+(0 real changes made)
+(21 real changes made)
+(18 real changes made)
+(18 real changes made)
+Input:   283 unique words, 1670 total words
+Output:  245 unique words, 1728 total words
+Total time: .286 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_52.dta not found)
+file /tmp/St11856.000001.d/parsed_data_52.dta saved
+file_53=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/family/m
+> ake_panel_sibling.do
+(265 observations read)
+(54 observations deleted)
+(21 observations deleted)
+(6 observations deleted)
+(6 observations deleted)
+(0 real changes made)
+(5 real changes made)
+(5 real changes made)
+(51 real changes made)
+(11 real changes made)
+(21 real changes made)
+(137 real changes made)
+(6 real changes made)
+(8 real changes made)
+(10 real changes made)
+(4 real changes made)
+(21 real changes made)
+(21 real changes made)
+(0 real changes made)
+(0 real changes made)
+(7 real changes made)
+(7 real changes made)
+(3 real changes made)
+Input:   229 unique words, 955 total words
+Output:  202 unique words, 1002 total words
+Total time: .117 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_53.dta not found)
+file /tmp/St11856.000001.d/parsed_data_53.dta saved
+file_54=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/family/m
+> ake_panel_spouse.do
+(320 observations read)
+(56 observations deleted)
+(11 observations deleted)
+(10 observations deleted)
+(10 observations deleted)
+(0 real changes made)
+(9 real changes made)
+(9 real changes made)
+(67 real changes made)
+(8 real changes made)
+(27 real changes made)
+(154 real changes made)
+(14 real changes made)
+(7 real changes made)
+(14 real changes made)
+(5 real changes made)
+(28 real changes made)
+(28 real changes made)
+(0 real changes made)
+(0 real changes made)
+(6 real changes made)
+(6 real changes made)
+(6 real changes made)
+Input:   285 unique words, 1317 total words
+Output:  251 unique words, 1344 total words
+Total time: .344 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_54.dta not found)
+file /tmp/St11856.000001.d/parsed_data_54.dta saved
+file_55=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/family/m
+> aster_family.do
+(25 observations read)
+(6 observations deleted)
+(5 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(11 real changes made)
+(11 real changes made)
+(9 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   19 unique words, 28 total words
+Output:  22 unique words, 69 total words
+Total time: .006 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_55.dta not found)
+file /tmp/St11856.000001.d/parsed_data_55.dta saved
+file_56=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/family/p
+> arent_instruments.do
+(78 observations read)
+(20 observations deleted)
+(6 observations deleted)
+(1 observation deleted)
+(1 observation deleted)
+(0 real changes made)
+(2 real changes made)
+(2 real changes made)
+(9 real changes made)
+(4 real changes made)
+(5 real changes made)
+(32 real changes made)
+(1 real change made)
+(1 real change made)
+(11 real changes made)
+(1 real change made)
+(12 real changes made)
+(12 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   105 unique words, 315 total words
+Output:  108 unique words, 339 total words
+Total time: .029 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_56.dta not found)
+file /tmp/St11856.000001.d/parsed_data_56.dta saved
+file_57=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/family/s
+> ibling_outcomes.do
+(628 observations read)
+(132 observations deleted)
+(52 observations deleted)
+(13 observations deleted)
+(13 observations deleted)
+(0 real changes made)
+(21 real changes made)
+(21 real changes made)
+(109 real changes made)
+(24 real changes made)
+(69 real changes made)
+(312 real changes made)
+(13 real changes made)
+(12 real changes made)
+(32 real changes made)
+(8 real changes made)
+(55 real changes made)
+(55 real changes made)
+(0 real changes made)
+(0 real changes made)
+(17 real changes made)
+(13 real changes made)
+(7 real changes made)
+Input:   367 unique words, 2449 total words
+Output:  301 unique words, 2586 total words
+Total time: .559 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_57.dta not found)
+file /tmp/St11856.000001.d/parsed_data_57.dta saved
+file_58=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/family/s
+> ibling_school.do
+(168 observations read)
+(44 observations deleted)
+(8 observations deleted)
+(5 observations deleted)
+(5 observations deleted)
+(0 real changes made)
+(5 real changes made)
+(5 real changes made)
+(22 real changes made)
+(7 real changes made)
+(36 real changes made)
+(86 real changes made)
+(10 real changes made)
+(6 real changes made)
+(13 real changes made)
+(2 real changes made)
+(13 real changes made)
+(13 real changes made)
+(0 real changes made)
+(0 real changes made)
+(3 real changes made)
+(2 real changes made)
+(3 real changes made)
+Input:   217 unique words, 731 total words
+Output:  215 unique words, 781 total words
+Total time: .09 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_58.dta not found)
+file /tmp/St11856.000001.d/parsed_data_58.dta saved
+file_59=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/family/s
+> pouse_outcomes.do
+(273 observations read)
+(50 observations deleted)
+(18 observations deleted)
+(8 observations deleted)
+(8 observations deleted)
+(0 real changes made)
+(9 real changes made)
+(9 real changes made)
+(51 real changes made)
+(13 real changes made)
+(35 real changes made)
+(132 real changes made)
+(4 real changes made)
+(10 real changes made)
+(18 real changes made)
+(15 real changes made)
+(29 real changes made)
+(29 real changes made)
+(0 real changes made)
+(0 real changes made)
+(15 real changes made)
+(21 real changes made)
+(19 real changes made)
+Input:   281 unique words, 1514 total words
+Output:  260 unique words, 1538 total words
+Total time: .182 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_59.dta not found)
+file /tmp/St11856.000001.d/parsed_data_59.dta saved
+file_60=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/family/h
+> elper/construct_siblings.do
+(106 observations read)
+(20 observations deleted)
+(8 observations deleted)
+(2 observations deleted)
+(2 observations deleted)
+(0 real changes made)
+(7 real changes made)
+(7 real changes made)
+(8 real changes made)
+(3 real changes made)
+(4 real changes made)
+(52 real changes made)
+(1 real change made)
+(0 real changes made)
+(4 real changes made)
+(0 real changes made)
+(3 real changes made)
+(3 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   106 unique words, 376 total words
+Output:  90 unique words, 383 total words
+Total time: .032 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_60.dta not found)
+file /tmp/St11856.000001.d/parsed_data_60.dta saved
+file_61=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/family/h
+> elper/prep_date_voting.do
+(14 observations read)
+(3 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(4 real changes made)
+(1 real change made)
+(4 real changes made)
+(11 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(5 real changes made)
+(5 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+Input:   25 unique words, 85 total words
+Output:  30 unique words, 92 total words
+Total time: .007 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_61.dta not found)
+file /tmp/St11856.000001.d/parsed_data_61.dta saved
+file_62=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/family/h
+> elper/prep_voter_rolls.do
+(31 observations read)
+(6 observations deleted)
+(3 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(1 real change made)
+(1 real change made)
+(5 real changes made)
+(2 real changes made)
+(6 real changes made)
+(19 real changes made)
+(2 real changes made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(1 real change made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+Input:   55 unique words, 124 total words
+Output:  55 unique words, 132 total words
+Total time: .011 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_62.dta not found)
+file /tmp/St11856.000001.d/parsed_data_62.dta saved
+file_63=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /clean_bdates.do
+(290 observations read)
+(52 observations deleted)
+(26 observations deleted)
+(3 observations deleted)
+(3 observations deleted)
+(0 real changes made)
+(3 real changes made)
+(3 real changes made)
+(37 real changes made)
+(13 real changes made)
+(15 real changes made)
+(62 real changes made)
+(0 real changes made)
+(5 real changes made)
+(23 real changes made)
+(0 real changes made)
+(18 real changes made)
+(18 real changes made)
+(0 real changes made)
+(0 real changes made)
+(14 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   182 unique words, 797 total words
+Output:  158 unique words, 864 total words
+Total time: .166 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_63.dta not found)
+file /tmp/St11856.000001.d/parsed_data_63.dta saved
+file_64=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /clean_bdays.do
+(65 observations read)
+(15 observations deleted)
+(11 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(2 real changes made)
+(2 real changes made)
+(19 real changes made)
+(4 real changes made)
+(5 real changes made)
+(18 real changes made)
+(1 real change made)
+(8 real changes made)
+(11 real changes made)
+(2 real changes made)
+(11 real changes made)
+(11 real changes made)
+(0 real changes made)
+(0 real changes made)
+(3 real changes made)
+(1 real change made)
+(2 real changes made)
+Input:   71 unique words, 185 total words
+Output:  81 unique words, 218 total words
+Total time: .019 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_64.dta not found)
+file /tmp/St11856.000001.d/parsed_data_64.dta saved
+file_65=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /clean_charges.do
+(147 observations read)
+(25 observations deleted)
+(11 observations deleted)
+(2 observations deleted)
+(2 observations deleted)
+(0 real changes made)
+(2 real changes made)
+(2 real changes made)
+(34 real changes made)
+(8 real changes made)
+(19 real changes made)
+(73 real changes made)
+(1 real change made)
+(8 real changes made)
+(15 real changes made)
+(2 real changes made)
+(20 real changes made)
+(20 real changes made)
+(0 real changes made)
+(0 real changes made)
+(8 real changes made)
+(0 real changes made)
+(2 real changes made)
+Input:   161 unique words, 586 total words
+Output:  146 unique words, 657 total words
+Total time: .063 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_65.dta not found)
+file /tmp/St11856.000001.d/parsed_data_65.dta saved
+file_66=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /clean_closed.do
+(37 observations read)
+(6 observations deleted)
+(3 observations deleted)
+(1 observation deleted)
+(1 observation deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(5 real changes made)
+(3 real changes made)
+(3 real changes made)
+(8 real changes made)
+(0 real changes made)
+(1 real change made)
+(6 real changes made)
+(0 real changes made)
+(4 real changes made)
+(4 real changes made)
+(0 real changes made)
+(0 real changes made)
+(4 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   70 unique words, 124 total words
+Output:  69 unique words, 140 total words
+Total time: .013 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_66.dta not found)
+file /tmp/St11856.000001.d/parsed_data_66.dta saved
+file_67=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /clean_codefendants.do
+(103 observations read)
+(19 observations deleted)
+(12 observations deleted)
+(1 observation deleted)
+(1 observation deleted)
+(0 real changes made)
+(5 real changes made)
+(5 real changes made)
+(27 real changes made)
+(2 real changes made)
+(3 real changes made)
+(14 real changes made)
+(0 real changes made)
+(0 real changes made)
+(13 real changes made)
+(5 real changes made)
+(25 real changes made)
+(25 real changes made)
+(0 real changes made)
+(0 real changes made)
+(7 real changes made)
+(2 real changes made)
+(3 real changes made)
+Input:   105 unique words, 314 total words
+Output:  95 unique words, 314 total words
+Total time: .03 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_67.dta not found)
+file /tmp/St11856.000001.d/parsed_data_67.dta saved
+file_68=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /clean_courtrooms.do
+(132 observations read)
+(25 observations deleted)
+(15 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(2 real changes made)
+(2 real changes made)
+(35 real changes made)
+(11 real changes made)
+(15 real changes made)
+(65 real changes made)
+(0 real changes made)
+(0 real changes made)
+(19 real changes made)
+(0 real changes made)
+(15 real changes made)
+(15 real changes made)
+(0 real changes made)
+(0 real changes made)
+(7 real changes made)
+(2 real changes made)
+(1 real change made)
+Input:   98 unique words, 393 total words
+Output:  96 unique words, 481 total words
+Total time: .042 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_68.dta not found)
+file /tmp/St11856.000001.d/parsed_data_68.dta saved
+file_69=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /clean_entries.do
+(845 observations read)
+(150 observations deleted)
+(78 observations deleted)
+(7 observations deleted)
+(7 observations deleted)
+(0 real changes made)
+(20 real changes made)
+(20 real changes made)
+(200 real changes made)
+(59 real changes made)
+(105 real changes made)
+(460 real changes made)
+(23 real changes made)
+(28 real changes made)
+(106 real changes made)
+(15 real changes made)
+(65 real changes made)
+(65 real changes made)
+(0 real changes made)
+(0 real changes made)
+(57 real changes made)
+(13 real changes made)
+(8 real changes made)
+Input:   360 unique words, 3680 total words
+Output:  284 unique words, 3859 total words
+Total time: .75 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_69.dta not found)
+file /tmp/St11856.000001.d/parsed_data_69.dta saved
+file_70=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /clean_txt.do
+(493 observations read)
+(92 observations deleted)
+(57 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(1 real change made)
+(10 real changes made)
+(10 real changes made)
+(147 real changes made)
+(26 real changes made)
+(45 real changes made)
+(229 real changes made)
+(2 real changes made)
+(12 real changes made)
+(73 real changes made)
+(11 real changes made)
+(98 real changes made)
+(98 real changes made)
+(1 real change made)
+(0 real changes made)
+(36 real changes made)
+(3 real changes made)
+(9 real changes made)
+Input:   344 unique words, 1786 total words
+Output:  298 unique words, 1866 total words
+Total time: .331 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_70.dta not found)
+file /tmp/St11856.000001.d/parsed_data_70.dta saved
+file_71=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /clean_txt_mun.do
+(658 observations read)
+(104 observations deleted)
+(56 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(3 real changes made)
+(11 real changes made)
+(11 real changes made)
+(266 real changes made)
+(31 real changes made)
+(41 real changes made)
+(286 real changes made)
+(10 real changes made)
+(14 real changes made)
+(196 real changes made)
+(11 real changes made)
+(218 real changes made)
+(218 real changes made)
+(1 real change made)
+(0 real changes made)
+(48 real changes made)
+(10 real changes made)
+(8 real changes made)
+Input:   490 unique words, 3227 total words
+Output:  384 unique words, 3223 total words
+Total time: 1.254 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_71.dta not found)
+file /tmp/St11856.000001.d/parsed_data_71.dta saved
+file_72=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /combine_bdates.do
+(27 observations read)
+(4 observations deleted)
+(4 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(4 real changes made)
+(3 real changes made)
+(3 real changes made)
+(13 real changes made)
+(0 real changes made)
+(0 real changes made)
+(4 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   33 unique words, 62 total words
+Output:  33 unique words, 75 total words
+Total time: .021 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_72.dta not found)
+file /tmp/St11856.000001.d/parsed_data_72.dta saved
+file_73=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /combine_clean.do
+(399 observations read)
+(70 observations deleted)
+(34 observations deleted)
+(6 observations deleted)
+(6 observations deleted)
+(0 real changes made)
+(3 real changes made)
+(3 real changes made)
+(116 real changes made)
+(24 real changes made)
+(62 real changes made)
+(227 real changes made)
+(0 real changes made)
+(22 real changes made)
+(37 real changes made)
+(7 real changes made)
+(51 real changes made)
+(51 real changes made)
+(0 real changes made)
+(0 real changes made)
+(25 real changes made)
+(3 real changes made)
+(15 real changes made)
+Input:   321 unique words, 1785 total words
+Output:  264 unique words, 1841 total words
+Total time: .518 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_73.dta not found)
+file /tmp/St11856.000001.d/parsed_data_73.dta saved
+file_74=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /create_geocoded_addresses.do
+(79 observations read)
+(28 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(10 observations deleted)
+(6 real changes made)
+(2 real changes made)
+(2 real changes made)
+(17 real changes made)
+(10 real changes made)
+(4 real changes made)
+(32 real changes made)
+(1 real change made)
+(5 real changes made)
+(20 real changes made)
+(5 real changes made)
+(22 real changes made)
+(22 real changes made)
+(0 real changes made)
+(0 real changes made)
+(11 real changes made)
+(1 real change made)
+(3 real changes made)
+Input:   83 unique words, 253 total words
+Output:  93 unique words, 293 total words
+Total time: .041 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_74.dta not found)
+file /tmp/St11856.000001.d/parsed_data_74.dta saved
+file_75=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /make_id.do
+(22 observations read)
+(9 observations deleted)
+(4 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(4 real changes made)
+(4 real changes made)
+(7 real changes made)
+(0 real changes made)
+(0 real changes made)
+(3 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+Input:   30 unique words, 49 total words
+Output:  37 unique words, 68 total words
+Total time: .005 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_75.dta not found)
+file /tmp/St11856.000001.d/parsed_data_75.dta saved
+file_76=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /master_clean_franklin.do
+(70 observations read)
+(22 observations deleted)
+(5 observations deleted)
+(5 observations deleted)
+(5 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(16 real changes made)
+(16 real changes made)
+(14 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(9 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   52 unique words, 92 total words
+Output:  50 unique words, 152 total words
+Total time: .031 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_76.dta not found)
+file /tmp/St11856.000001.d/parsed_data_76.dta saved
+file_77=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /pred_black.do
+(79 observations read)
+(15 observations deleted)
+(7 observations deleted)
+(1 observation deleted)
+(1 observation deleted)
+(0 real changes made)
+(7 real changes made)
+(7 real changes made)
+(18 real changes made)
+(5 real changes made)
+(6 real changes made)
+(27 real changes made)
+(4 real changes made)
+(3 real changes made)
+(7 real changes made)
+(0 real changes made)
+(10 real changes made)
+(10 real changes made)
+(0 real changes made)
+(0 real changes made)
+(6 real changes made)
+(2 real changes made)
+(2 real changes made)
+Input:   113 unique words, 352 total words
+Output:  113 unique words, 373 total words
+Total time: .057 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_77.dta not found)
+file /tmp/St11856.000001.d/parsed_data_77.dta saved
+file_78=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/franklin
+> /successor_judges_mun.do
+(49 observations read)
+(11 observations deleted)
+(1 observation deleted)
+(0 observations deleted)
+(0 observations deleted)
+(0 real changes made)
+(3 real changes made)
+(3 real changes made)
+(15 real changes made)
+(1 real change made)
+(6 real changes made)
+(20 real changes made)
+(0 real changes made)
+(4 real changes made)
+(7 real changes made)
+(1 real change made)
+(6 real changes made)
+(6 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(2 real changes made)
+(3 real changes made)
+Input:   69 unique words, 156 total words
+Output:  53 unique words, 155 total words
+Total time: .012 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_78.dta not found)
+file /tmp/St11856.000001.d/parsed_data_78.dta saved
+file_79=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/hamilton
+> /clean_attorney.do
+(62 observations read)
+(14 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(3 observations deleted)
+(1 real change made)
+(1 real change made)
+(1 real change made)
+(13 real changes made)
+(6 real changes made)
+(15 real changes made)
+(39 real changes made)
+(2 real changes made)
+(8 real changes made)
+(25 real changes made)
+(9 real changes made)
+(25 real changes made)
+(25 real changes made)
+(0 real changes made)
+(0 real changes made)
+(3 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   87 unique words, 270 total words
+Output:  88 unique words, 295 total words
+Total time: .022 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_79.dta not found)
+file /tmp/St11856.000001.d/parsed_data_79.dta saved
+file_80=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/hamilton
+> /clean_charges.do
+(705 observations read)
+(165 observations deleted)
+(5 observations deleted)
+(1 observation deleted)
+(120 observations deleted)
+(25 real changes made)
+(17 real changes made)
+(17 real changes made)
+(229 real changes made)
+(59 real changes made)
+(89 real changes made)
+(199 real changes made)
+(42 real changes made)
+(33 real changes made)
+(195 real changes made)
+(46 real changes made)
+(236 real changes made)
+(236 real changes made)
+(0 real changes made)
+(0 real changes made)
+(122 real changes made)
+(3 real changes made)
+(8 real changes made)
+Input:   358 unique words, 2603 total words
+Output:  285 unique words, 2835 total words
+Total time: .887 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_80.dta not found)
+file /tmp/St11856.000001.d/parsed_data_80.dta saved
+file_81=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/hamilton
+> /clean_defendants.do
+(409 observations read)
+(82 observations deleted)
+(5 observations deleted)
+(2 observations deleted)
+(31 observations deleted)
+(1 real change made)
+(15 real changes made)
+(15 real changes made)
+(129 real changes made)
+(13 real changes made)
+(40 real changes made)
+(181 real changes made)
+(11 real changes made)
+(14 real changes made)
+(93 real changes made)
+(25 real changes made)
+(108 real changes made)
+(108 real changes made)
+(1 real change made)
+(0 real changes made)
+(38 real changes made)
+(2 real changes made)
+(4 real changes made)
+Input:   332 unique words, 1831 total words
+Output:  278 unique words, 1760 total words
+Total time: .344 seconds
+(note: file /tmp/St11856.000001.d/parsed_data_81.dta not found)
+file /tmp/St11856.000001.d/parsed_data_81.dta saved
+file_82=/home/lv39/Workspace/AEA/all//aearep-1946/132762/code/cleaning/hamilton
+> /clean_outcomes.do
+(1,055 observations read)
+(209 observations deleted)
+(2 observations deleted)
+(1 observation deleted)
+(156 observations deleted)
+(79 real changes made)
+(19 real changes made)
+(19 real changes made)
+(401 real changes made)
+(79 real changes made)
+(190 real changes made)
+(474 real changes made)
+(59 real changes made)
+(102 real changes made)
+(287 real changes made)
+(110 real changes made)
+(375 real changes made)
+(375 real changes made)
+(1 real change made)
+(0 real changes made)
+(146 real changes made)
+(10 real changes made)
+(7 real changes made)
+w_daysdysdaydymonthsmosmonthmoyearsyrsyearyrmsy invalid name
+             st_addvar():  3300  argument out of range
+               wordbag():     -  function returned error
+            mm_txttool():     -  function returned error
+                 <istmt>:     -  function returned error
+r(3300);
+r(3300);
+
+end of do-file
+r(3300);

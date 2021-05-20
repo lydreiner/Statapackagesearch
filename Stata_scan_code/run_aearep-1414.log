@@ -6234,3 +6234,303 @@ file_84=/home/lv39/Workspace/AEA/all//aearep-1414/122001/programs/psid/FAM1992.
 (2 real changes made)
 (2 real changes made)
 (4 real changes made)
+Input:   4285 unique words, 10023 total words
+Output:  4081 unique words, 14447 total words
+Total time: 94.757 seconds
+(note: file /tmp/St04261.000001.d/parsed_data_84.dta not found)
+file /tmp/St04261.000001.d/parsed_data_84.dta saved
+file_85=/home/lv39/Workspace/AEA/all//aearep-1414/122001/programs/psid/FAM1993.
+> do
+(2,368 observations read)
+(5 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(2 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(269 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1,394 real changes made)
+(3 real changes made)
+(12 real changes made)
+(743 real changes made)
+(743 real changes made)
+(133 real changes made)
+(0 real changes made)
+(9 real changes made)
+(2 real changes made)
+(0 real changes made)
+Input:   5842 unique words, 14135 total words
+Output:  5208 unique words, 23263 total words
+Total time: 243.377 seconds
+(note: file /tmp/St04261.000001.d/parsed_data_85.dta not found)
+file /tmp/St04261.000001.d/parsed_data_85.dta saved
+file_86=/home/lv39/Workspace/AEA/all//aearep-1414/122001/programs/psid/FAM1994E
+> R.do
+(2,956 observations read)
+(5 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(2 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(11 real changes made)
+(253 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1,398 real changes made)
+(19 real changes made)
+(21 real changes made)
+(458 real changes made)
+(449 real changes made)
+(77 real changes made)
+(0 real changes made)
+(2 real changes made)
+(1 real change made)
+(0 real changes made)
+Input:   7372 unique words, 17668 total words
+Output:  6514 unique words, 24036 total words
+Total time: 478.142 seconds
+(note: file /tmp/St04261.000001.d/parsed_data_86.dta not found)
+file /tmp/St04261.000001.d/parsed_data_86.dta saved
+file_87=/home/lv39/Workspace/AEA/all//aearep-1414/122001/programs/psid/FAM1995E
+> R.do
+(2,745 observations read)
+(5 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(2 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(8 real changes made)
+(221 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1,345 real changes made)
+(3 real changes made)
+(10 real changes made)
+(458 real changes made)
+(449 real changes made)
+(77 real changes made)
+(0 real changes made)
+(2 real changes made)
+(1 real change made)
+(0 real changes made)
+Input:   6835 unique words, 16404 total words
+Output:  5915 unique words, 22466 total words
+Total time: 315.83 seconds
+(note: file /tmp/St04261.000001.d/parsed_data_87.dta not found)
+file /tmp/St04261.000001.d/parsed_data_87.dta saved
+file_88=/home/lv39/Workspace/AEA/all//aearep-1414/122001/programs/psid/FAM1996E
+> R.do
+(3,073 observations read)
+(5 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(2 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(8 real changes made)
+(225 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1,512 real changes made)
+(3 real changes made)
+(10 real changes made)
+(458 real changes made)
+(449 real changes made)
+(82 real changes made)
+(0 real changes made)
+(2 real changes made)
+(1 real change made)
+(0 real changes made)
+Input:   7702 unique words, 18372 total words
+Output:  6722 unique words, 25167 total words
+Total time: 497.359 seconds
+(note: file /tmp/St04261.000001.d/parsed_data_88.dta not found)
+file /tmp/St04261.000001.d/parsed_data_88.dta saved
+file_89=/home/lv39/Workspace/AEA/all//aearep-1414/122001/programs/psid/FAM1997E
+> R.do
+(3,035 observations read)
+(5 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(2 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(15 real changes made)
+(275 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1,575 real changes made)
+(3 real changes made)
+(14 real changes made)
+(440 real changes made)
+(431 real changes made)
+(59 real changes made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(0 real changes made)
+Input:   7561 unique words, 18140 total words
+Output:  6598 unique words, 25005 total words
+Total time: 645.341 seconds
+(note: file /tmp/St04261.000001.d/parsed_data_89.dta not found)
+file /tmp/St04261.000001.d/parsed_data_89.dta saved
+file_90=/home/lv39/Workspace/AEA/all//aearep-1414/122001/programs/psid/FAM1999E
+> R.do
+(4,731 observations read)
+(5 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(2 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(4 real changes made)
+(386 real changes made)
+(21 real changes made)
+(0 real changes made)
+(2,233 real changes made)
+(106 real changes made)
+(30 real changes made)
+(453 real changes made)
+(444 real changes made)
+(449 real changes made)
+(0 real changes made)
+(4 real changes made)
+(2 real changes made)
+(0 real changes made)
+Input:   11861 unique words, 28316 total words
+Output:  10735 unique words, 39953 total words
+Total time: 2303.419 seconds
+(note: file /tmp/St04261.000001.d/parsed_data_90.dta not found)
+file /tmp/St04261.000001.d/parsed_data_90.dta saved
+file_91=/home/lv39/Workspace/AEA/all//aearep-1414/122001/programs/psid/FAM2001E
+> R.do
+(4,651 observations read)
+(5 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(2 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(397 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2,232 real changes made)
+(118 real changes made)
+(20 real changes made)
+(562 real changes made)
+(553 real changes made)
+(442 real changes made)
+(0 real changes made)
+(3 real changes made)
+(2 real changes made)
+(9 real changes made)
+Input:   11599 unique words, 27836 total words
+Output:  10443 unique words, 39475 total words
+Total time: 1185.978 seconds
+(note: file /tmp/St04261.000001.d/parsed_data_91.dta not found)
+file /tmp/St04261.000001.d/parsed_data_91.dta saved
+file_92=/home/lv39/Workspace/AEA/all//aearep-1414/122001/programs/psid/FAM2003E
+> R.do
+(4,411 observations read)
+(5 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(2 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(418 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1,790 real changes made)
+(121 real changes made)
+(24 real changes made)
+(138 real changes made)
+(138 real changes made)
+(412 real changes made)
+(0 real changes made)
+(3 real changes made)
+(2 real changes made)
+(6 real changes made)
+Input:   10899 unique words, 26396 total words
+Output:  9818 unique words, 37895 total words
+Total time: 877.323 seconds
+(note: file /tmp/St04261.000001.d/parsed_data_92.dta not found)
+file /tmp/St04261.000001.d/parsed_data_92.dta saved
+file_93=/home/lv39/Workspace/AEA/all//aearep-1414/122001/programs/psid/FAM2005E
+> R.do
+(4,236 observations read)
+(5 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(2 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(21 real changes made)
+(372 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2,216 real changes made)
+(130 real changes made)
+(29 real changes made)
+(152 real changes made)
+(152 real changes made)
+(315 real changes made)
+(0 real changes made)
+(6 real changes made)
+(1 real change made)
+(1 real change made)
+Input:   10508 unique words, 25348 total words
+Output:  9470 unique words, 37112 total words
+Total time: 829.12 seconds
+(note: file /tmp/St04261.000001.d/parsed_data_93.dta not found)
+file /tmp/St04261.000001.d/parsed_data_93.dta saved
+file_94=/home/lv39/Workspace/AEA/all//aearep-1414/122001/programs/psid/FAM2007E
+> R.do
+(6,907 observations read)
+(5 observations deleted)
+(0 observations deleted)
+(0 observations deleted)
+(2 observations deleted)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(17 real changes made)
+(477 real changes made)
+(0 real changes made)
+(0 real changes made)
+(5,024 real changes made)
+(277 real changes made)
+(99 real changes made)
+(152 real changes made)
+(152 real changes made)
+(482 real changes made)
+(0 real changes made)
+(6 real changes made)
+(1 real change made)
+(4 real changes made)
