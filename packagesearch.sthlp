@@ -1,5 +1,5 @@
 {smcl}
-{cmd:help txttool}{right: ({browse "http://www.stata-journal.com/":SJX-X: dmXXXX})}
+{cmd:help packagesearch}{right: ({browse "http://www.stata-journal.com/":SJX-X: dmXXXX})}
 {hline}
 
 {title:Title}
@@ -29,7 +29,7 @@
 
 {phang}{opt excelsave} saves the results of the scan into an Excel spreadsheet titled candidatepackages.xlsx. This file is saved in the specified {it:directorytoscan} and will include a list of parsed programs if {opt filesave} is also indicated as an option.
 
-{phang}{opt falsepos} removes packages that were frequently found to be false positives during beta testing. (give some more info on that)
+{phang}{opt falsepos} removes packages that were frequently found to be false positives during beta testing. Presently this includes the following packages: {it: white, missing, index, dash, title, cluster, pre, bys}
 
 {phang}{opt installfounds} installs all SSC packages found during the scanning process into the current working directory.
 
@@ -62,5 +62,3 @@
 
 {p 4 14 2}
 Article:  {it:Stata Journal}, volume XX, number XX: {browse "http://www.stata-journal.com/article.html?article=dm00XX":dm00XX}
-
-{p 4 14 2}{space 3}Help:  {manhelp replace D}, {manhelp generate D}, {manhelp regexm() D}

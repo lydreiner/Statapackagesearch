@@ -1,21 +1,36 @@
-# Stata package search
-Repository includes 2 main folders:
+# `Packagesearch`: module to scan Stata .do files and identify SSC packages used by the code
 
-Folder Stata_scan_code with files:
-- scan_packages.do : Performs scan for missing packages. Please set globals as noted in the "Step 1 Preliminaries" section in the code.
-  - subfolder `ado/auxiliary` contains necessary stopwords and subwords files as used in the program. Also includes ado files for all necessary packages used in the scanning process.
+## Installation
+To install, type the following into the Stata command window:
 
-Folder R_scan_code with files:
-- Package_list.xlsx: list of (nearly) all user-contributed Stata packages obtained via the "minessc" command in Stata.
-  - document has 3 columns: 
-      - A: Package: name of the package 
-      - B: Signals: any signal commands that indicate use of that package (e.g command `gisin` signals the use of package `gtools`)
-      - C: Dependencies (e.g- `ftools` is a required dependency of `reghdfe`)
-  - list is incomplete- Signals and Dependencies are manually created and thus not exhaustive
+```
+net install packagesearch, from("https://lydreiner.github.io/Statapackagesearch/")
+```
+## Syntax: (also available in the help file)
 
-- stata_package_search.R: R code that scans all .do files in a specified folder for missing packages and outputs them in a list. Includes missing packages obtain from the finding the package itself in the code as well as signal commands and dependencies.  
+`packagesearch, codedir(directorytoscan)[ filesave excelsave falsepos installfounds]`
 
-- `fewmissing packages.do` and `lotsofmissingpackages.do`: sample .do files for testing the code. Include the list of missing packages as a comment in the top of both programs so users can verify results.  
+`codedir(directorytoscan)` is required. It specifies the directory that contains the .do files to be scanned for SSC packages.
 
+`filesave` outputs a list of all files that were parsed during the scanning process.
+
+`excelsave` saves the results of the scan into an Excel spreadsheet titled candidatepackages.xlsx. 
+- This file is saved in the specified directorytoscan and will include a list of parsed programs if filesave is also indicated as an option.
+
+`falsepos` removes packages that were frequently found to be false positives during beta testing. 
+- Presently this includes the following packages: `white, missing, index, dash, title, cluster, pre, bys`. 
+
+`installfounds` installs all SSC packages found during the scanning process into the current working directory.
+
+
+## Description:
+
+The code begins by collecting a list of all packages hosted at SSC using the `whatshot` command, Next, it identifies all .do files in the specified `codedir` directory and subdirectories, then parses each .do file into individual words using the `txttool` command. 
+Finally, it matches the individual words against the list of SSC packages and outputs a list of candidate packages that were (likely) used when the Stata code was run.  
+
+### Questions?
+Contact:   
+Lydia Reiner (lr397@cornell.edu)  
+Lars Vilhuber (lars.vilhuber@cornell.edu)
 
 
