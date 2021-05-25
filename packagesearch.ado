@@ -27,7 +27,7 @@ local pwd : pwd
 
 global rootdir "`pwd'"
 global codedir "`codedir'"
-*global auxdir "$rootdir/ado/auxiliary"
+
 
 
 capture mkdir "$rootdir/ado"
@@ -39,7 +39,7 @@ sysdir
 
 /* add necessary packages to perform the scan & analysis to the macro */
 
-    local ssc_packages "fs filelist txttool"
+    local ssc_packages "fs filelist txttool strip"
     
     if !missing("`ssc_packages'") {
         foreach pkg in `ssc_packages' {
@@ -48,7 +48,7 @@ sysdir
     	
 		** If error- print need to install dependencies
 		if _rc==603 {
-		di as err "Packages fs, filelist, and txttool are required, but could not be successfully installed. Please install before proceeding. "
+		di as err "Packages fs, filelist, strip, and txttool are required, but could not be successfully installed. Please install before proceeding. "
 		exit
 		}
 	
@@ -109,6 +109,11 @@ import delimited whitespace rank hits packagename authors using "`whatshot'", ro
 
     gen word = packagename 
     sort word
+	
+	*remove underscores from applicable packages
+	strip packagename, of("_") gen(underscore)
+	replace packagename = underscore
+	
     save "`packagelist'"
 
 }
@@ -167,7 +172,7 @@ forvalues i=1/`total_files' {
 	replace txtstring = subinstr(txtstring,"="," ",.)
 	replace txtstring = subinstr(txtstring, "$"," ",.)
 	replace txtstring = subinstr(txtstring, "/"," ",.)
-	replace txtstring = subinstr(txtstring, "_"," ",.)
+	*replace txtstring = subinstr(txtstring, "_"," ",.)
 	replace txtstring = subinstr(txtstring, "*"," ",.)
 	replace txtstring = subinstr(txtstring, "-"," ",.)
 	replace txtstring = subinstr(txtstring, ","," ",.)
@@ -180,9 +185,11 @@ forvalues i=1/`total_files' {
 	replace txtstring = subinstr(txtstring, "<"," ",.)
 	replace txtstring = subinstr(txtstring, ">"," ",.)
 	
-
+	
+	
+	
 	* perform the txttool analysis- removes stopwords and duplicates
-	n txttool txtstring, sub("$rootdir/ado/auxiliary/signalcommands.txt") stop("$rootdir/ado/auxiliary/stopwords.txt") gen(bagged_words)  bagwords prefix(w_)
+	n txttool txtstring, sub("$rootdir/ado/plus/p/signalcommands.txt") stop("$rootdir/ado/plus/p/stopwords.txt") gen(bagged_words)  bagwords prefix(w_)
 
 	* saves the results as .dta file (one for each .do file in the folder)
 	save "$rootdir/parsed_data_`i'.dta", replace
