@@ -172,7 +172,7 @@ forvalues i=1/`total_files' {
 	replace txtstring = subinstr(txtstring,"="," ",.)
 	replace txtstring = subinstr(txtstring, "$"," ",.)
 	replace txtstring = subinstr(txtstring, "/"," ",.)
-	*replace txtstring = subinstr(txtstring, "_"," ",.)
+	replace txtstring = subinstr(txtstring, "_","",.)
 	replace txtstring = subinstr(txtstring, "*"," ",.)
 	replace txtstring = subinstr(txtstring, "-"," ",.)
 	replace txtstring = subinstr(txtstring, ","," ",.)
@@ -185,7 +185,7 @@ forvalues i=1/`total_files' {
 	replace txtstring = subinstr(txtstring, "<"," ",.)
 	replace txtstring = subinstr(txtstring, ">"," ",.)
 	
-	
+	drop if length(txtstring)>20
 	
 	
 	* perform the txttool analysis- removes stopwords and duplicates
