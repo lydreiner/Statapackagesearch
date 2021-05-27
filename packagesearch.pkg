@@ -1,8 +1,8 @@
 v 3
 d Packagesearch: Module to scan Stata .do files and return list of user-written packages necessary to run the code
 d Lydia Reiner and Lars Vilhuber, Cornell University
-
 f packagesearch.ado
 f packagesearch.sthlp
 f signalcommands.txt
 f stopwords.txt
+
