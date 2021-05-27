@@ -189,7 +189,7 @@ forvalues i=1/`total_files' {
 	
 	
 	* perform the txttool analysis- removes stopwords and duplicates
-	n txttool txtstring, sub("$rootdir/ado/plus/p/signalcommands.txt") stop("$rootdir/ado/plus/p/stopwords.txt") gen(bagged_words)  bagwords prefix(w_)
+	n txttool txtstring, sub("$rootdir/signalcommands.txt") stop("$rootdir/stopwords.txt") gen(bagged_words)  bagwords prefix(w_)
 
 	* saves the results as .dta file (one for each .do file in the folder)
 	save "$rootdir/parsed_data_`i'.dta", replace
