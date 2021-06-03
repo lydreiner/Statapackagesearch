@@ -3,12 +3,10 @@
 ## Installation
 To install, type the following command into Stata. 
 
-Note: There are two required ancillary files (`signalcommands.txt` and `stopwords.txt`) that are automatically pulled from the repository after the first use of the `packagesearch` command.
-
 ```
 net install packagesearch, from("https://lydreiner.github.io/Statapackagesearch/")
 ```
-
+Note: There are two required ancillary files (`signalcommands.txt` and `stopwords.txt`) that are automatically pulled from the repository after the first use of the `packagesearch` command.
 
 ## Syntax: (also available in the help file)
 
