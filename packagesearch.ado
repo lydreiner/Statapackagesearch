@@ -19,7 +19,6 @@ installfounds = install missing package found by the match
 ***************************
 * Step 1: Preliminaries   *
 ***************************
-di " Step 1 (preliminaries): Installing necessary dependencies:"
 
 qui {
 clear all
@@ -28,14 +27,18 @@ local pwd : pwd
 global rootdir "`pwd'"
 global codedir "`codedir'"
 
-
-
 capture mkdir "$rootdir/ado"
 sysdir set PERSONAL "$rootdir/ado/personal"
 sysdir set PLUS     "$rootdir/ado/plus"
 sysdir set SITE     "$rootdir/ado/site"
 sysdir
 
+* Ensure auxiliary files are present
+cap confirm files "$rootdir/stopwords.txt" | "$rootdir/signalcommands.txt"
+		if _rc net get packagesearch, from("https://lydreiner.github.io/Statapackagesearch/")
+		
+
+n di " Step 1 (preliminaries): Installing necessary dependencies:"
 
 /* add necessary packages to perform the scan & analysis to the macro */
 
@@ -185,12 +188,16 @@ forvalues i=1/`total_files' {
 	replace txtstring = subinstr(txtstring, "<"," ",.)
 	replace txtstring = subinstr(txtstring, ">"," ",.)
 	
-	drop if length(txtstring)>20
+	*omit the end of lines of code (usually don't contain packages anyways)
+	replace txtstring = ustrleft(txtstring, 72)
 	
 	
 	* perform the txttool analysis- removes stopwords and duplicates
-	n txttool txtstring, sub("$rootdir/signalcommands.txt") stop("$rootdir/stopwords.txt") gen(bagged_words)  bagwords prefix(w_)
-
+	
+	cap n txttool txtstring, sub("$rootdir/signalcommands.txt") stop("$rootdir/stopwords.txt") gen(bagged_words)  bagwords prefix(w_)
+		if _rc di as input "Error: .do file contains long string unable to be processed. It has been omitted from the scanning process."
+	
+	
 	* saves the results as .dta file (one for each .do file in the folder)
 	save "$rootdir/parsed_data_`i'.dta", replace
  }
@@ -263,7 +270,6 @@ return list
 gen success2= r(N)
 egen success1 = count(_merge ==3), by(_merge) 
 replace success1 = success1 + success2
-di success1
 
 * calc total number of obs and subtract
 egen success = count("matched (3)") 
@@ -290,7 +296,7 @@ keep if match !=""
 gsort rank match
 }
 
-
+di as input "Note: Underscores in package names are omitted (if applicable)"
 
 
 if ("`falsepos'"== "falsepos") {
@@ -302,8 +308,7 @@ if ("`falsepos'"== "falsepos") {
 	}
 }
     
-	
-	
+
 preserve
 if ("`filesave'"== "filesave") { 
    	* display list of parsed files with match results

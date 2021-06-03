@@ -1,11 +1,12 @@
 # `Packagesearch`: module to scan Stata .do files and identify SSC packages used by the code
 
 ## Installation
-To install, type the following two commands into Stata. The first installs the package, the second pulls all necessary auxiliary files.
+To install, type the following command into Stata. 
+
+Note: There are two required ancillary files (`signalcommands.txt` and `stopwords.txt`) that are automatically pulled from the repository after the first use of the `packagesearch` command.
 
 ```
 net install packagesearch, from("https://lydreiner.github.io/Statapackagesearch/")
-net get packagesearch, from("https://lydreiner.github.io/Statapackagesearch/")
 ```
 
 
