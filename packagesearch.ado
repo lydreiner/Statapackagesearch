@@ -35,7 +35,7 @@ sysdir
 
 * Ensure auxiliary files are present
 cap confirm files "$rootdir/stopwords.txt" | "$rootdir/signalcommands.txt"
-		if _rc net get packagesearch, from("https://lydreiner.github.io/Statapackagesearch/")
+		if _rc cap net get packagesearch, from("https://lydreiner.github.io/Statapackagesearch/")
 		
 
 n di " Step 1 (preliminaries): Installing necessary dependencies:"
@@ -301,13 +301,24 @@ di as input "Note: Underscores in package names are omitted (if applicable)"
 
 if ("`falsepos'"== "falsepos") {
 	* rm common FPs according to us
+	di "Removing common false positives"
 	
 	local commonFPs "white missing index dash title cluster pre bys" 
 	foreach word in `commonFPs' {
-		qui drop if match == "`word'"
+		qui drop if match == "`word'" 
+		
+	}
+	*replace success = success - *number of observations deleted in the for loop above*
+	
+	if success == 0 {
+	di as input "All matched packages found were false positives"
+	exit
 	}
 }
-    
+    list match rank probFalsePos, ab(25)
+	
+	
+	* if list is empty (only packages found were common FPs), di error message
 
 preserve
 if ("`filesave'"== "filesave") { 
@@ -318,7 +329,7 @@ di "Programs parsed:"
 	}
 restore
 	
-	list match rank probFalsePos, ab(25)
+	
 	
 // More cleanup
 cap erase "scanned_dofile.dta"
@@ -356,7 +367,10 @@ di "Excel sheet saved"
 restore	
 	
 	qui{
+		
+		
 if ("`installfounds'"== "installfounds") {
+	n di as input "Installing packages found during the scanning process."
     * Install all found packages (including FPs)
 levelsof match, clean local(foundpackages)
     if !missing("foundpackages") {
