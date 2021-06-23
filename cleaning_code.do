@@ -1,7 +1,7 @@
 * Preliminaries
 
 *Set working directory here
-global rootdir "U:/Documents/AEA_workspace/FunPackageSearch/Statapackagesearch-scan_aearep"
+global rootdir "U:/Documents/AEA_workspace/FunPackageSearch/Statapackagesearch"
 
 ssc install filelist
 
