@@ -63,6 +63,8 @@ forvalues i=1/`total_files' {
 	*If column D is missing (cannot determine if package was used or not), replace with value of 2
 	replace confirm_is_used = 2 if missing(confirm_is_used)
 
+	cap log close
+log using $rootdir/summarystats.txt, replace
 
 	*Summary stats
 	count if probfalsepos==0
@@ -88,4 +90,4 @@ forvalues i=1/`total_files' {
 	tab candidatepkg, sort
 	
 	restore
-	
+	cap log close
