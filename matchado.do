@@ -46,7 +46,7 @@ destring folderNumbers, replace
 
 levelsof folderNumbers, local(levels)
 
-save matchado.dta, replace
+save $rootdir/matchado.dta, replace
 
 * Add column with folder name to each candidatepackages.xlsx files
 
@@ -75,15 +75,32 @@ foreach 1 of local levels {
 
 foreach 1 of local levels {
 	preserve
+		
 	use $rootdir/matchado.dta
 	drop if folderNumbers != `1'
-	drop aearep key 
+	drop aearep key
 	
+	* rm duplicates
+	by candidatepkg:  gen dup = cond(_N==1,0,_n)
+	drop if dup>1
+	
+	save matchado.dta, replace
+	
+	
+	cap sort candidatepkg
+		if _rc ==0 {
+		merge 1:1 candidatepkg using $rootdir/Data/aearep-`1'/candidatepackages_aearep-`1'.dta
+	
+	list if _merge==3
+	}
+	/*
 	cap sort candidatepkg
 	if _rc ==0 {
 	merge 1:1 candidatepkg using $rootdir/Data/aearep-`1'/candidatepackages_aearep-`1'.dta
 	
 	list if _merge==3
+	*/
+	
 	}
 	restore
 	
