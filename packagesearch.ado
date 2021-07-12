@@ -1,7 +1,7 @@
 program packagesearch 
 *! version 1.0.0  16april2021
     version 14
-    syntax , codedir(string) [  FILESave EXCELsave FALSEPos INSTALLfounds]
+    syntax , codedir(string) [  FILESave EXCELsave FALSEPos INSTALLfounds ECONstats]
 	
 // Options
 /*
@@ -13,6 +13,8 @@ falsepos = rm common FPs according to us
 - right now, this is: "white missing index dash title cluster pre bys" None of these are in the top 10% of package popularity at SSC 
 	
 installfounds = install missing package found by the match
+
+econstats= compares input files to a list of packages from economics research papers (not a list of all packages in existence)
 */
 
 
@@ -36,7 +38,14 @@ sysdir
 * Ensure auxiliary files are present
 cap confirm files "$rootdir/stopwords.txt" | "$rootdir/signalcommands.txt"
 		if _rc cap net get packagesearch, from("https://lydreiner.github.io/Statapackagesearch/")
+
+		*import ancillary .dta if econstats is selected
+if ("`econstats'"== "`econstats'") {
+
+cap confirm file "$rootdir/matchresults.dta" 
+		if _rc cap net get packagesearch, from("https://lydreiner.github.io/Statapackagesearch/")
 		
+}
 
 n di " Step 1 (preliminaries): Installing necessary dependencies:"
 
@@ -72,6 +81,32 @@ di "Required packages installed"
 ********************************************************
 * Step 2: Collect list of all packages hosted at SSC   *
 ********************************************************
+
+*import and clean ancillary .dta if econstats is selected
+if ("`econstats'"== "`econstats'") {
+
+	cap log close
+	tempfile econstats
+	use "$rootdir/matchresults.dta"
+	
+	log using "`econstats'", replace text
+	tab candidatepkg, sort
+	log close
+	
+	*data cleaning
+	import delimited whitespace packagename divider frequency percent using "`econstats'", rowrange(11:) delimiters("       ", collapse) clear
+	
+	drop whitespace divider v6 v7
+	drop if packagename == "Total" | packagename == "log" | packagename == "name:" | packagename == "closed" | packagename == "log:"
+	drop if frequency =="."
+	destring percent frequency, replace
+	
+	save "`econstats'"
+	
+
+}
+
+else {
 
 di "Step 2: Collect (and clean) list of all packages hosted at SSC"
 
@@ -121,7 +156,7 @@ import delimited whitespace rank hits packagename authors using "`whatshot'", ro
 
 }
 
-
+}
 di "Package list generated successfully"
 
 
@@ -259,8 +294,14 @@ erase "`v'"
 
 // Merge/match
 sort word
-merge 1:1 word using `packagelist'
 
+if ("`econstats'"== "`econstats'") {
+merge 1:1 word using `econstats'
+}
+
+else {
+merge 1:1 word using `packagelist'
+}
 
 ** Procedure for identifying if no matched packages are found
 qui {
@@ -350,7 +391,9 @@ global reportfile "`codedir'/candidatepackages.xlsx"
 gen confirmed_is_used = .
 
 // Sort by rank (incorporates false positive probability) from packagelist file
+if ("`filesave'" != "filesave") {
 gsort rank match
+}
 
 // Export missing package list to Excel
 export excel match rank probFalsePos confirmed_is_used using "$reportfile", firstrow(varlabels) keepcellfmt replace sheet("Missing packages")
