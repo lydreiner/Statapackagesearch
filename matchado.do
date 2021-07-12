@@ -48,7 +48,7 @@ levelsof folderNumbers, local(levels)
 
 save $rootdir/matchado.dta, replace
 
-* Add column with folder name to each candidatepackages.xlsx files
+* Add column with folder name to each candidatepackages.xlsx files and save as dta
 
 *can be commented out once run successfully
 /*
@@ -70,29 +70,46 @@ foreach 1 of local levels {
 	gen foldername = "aearep-`1'"
 	save $rootdir/Data/aearep-`1'/candidatepackages_aearep-`1'.dta, replace
 	}
-}
+
+	}
 */
 
-foreach 1 of local levels {
-	preserve
-		
-	use $rootdir/matchado.dta
-	drop if folderNumbers != `1'
+* cross refer
+
+tempfile matchresults
+
+
+foreach v of local levels {
+	
+	n di "currently running `v'"
+	
+	capture confirm file $rootdir/Data/aearep-`v'/candidatepackages_aearep-`v'.dta
+if !_rc {
+	* do something if the file exists
+
+	
+	use "$rootdir/matchado.dta"
+	drop if folderNumbers != `v'
 	drop aearep key
 	
 	* rm duplicates
+	sort candidatepkg
 	by candidatepkg:  gen dup = cond(_N==1,0,_n)
 	drop if dup>1
 	
-	save matchado.dta, replace
+	tempfile subset
+	save `subset'
 	
 	
-	cap sort candidatepkg
-		if _rc ==0 {
-		merge 1:1 candidatepkg using $rootdir/Data/aearep-`1'/candidatepackages_aearep-`1'.dta
+	sort candidatepkg
+		merge 1:1 candidatepkg using $rootdir/Data/aearep-`v'/candidatepackages_aearep-`v'.dta
 	
-	list if _merge==3
-	}
+	keep if _merge==3
+	keep candidatepkg
+	
+	cap append using `matchresults'
+	save `matchresults', replace
+	
 	/*
 	cap sort candidatepkg
 	if _rc ==0 {
@@ -100,9 +117,46 @@ foreach 1 of local levels {
 	
 	list if _merge==3
 	*/
+	}
+	
+	else {
+		di "no candidatepackages.xlsx generated for this issue"
+	}
 	
 	}
-	restore
 	
-}
+	use `matchresults', clear
+	save "$rootdir/matchresults.dta", replace
+	
+	* Use the match results to generate a package list
+	clear all
+	cap log close
+	tempfile econstats
+	use "$rootdir/matchresults.dta"
+	
+	*log using "`econstats'", replace text
+	log using "`econstats'", replace text
+	tab candidatepkg, sort
+	log close
+	
+	*data cleaning
+	import delimited whitespace packagename divider frequency percent using "`econstats'", rowrange(11:) delimiters("       ", collapse) clear
+	
+	drop whitespace divider v6 v7
+	drop if packagename == "Total" | packagename == "log" | packagename == "name:" | packagename == "closed" | packagename == "log:"
+	drop if frequency =="."
+	destring percent frequency, replace
+	
+	save "`econstats'"
+	
+	
+	* whatshot vs results for packagesearch.ado file- allow toggle (required option?)- way to switch between
+	* then run basic tests- should have stronger suggestion of true packages with less false positives
+	
+	* name it something that indicates it;s from econ (want to be able to add other disciplines)
+	*final file will have package, frequency, field ("econ")
+	* may miss things (b/c not using whatshot) - that's OK
+		*long term goal- blend of the two (weighted average)
+		
+		*have matchresults as an ancillary file that gets pulled from github
 

@@ -1,0 +1,174 @@
+--------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  \\rschfs1x\userRS\K-Q\lr397_RS\Documents\AEA_workspace\FunPackageSearch\Statapackagesearch\econstats.log
+  log type:  text
+ opened on:  12 Jul 2021, 18:28:47
+
+.         tab candidatepkg, sort
+
+                        candidatepkg |      Freq.     Percent        Cum.
+-------------------------------------+-----------------------------------
+                              estout |        112       14.04       14.04
+                             reghdfe |         54        6.77       20.80
+                             outreg2 |         48        6.02       26.82
+                            coefplot |         40        5.01       31.83
+                              ftools |         37        4.64       36.47
+                              ivreg2 |         33        4.14       40.60
+                            ranktest |         21        2.63       43.23
+                          binscatter |         20        2.51       45.74
+                               spmap |         18        2.26       47.99
+                              unique |         14        1.75       49.75
+                            boottest |         13        1.63       51.38
+                           ivreghdfe |         13        1.63       53.01
+                             geodist |         12        1.50       54.51
+                              gtools |         12        1.50       56.02
+                             parmest |         12        1.50       57.52
+                        carryforward |         10        1.25       58.77
+                            rdrobust |          9        1.13       59.90
+                              winsor |          9        1.13       61.03
+                              sxpose |          8        1.00       62.03
+                            distinct |          7        0.88       62.91
+                            filelist |          7        0.88       63.78
+                             mat2txt |          7        0.88       64.66
+                              outreg |          7        0.88       65.54
+                             shp2dta |          7        0.88       66.42
+                              tmpdir |          7        0.88       67.29
+                            xtivreg2 |          7        0.88       68.17
+                             cdfplot |          6        0.75       68.92
+                             freduse |          6        0.75       69.67
+                                  fs |          6        0.75       70.43
+                           leebounds |          6        0.75       71.18
+                             texsave |          6        0.75       71.93
+                            ineqdeco |          5        0.63       72.56
+                             listtab |          5        0.63       73.18
+                             listtex |          5        0.63       73.81
+                            outtable |          5        0.63       74.44
+                            pdslasso |          5        0.63       75.06
+                               qreg2 |          5        0.63       75.69
+                            reg2hdfe |          5        0.63       76.32
+                             regsave |          5        0.63       76.94
+                               sutex |          5        0.63       77.57
+                              texdoc |          5        0.63       78.20
+                             grstyle |          4        0.50       78.70
+                             maptile |          4        0.50       79.20
+                               mdesc |          4        0.50       79.70
+                              mmerge |          4        0.50       80.20
+                             psacalc |          4        0.50       80.70
+                              tabout |          4        0.50       81.20
+                               acreg |          3        0.38       81.58
+                        balancetable |          3        0.38       81.95
+                                hdfe |          3        0.38       82.33
+                             kountry |          3        0.38       82.71
+                             reclink |          3        0.38       83.08
+                               synth |          3        0.38       83.46
+                              todate |          3        0.38       83.83
+                            vincenty |          3        0.38       84.21
+                             winsor2 |          3        0.38       84.59
+                             catplot |          2        0.25       84.84
+                                 cem |          2        0.25       85.09
+                             dataout |          2        0.25       85.34
+                            distplot |          2        0.25       85.59
+                             eclplot |          2        0.25       85.84
+                            fastgini |          2        0.25       86.09
+                           frmttable |          2        0.25       86.34
+                              geo2xy |          2        0.25       86.59
+                              grqreg |          2        0.25       86.84
+                               ingap |          2        0.25       87.09
+                               kdens |          2        0.25       87.34
+                              lgraph |          2        0.25       87.59
+                              matmap |          2        0.25       87.84
+                            missings |          2        0.25       88.10
+                              nsplit |          2        0.25       88.35
+                            ppmlhdfe |          2        0.25       88.60
+                             sencode |          2        0.25       88.85
+                             sortobs |          2        0.25       89.10
+                         statastates |          2        0.25       89.35
+                              texify |          2        0.25       89.60
+                              tuples |          2        0.25       89.85
+                             vallist |          2        0.25       90.10
+                              wyoung |          2        0.25       90.35
+                             xtgraph |          2        0.25       90.60
+                                avar |          1        0.13       90.73
+                           betterbar |          1        0.13       90.85
+                              byhist |          1        0.13       90.98
+                              center |          1        0.13       91.10
+                               cibar |          1        0.13       91.23
+                              ciplot |          1        0.13       91.35
+                            cluster2 |          1        0.13       91.48
+                    combomarginsplot |          1        0.13       91.60
+                             corrtex |          1        0.13       91.73
+                           csipolate |          1        0.13       91.85
+                              digdis |          1        0.13       91.98
+                                 ds3 |          1        0.13       92.11
+                            dsconcat |          1        0.13       92.23
+                             dtalink |          1        0.13       92.36
+                                dups |          1        0.13       92.48
+                            ebalance |          1        0.13       92.61
+                            estwrite |          1        0.13       92.73
+                             fmlogit |          1        0.13       92.86
+                                 fre |          1        0.13       92.98
+                           freqindex |          1        0.13       93.11
+                                fsum |          1        0.13       93.23
+                            fuzzydid |          1        0.13       93.36
+                             geonear |          1        0.13       93.48
+                             glcurve |          1        0.13       93.61
+                             gsample |          1        0.13       93.73
+                           hprescott |          1        0.13       93.86
+                            ihstrans |          1        0.13       93.98
+                            ineqdec0 |          1        0.13       94.11
+                            inequal2 |          1        0.13       94.24
+                               isvar |          1        0.13       94.36
+                         jarowinkler |          1        0.13       94.49
+                           keeporder |          1        0.13       94.61
+                              kmatch |          1        0.13       94.74
+                              logout |          1        0.13       94.86
+                             matchit |          1        0.13       94.99
+                             matsave |          1        0.13       95.11
+                              mhtexp |          1        0.13       95.24
+                              mvtest |          1        0.13       95.36
+                            mylabels |          1        0.13       95.49
+                              newey2 |          1        0.13       95.61
+                             numdate |          1        0.13       95.74
+                              nysiis |          1        0.13       95.86
+                              oaxaca |          1        0.13       95.99
+                            parallel |          1        0.13       96.12
+                            partpred |          1        0.13       96.24
+                           plausexog |          1        0.13       96.37
+                           ppschromy |          1        0.13       96.49
+                                 pre |          1        0.13       96.62
+                             project |          1        0.13       96.74
+                              pshare |          1        0.13       96.87
+                           randomtag |          1        0.13       96.99
+                             renvars |          1        0.13       97.12
+                             rowsort |          1        0.13       97.24
+                            safedrop |          1        0.13       97.37
+                             sdecode |          1        0.13       97.49
+                                 seq |          1        0.13       97.62
+                              spgrid |          1        0.13       97.74
+                               spkde |          1        0.13       97.87
+                               spmon |          1        0.13       97.99
+                            statplot |          1        0.13       98.12
+                            statsmat |          1        0.13       98.25
+                             swapval |          1        0.13       98.37
+                           tabexport |          1        0.13       98.50
+                             tabplot |          1        0.13       98.62
+                          tabstatmat |          1        0.13       98.75
+                                 ted |          1        0.13       98.87
+                             tolower |          1        0.13       99.00
+                             tsspell |          1        0.13       99.12
+                     twowayfeweights |          1        0.13       99.25
+                             vcemway |          1        0.13       99.37
+                             vselect |          1        0.13       99.50
+                             xls2dta |          1        0.13       99.62
+                              xsvmat |          1        0.13       99.75
+                              xtpqml |          1        0.13       99.87
+                               xtscc |          1        0.13      100.00
+-------------------------------------+-----------------------------------
+                               Total |        798      100.00
+
+.         log close
+      name:  <unnamed>
+       log:  \\rschfs1x\userRS\K-Q\lr397_RS\Documents\AEA_workspace\FunPackageSearch\Statapackagesearch\econstats.log
+  log type:  text
+ closed on:  12 Jul 2021, 18:28:47
+--------------------------------------------------------------------------------------------------------------------------------
