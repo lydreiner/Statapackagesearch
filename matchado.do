@@ -128,26 +128,19 @@ if !_rc {
 	use `matchresults', clear
 	save "$rootdir/matchresults.dta", replace
 	
-	* Use the match results to generate a package list
-	clear all
-	cap log close
-	tempfile econstats
-	use "$rootdir/matchresults.dta"
+	*Cleaning- collapse into unique packages and count of observations
+	use "$rootdir/matchresults.dta", clear
+	gen uniquepkgs = candidatepkg
+	sort uniquepkgs
+	qui by uniquepkgs : gen dup = cond(_N==1,0,_n)
+	replace uniquepkgs="." if dup>1
 	
-	*log using "`econstats'", replace text
-	log using "`econstats'", replace text
-	tab candidatepkg, sort
-	log close
+	egen frequency = count(uniquepkgs), by(candidatepkg)
+	drop if dup>1
+	drop dup uniquepkgs
 	
-	*data cleaning
-	import delimited whitespace packagename divider frequency percent using "`econstats'", rowrange(11:) delimiters("       ", collapse) clear
-	
-	drop whitespace divider v6 v7
-	drop if packagename == "Total" | packagename == "log" | packagename == "name:" | packagename == "closed" | packagename == "log:"
-	drop if frequency =="."
-	destring percent frequency, replace
-	
-	save "`econstats'"
+	save "$rootdir/matchresults.dta", replace
+
 	
 	
 	* whatshot vs results for packagesearch.ado file- allow toggle (required option?)- way to switch between
