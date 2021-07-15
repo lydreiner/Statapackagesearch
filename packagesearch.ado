@@ -85,28 +85,8 @@ di "Required packages installed"
 *import and clean ancillary .dta if econstats is selected
 if ("`econstats'"== "`econstats'") {
 
-	cap log close
-	tempfile econstats
 	use "$rootdir/matchresults.dta"
 	
-	log using "`econstats'", replace text
-	tab candidatepkg, sort
-	log close
-	
-	*data cleaning
-	import delimited whitespace packagename divider frequency percent using "`econstats'", rowrange(13:) delimiters("       ", collapse) clear
-	
-	drop whitespace divider v6 v7
-	drop if packagename == "Total" | packagename == "log" | packagename == "name:" | packagename == "closed" | packagename == "log:"
-	drop if frequency =="."
-	destring percent frequency, replace
-	
-	gen word = packagename 
-    sort word
-	
-	save "`econstats'", replace
-	
-
 }
 
 else {
@@ -156,11 +136,11 @@ import delimited whitespace rank hits packagename authors using "`whatshot'", ro
 	replace packagename = underscore
 	
     save "`packagelist'"
-
-}
-
-}
 di "Package list generated successfully"
+}
+
+}
+
 
 
 ***************************
@@ -296,13 +276,16 @@ erase "`v'"
  }
 
 // Merge/match
+
 sort word
 
 if ("`econstats'"== "`econstats'") {
-merge 1:1 packagename using `econstats'
+	
+merge 1:1 word using "$rootdir/matchresults.dta"
 }
 
 else {
+	
 merge 1:1 word using `packagelist'
 }
 
@@ -337,8 +320,10 @@ qui{
 gen match = word if _merge==3
 label var match "Candidate package found"
 keep if match !=""
-gsort rank match
+
 }
+
+
 
 di as input "Note: Underscores in package names are omitted (if applicable)"
 
@@ -359,7 +344,15 @@ if ("`falsepos'"== "falsepos") {
 	exit
 	}
 }
-    list match rank probFalsePos, ab(25)
+  
+  if ("`econstats'"== "econstats") {
+	list match, sepby(_merge)
+}
+
+else {
+	gsort rank match
+	list match rank probFalsePos, ab(25) 
+}
 	
 	
 	* if list is empty (only packages found were common FPs), di error message
