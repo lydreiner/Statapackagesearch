@@ -94,17 +94,14 @@ if ("`econstats'"== "`econstats'") {
 	log close
 	
 	*data cleaning
-	import delimited whitespace packagename divider frequency percent using "`econstats'", rowrange(13:) delimiters("       ", collapse) clear
+	import delimited whitespace packagename divider frequency percent using "`econstats'", rowrange(11:) delimiters("       ", collapse) clear
 	
 	drop whitespace divider v6 v7
 	drop if packagename == "Total" | packagename == "log" | packagename == "name:" | packagename == "closed" | packagename == "log:"
 	drop if frequency =="."
 	destring percent frequency, replace
 	
-	gen word = packagename 
-    sort word
-	
-	save "`econstats'", replace
+	save "`econstats'"
 	
 
 }
@@ -299,7 +296,7 @@ erase "`v'"
 sort word
 
 if ("`econstats'"== "`econstats'") {
-merge 1:1 packagename using `econstats'
+merge 1:1 word using `econstats'
 }
 
 else {
