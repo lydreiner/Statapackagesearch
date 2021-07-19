@@ -139,6 +139,13 @@ if !_rc {
 	drop if dup>1
 	drop dup uniquepkgs
 	
+	gsort -frequency
+rename candidatepkg packagename
+rename frequency hits
+gen rank = _n
+order rank hits packagename
+
+	
 	save "$rootdir/matchresults.dta", replace
 
 	
