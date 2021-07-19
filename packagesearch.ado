@@ -90,9 +90,6 @@ tempfile packagelist
 if ("`econstats'"== "`econstats'") {
 
 	use "$rootdir/matchresults.dta"
-	* create ranks and hits
-	* hits = frequency
-	rename
 	save `packagelist'
 
 	* develop some kind of ranking system/processing similar to whatshot log
@@ -127,11 +124,12 @@ import delimited whitespace rank hits packagename authors using "`whatshot'", ro
 	// 
     destring rank, replace
     destring hits, replace
-	gen word = packagename
 	
+}
 }
 
 * below should happen for both econstats and whatshot
+gen word = packagename
     label var rank "Package popularity (rank out of total # of packages)"
 
 // Develop ranking system to help determine likelihood of false positives
@@ -149,7 +147,7 @@ import delimited whitespace rank hits packagename authors using "`whatshot'", ro
 	strip packagename, of("_") gen(underscore)
 	replace packagename = underscore
 	
-    save "`packagelist'"
+    save "`packagelist'", replace
 di "Package list generated successfully"
 
 
@@ -292,16 +290,8 @@ erase "`v'"
 // Merge/match
 
 sort word
-
-if ("`econstats'"== "`econstats'") {
-	
-merge 1:1 word using "$rootdir/matchresults.dta"
-}
-
-else {
-	
 merge 1:1 word using `packagelist'
-}
+
 
 ** Procedure for identifying if no matched packages are found
 qui {
@@ -359,15 +349,8 @@ if ("`falsepos'"== "falsepos") {
 	}
 }
   
-  if ("`econstats'"== "econstats") {
-	list match, sepby(_merge)
-}
-
-else {
 	gsort rank match
 	list match rank probFalsePos, ab(25) 
-}
-	
 	
 	* if list is empty (only packages found were common FPs), di error message
 
