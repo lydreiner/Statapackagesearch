@@ -15,6 +15,8 @@ falsepos = rm common FPs according to us
 installfounds = install missing package found by the match
 
 econstats= compares input files to a list of packages from economics research papers (not a list of all packages in existence)
+- consider adding discipline(string) so it can take multiple inputs (but later)
+
 */
 
 
@@ -83,11 +85,18 @@ di "Required packages installed"
 ********************************************************
 
 *import and clean ancillary .dta if econstats is selected
+tempfile packagelist
+
 if ("`econstats'"== "`econstats'") {
 
 	use "$rootdir/matchresults.dta"
-	
-}
+	* create ranks and hits
+	* hits = frequency
+	rename
+	save `packagelist'
+
+	* develop some kind of ranking system/processing similar to whatshot log
+	}
 
 else {
 
@@ -96,7 +105,7 @@ di "Step 2: Collect (and clean) list of all packages hosted at SSC"
 qui{
 // Collect top hits at SSC for the past month 
     tempfile whatshot
-    tempfile packagelist
+    
 
     cap log close
     log using "`whatshot'", replace text
@@ -115,9 +124,14 @@ import delimited whitespace rank hits packagename authors using "`whatshot'", ro
     drop authors-notnumeric
     drop whitespace
 
+	// 
     destring rank, replace
     destring hits, replace
+	gen word = packagename
+	
+}
 
+* below should happen for both econstats and whatshot
     label var rank "Package popularity (rank out of total # of packages)"
 
 // Develop ranking system to help determine likelihood of false positives
@@ -128,7 +142,7 @@ import delimited whitespace rank hits packagename authors using "`whatshot'", ro
     replace probFalsePos = 0 if _n<=`r(p90)'
     label var probFalsePos "likelihood of false positive based on package popularity"
 
-    gen word = packagename 
+     
     sort word
 	
 	*remove underscores from applicable packages
@@ -137,9 +151,9 @@ import delimited whitespace rank hits packagename authors using "`whatshot'", ro
 	
     save "`packagelist'"
 di "Package list generated successfully"
-}
 
-}
+
+
 
 
 
