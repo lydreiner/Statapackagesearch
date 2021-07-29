@@ -1,0 +1,79 @@
+% readme.tex -- a short example of how each Stata Journal insert should be
+% organized.
+
+\inserttype[st0001]{article}
+\author{Reiner and Vilhuber}{%
+  Lydia Reiner\\Cornell University\\Ithaca, NY, USA\\lr397@cornell.edu
+  \and
+  Lars Vilhuber\\Cornell University\\Ithaca, NY, USA\\lars.vilhuber@cornell.edu
+}
+\title[{\tt packagesearch}]{Identifying packages used in Stata code}
+\maketitle
+
+\begin{abstract}
+Many researchers work on personal machines, and have accumulated many installed packages over the years. Reproducibility of code requires that all packages used within an analysis be listed. While the robust solution is to install packages once, in a project-specific directory, that seems to not happen very often. We provide a package that parses the Stata code in project directory (and any sub-directories), and lists the most likely packages being used. We outline two use cases for this package. 
+
+\keywords{\inserttag, packagesearch, reproducibility}
+\end{abstract}
+
+\section{Introduction}
+
+
+\subsection{Background}
+
+The inspiration for this package comes from research work under the AEA Data Editor, verifying countless Stata-based replication packages. 
+
+Many fail to provide replication requirements, or said requirements are incomplete. This results in running Stata code without the proper packages installed, leading to a time-consuming process of code breaking, installing the necessary missing package, then restarting the process until all packages have been identified. With this project, we aim to identify the necessary Stata packages in provided .do files before code is run, saving time and frustration for authors and replicators alike.
+
+More broadly, this could help mitigate small aspects of the replication crisis by allowing both authors and replicators identify packages used in code. It could be extra relevant in cases where provided code is unable to be run, such as when confidential data is used as an input. 
+
+
+\subsection{Description}
+
+The \texttt{packagesearch} command has four basic components:
+
+1. Collects and cleans list of all packages hosted at SSC (using the \texttt{ssc whatshot} command. 
+
+2. Parses each .do file in a specified directory (and subdirectories), then cleans and appends them. This step involves removing commented lines and collapsing the contents of each .do file into unique words.
+
+3. Matches the parsed files against the list of existing SSC packages
+
+4. Exports the results of the match. Results are ranked in terms of their popularity at SSC, with less popular packages having a higher probability of false positivity.
+
+\subsection{Further Discussion}
+
+The output of this command is a `candidatepackages` file which gives a list of potential SSC packages required by the code based on the results of the match. If code was run, the user can then cross-reference the contents of this `candidatepackages` file with the actual packages required by the code.
+
+Currently, the process yields many more packages than are actually used by the code ("false positives") due to a variety of factors. This includes user-contributed packages that are built on top of an existing command (e.g- \texttt{bys}) , or packages with names that are commonly found in Stata code files but in other applications (e.g- \texttt{white, dash, cluster}). 
+
+As such, for each candidate package in the output file we give the probability of said package being a false positive. This probability is inversely related to the package's rank at SSC (i.e, the package's popularity). For example, a more popular package such as \texttt{estout} will have a much lower probability of false positivity than lesser known (and therefore lesser utilized) packages.
+
+
+\subsection{Limitations (Room for Improvement?)}
+
+As described above, the \texttt{packagesearch} command only scans .do files for packages found at SSC. As such, it currently cannot handle packages from Stata Journal or those obtained via \texttt{net install}. 
+We gladly accept any contributions \href{https://github.com/lydreiner/Statapackagesearch}{(Github repository linked here)} to the project that may help expand the reach of the command.
+
+We are currently running this command on any Stata-based replication package submitted to the AEA Data Editor, and using the results (both genuine packages found by the match and information on false positives) to further fine tune the process. We hope that in the future this will allow us to further refine the command and its functionality.  
+
+
+% discussion of the Stata Press LaTeX package for Stata output.
+\input stata.tex
+
+
+
+
+\bibliographystyle{sj}
+\bibliography{sj}
+
+\begin{aboutauthors}
+Lydia Reiner is an undergraduate at Cornell University studying economics.
+
+Some background information about the second author.
+
+\textbf{Author Contributions}
+LR came up with the idea, did the research, implemented and tested the code, and wrote the manuscript.
+
+LV assisted with the code, tested the code, and wrote the manuscript.
+\end{aboutauthors}
+

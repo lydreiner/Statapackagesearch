@@ -1,0 +1,47 @@
+
+\section{The packagesearch command}
+
+\subsection{Syntax}
+
+\begin{stsyntax}
+packagesearch, 
+    codedir(\ststring)
+    \optional{
+    \dunderbar{files}ave
+    \underbar{excel}save
+    \underbar{falsep}os
+    \underbar{install}founds}
+\end{stsyntax}
+
+
+\subsection{Options}
+
+\texttt{codedir} is required, this is where you specify the directoryy that contains the .do files to be scanned.
+
+\texttt{filesave} saves a list of all .do files that were scanned during the package search process and their location within the specified directory.
+
+\texttt{excelsave} saves the results of the scan in an Excel spreadsheet which contains a list of candidate packages, their popularity at SSC, and the probability of false positivity based on package popularity. If \texttt{filesave} is specified, the spreadsheet contains another page titled "Programs Parsed" with a list of all .do files that were scanned.
+
+\texttt{falsepos} removes the most common false positives encountered during beta testing (see \textbf{Common False Positives} below for details)
+
+\texttt{installfounds} installs all missing packages found during the scanning process. This option is not recommended if you are hoping to identify an exact list of packages used in replication as it will likely install false positives along with true packages.
+
+
+\subsection{Remarks}
+
+The \texttt{packagesearch} command requires 3 dependencies, each of which are installed as part of the preliminary steps prior to scanning the specified directory. 
+
+1.  \texttt{txttool} Collapses contents of .do files into unique words.
+
+Note that users can change/add to stopwords and subwords files- discussion of what that means for fine-tuning of results.
+
+2.  \texttt{fs}: Allows scan of all files in a directory simultaneously, streamlining the search process 
+
+3.  \texttt{filelist}: Allows scan of subdirectories within the broader directory to scan
+
+\textbf{Common False Positives}
+
+As discussed above, we are running the \texttt{packagesearch} command on a number of publicly-available replication archives for published and forthcoming articles in AEA journals. During this process, we have identified 9 common false positives, defined as package names that occur in at least 50\% of all packages, but are not actual used as a package in 90\% of instances.
+
+Presently, this generated the following list of common false positives:
+\texttt{white, missing, index, title, dash, cluster, pre, bys, delta}
