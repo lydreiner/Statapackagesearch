@@ -1,7 +1,7 @@
 program packagesearch 
 *! version 1.0.0  16april2021
     version 14
-    syntax , codedir(string) [  FILESave EXCELsave FALSEPos INSTALLfounds ECONstats]
+    syntax , codedir(string) [  FILESave EXCELsave NODROPfalsepos INSTALLfounds domain(string)]
 	
 // Options
 /*
@@ -9,13 +9,12 @@ filesave = save list of parsed files
 
 excelsave = save list of candidate packages as an excel spreadsheet
 
-falsepos = rm common FPs according to us 
+NODROPfalsepos = rm common FPs according to us 
 - right now, this is: "white missing index dash title cluster pre bys" None of these are in the top 10% of package popularity at SSC 
 	
 installfounds = install missing package found by the match
 
-econstats= compares input files to a list of packages from economics research papers (not a list of all packages in existence)
-- consider adding discipline(string) so it can take multiple inputs (but later)
+domain = compares input files to a list of packages from domain-specific research papers (currently only "econ" is supported)
 
 */
 
@@ -24,135 +23,156 @@ econstats= compares input files to a list of packages from economics research pa
 * Step 1: Preliminaries   *
 ***************************
 
-qui {
+
 clear all
+set more off
+set maxvar 120000
 local pwd : pwd
 
-global rootdir "`pwd'"
 global codedir "`codedir'"
+// local srcref "https://lydreiner.github.io/Statapackagesearch/"
+local srcref "/home/vilhuber/Workspace/github/AEA/Statapackagesearch"
+/* This should be generically in the PLUS directory */
 
-capture mkdir "$rootdir/ado"
-sysdir set PERSONAL "$rootdir/ado/personal"
-sysdir set PLUS     "$rootdir/ado/plus"
-sysdir set SITE     "$rootdir/ado/site"
-sysdir
+local mplus : sysdir PLUS
+local msub  : adosubdir "packagesearch"
+local commonFPs "white missing index dash title cluster pre bys" 
+
+/* check if we are running from an installed version of the file */
+qui which "packagesearch"
+if _rc == 0 {
+	local rootdir "`mplus'/`msub'"
+}
+else {
+	local rootdir "`pwd'"
+	cap confirm file "`rootdir'/packagesearch.ado"
+	if _rc {
+		di as err "Not sure what to do, no ado file in `rootdir' or installed"
+		exit 2
+	}
+}
+local stopwords      "`rootdir'/p_stopwords.txt"
+local signalcommands "`rootdir'/p_signalcommands.txt"
+local domainstats    "`rootdir'/p_stats_`domain'.dta"
+
+n di "==========================================================="
+n di " Step 1 (preliminaries): Installing necessary dependencies:"
 
 * Ensure auxiliary files are present
-cap confirm files "$rootdir/stopwords.txt" | "$rootdir/signalcommands.txt"
-		if _rc cap net get packagesearch, from("https://lydreiner.github.io/Statapackagesearch/")
+* import ancillary .dta if domain is selected
 
-		*import ancillary .dta if econstats is selected
-if ("`econstats'"== "`econstats'") {
-
-cap confirm file "$rootdir/matchresults.dta" 
-		if _rc cap net get packagesearch, from("https://lydreiner.github.io/Statapackagesearch/")
-		
+if ("`domain'" != "") {
+	n dis "Verifying presence of auxiliary `domainstats' (domain = `domain')"
+    cap confirm file "`domainstats'" 
+	if _rc {
+		n dis "Installing auxiliary `domainstats' (domain = `domain')"
+		net get packagesearch, from(`srcref')	
+	}
+	else {
+		dis "File `domainstats' is present."
+	}
 }
 
-n di " Step 1 (preliminaries): Installing necessary dependencies:"
 
 /* add necessary packages to perform the scan & analysis to the macro */
 
-    local ssc_packages "fs filelist txttool strip"
-    
-    if !missing("`ssc_packages'") {
-        foreach pkg in `ssc_packages' {
-            n dis "Installing `pkg'"
-          cap ssc install `pkg', replace
-    	
-		** If error- print need to install dependencies
-		if _rc==603 {
-		di as err "Packages fs, filelist, strip, and txttool are required, but could not be successfully installed. Please install before proceeding. "
+local ssc_packages "fs filelist txttool strip"
+n di "Required packages: `ssc_packages'"
+
+foreach pkg in `ssc_packages' {
+    n di "Installing `pkg'"
+    qui cap ssc install `pkg', replace	
+	** If error- print need to install dependencies
+	if _rc==603 {
+		n di as err "Packages `ssc_packages' are required, but could not be successfully installed. Please install before proceeding. "
 		exit
-		}
-	
 	}
-	}
+}
 
 	
 /* after installing all packages, it may be necessary to issue the mata mlib index command */
-	mata: mata mlib index
+qui mata: mata mlib index
 
-
-set more off
-set maxvar 120000
-}
-
-di "Required packages installed"
+di "   -> Required packages installed"
 
 ********************************************************
 * Step 2: Collect list of all packages hosted at SSC   *
 ********************************************************
 
-*import and clean ancillary .dta if econstats is selected
+local p_vars_hot "rank hits"
 tempfile packagelist
 
-if ("`econstats'"== "`econstats'") {
-
-	use "$rootdir/matchresults.dta"
-	save `packagelist'
-
-	* develop some kind of ranking system/processing similar to whatshot log
+*import and clean ancillary .dta if econstats is selected
+n di "==========================================================="
+if ("`domain'" != "") {
+    n di "Using domain-specific stats from `domain'"
+	qui {
+		use `domainstats'
+		save `packagelist'
 	}
-
+	* develop some kind of ranking system/processing similar to whatshot log
+}
 else {
 
-di "Step 2: Collect (and clean) list of all packages hosted at SSC"
+    n di "Step 2: Collect (and clean) list of all packages hosted at SSC"
 
-qui{
-// Collect top hits at SSC for the past month 
-    tempfile whatshot
-    
+    qui {
+    	// Collect top hits at SSC for the past month 
+    	tempfile whatshot
 
-    cap log close
-    log using "`whatshot'", replace text
-    * if the # of available packages ever exceeds 10000, adjust the line below
-    n ssc whatshot, n(10000)
-    log close
+    	log using "`whatshot'", name(whatshot) replace text
+    	* if the # of available packages ever exceeds 10000, adjust the line below
+    	n ssc whatshot, n(10000)
+    	log close whatshot
 
-// Data cleaning (import log file, export cleaned .dta file)
+		// Data cleaning (import log file, export cleaned .dta file)
 
-*May need to adjust the starting value for rowrange- target the first line where the first package is mentioned
+		*May need to adjust the starting value for rowrange- target the first line where the first package is mentioned
 
-import delimited whitespace rank hits packagename authors using "`whatshot'", rowrange(14:) delimiters("       ", collapse) clear
+    	import delimited whitespace rank hits packagename authors using "`whatshot'", rowrange(14:) delimiters("       ", collapse) clear
 
-    gen byte notnumeric = real(hits)==.
-    drop if notnumeric==1
-    drop authors-notnumeric
-    drop whitespace
+    	gen byte notnumeric = real(hits)==.
+    	drop if notnumeric==1
+    	drop authors-notnumeric
+    	drop whitespace
 
-	// 
-    destring rank, replace
-    destring hits, replace
-	
-}
-}
+		// clean up 
+    	destring rank, replace
+    	destring hits, replace
+		keep packagename `p_vars_hot'
+	}
+} // end else domain
 
 * below should happen for both econstats and whatshot
+foreach v of local p_vars_hot {
+	confirm numeric variable `v'
+    if _rc {
+        di as err "The ranking variable `v' is not numeric. Please fix something"
+		exit 2
+    }
+}
+
 gen word = packagename
-    label var rank "Package popularity (rank out of total # of packages)"
+label var rank "Package popularity (rank out of total # of packages)"
 
 // Develop ranking system to help determine likelihood of false positives
-    sum hits, detail
+sum hits, detail
 
 * include prob of false positive if # of monthly hits for the package is below 90th percentile
-    gen probFalsePos = rank/_N if _n>`r(p90)' 
-    replace probFalsePos = 0 if _n<=`r(p90)'
-    label var probFalsePos "likelihood of false positive based on package popularity"
+gen probFalsePos = rank/_N if _n>`r(p90)' 
+replace probFalsePos = 0 if _n<=`r(p90)'
+label var probFalsePos "likelihood of false positive based on package popularity"
 
      
-    sort word
+sort word
 	
-	*remove underscores from applicable packages
-	strip packagename, of("_") gen(underscore)
-	replace packagename = underscore
+*remove underscores from applicable packages
+strip packagename, of("_") gen(p_underscore)
+qui replace packagename = p_underscore
+qui drop p_underscore
 	
-    save "`packagelist'", replace
+qui save "`packagelist'", replace
 di "Package list generated successfully"
-
-
-
-
 
 
 ***************************
@@ -172,66 +192,72 @@ qui {
 	save `file_list'
 	keep file_path
 	
-qui count
+	qui count
 	local total_files = `r(N)'
 	forvalues i=1/`total_files' {
 		local file_`i' = file_path[`i']
 	}
 
-* Read in each do file in the folder and split by line
-forvalues i=1/`total_files' {
-	n di "file_`i'=`file_`i''"
-	local v = "`file_`i''"
-	
-	infix str300 txtstring 1-300 using "`v'", clear
-
-	* indexes each line
-	gen line = _n
-	* drop blank lines
-	drop if txtstring == ""
-
-
-	*drop commented lines (drop if //, *, /* or \* appears at the start of the line)
-	drop if regexm(txtstring,"^//")==1
-	drop if regexm(txtstring,"^/\*")==1
-	drop if regexm(txtstring,"^\*")==1
-
-	/* clean - this is handled by the stopword file as well */
-
-	* split on common delimiters- txttool can't handle long strings
-	replace txtstring = subinstr(txtstring,"\", " ",.)
-	replace txtstring = subinstr(txtstring,"{", " ",.)
-	replace txtstring = subinstr(txtstring,"}", " ",.)
-	replace txtstring = subinstr(txtstring,"="," ",.)
-	replace txtstring = subinstr(txtstring, "$"," ",.)
-	replace txtstring = subinstr(txtstring, "/"," ",.)
-	replace txtstring = subinstr(txtstring, "_","",.)
-	replace txtstring = subinstr(txtstring, "*"," ",.)
-	replace txtstring = subinstr(txtstring, "-"," ",.)
-	replace txtstring = subinstr(txtstring, ","," ",.)
-	replace txtstring = subinstr(txtstring, "+"," ",.)
-	replace txtstring = subinstr(txtstring, "("," ",.)
-	replace txtstring = subinstr(txtstring, ")"," ",.)
-	replace txtstring = subinstr(txtstring, "#"," ",.)
-	replace txtstring = subinstr(txtstring, "~"," ",.)
-	replace txtstring = subinstr(txtstring, "."," ",.)
-	replace txtstring = subinstr(txtstring, "<"," ",.)
-	replace txtstring = subinstr(txtstring, ">"," ",.)
-	
-	*omit the end of lines of code (usually don't contain packages anyways)
-	replace txtstring = ustrleft(txtstring, 72)
-	
-	
-	* perform the txttool analysis- removes stopwords and duplicates
-	
-	cap n txttool txtstring, sub("$rootdir/signalcommands.txt") stop("$rootdir/stopwords.txt") gen(bagged_words)  bagwords prefix(w_)
-		if _rc di as input "Error: .do file contains long string unable to be processed. It has been omitted from the scanning process."
-	
-	
-	* saves the results as .dta file (one for each .do file in the folder)
-	save "$rootdir/parsed_data_`i'.dta", replace
- }
- }
+	* Read in each do file in the folder and split by line
+	local parsedfiles ""
+	forvalues i=1/`total_files' {
+	    n di "file_`i'=`file_`i''"
+	    local v = "`file_`i''"
+	    n di "  Processing file `v'"
+	    
+	    infix str300 txtstring 1-300 using "`v'", clear
+    
+	    * indexes each line
+	    gen line = _n
+	    * drop blank lines
+	    drop if txtstring == ""
+    
+    
+	    *drop commented lines (drop if //, *, /* or \* appears at the start of the line)
+	    drop if regexm(txtstring,"^//")==1
+	    drop if regexm(txtstring,"^/\*")==1
+	    drop if regexm(txtstring,"^\*")==1
+    
+	    /* clean - this is handled by the stopword file as well */
+    
+	    * split on common delimiters- txttool can't handle long strings
+	    replace txtstring = subinstr(txtstring,"\", " ",.)
+	    replace txtstring = subinstr(txtstring,"{", " ",.)
+	    replace txtstring = subinstr(txtstring,"}", " ",.)
+	    replace txtstring = subinstr(txtstring,"="," ",.)
+	    replace txtstring = subinstr(txtstring, "$"," ",.)
+	    replace txtstring = subinstr(txtstring, "/"," ",.)
+	    replace txtstring = subinstr(txtstring, "_","",.)
+	    replace txtstring = subinstr(txtstring, "*"," ",.)
+	    replace txtstring = subinstr(txtstring, "-"," ",.)
+	    replace txtstring = subinstr(txtstring, ","," ",.)
+	    replace txtstring = subinstr(txtstring, "+"," ",.)
+	    replace txtstring = subinstr(txtstring, "("," ",.)
+	    replace txtstring = subinstr(txtstring, ")"," ",.)
+	    replace txtstring = subinstr(txtstring, "#"," ",.)
+	    replace txtstring = subinstr(txtstring, "~"," ",.)
+	    replace txtstring = subinstr(txtstring, "."," ",.)
+	    replace txtstring = subinstr(txtstring, "<"," ",.)
+	    replace txtstring = subinstr(txtstring, ">"," ",.)
+	    
+	    *omit the end of lines of code (usually don't contain packages anyways)
+	    replace txtstring = ustrleft(txtstring, 72)
+	    
+	    
+	    * perform the txttool analysis- removes stopwords and duplicates
+	    
+	    cap n txttool txtstring, sub("`rootdir'/p_signalcommands.txt") stop("`rootdir'/p_stopwords.txt") gen(bagged_words)  bagwords prefix(w_)
+	    	if _rc di as input "Error: file `v' contains long string unable to be processed. It has been omitted from the scanning process."
+	    
+	    
+	    * saves the results as .dta file (one for each .do file in the folder)
+	    *save "$rootdir/parsed_data_`i'.dta", replace
+	    tempfile parsedfile`i'
+	    save `parsedfile`i''
+	    * add to list
+	    local parsedfiles `parsedfiles' `parsedfile`i''
+ 	}
+ } /* end of quiet */
 
 **********************
 * Step 4: Matching 	 *
@@ -241,8 +267,20 @@ forvalues i=1/`total_files' {
  *List all generated .dta files and append them to prepare for the match
  
  qui{
- fs "parsed_data*.dta"
- cap append using `r(files)'
+ * == old method == 
+ * fs "parsed_data*.dta"
+ * cap append using `r(files)'
+   tempfile completeparsed
+   local firstfile ""
+   foreach file in `parsedfiles' {
+	   if ( "`firstfile'" == "" ) {
+		   local firstfile no
+		   use `file'
+	   }
+	   else { 
+	       cap append using `file'
+	   }
+   }
  }
  
  if _rc ==0 {
@@ -274,18 +312,11 @@ drop w_*
 
 sort word
 
-// Cleanup
-local datafiles : dir "$rootdir" files "parsed_data_*.dta"
-
-foreach v in `datafiles' {
-erase "`v'"
 }
- }
-
- else {
+else {
  	di as input "No Stata .do files found in this directory. Please specify another location."
 	exit
- }
+}
 
 // Merge/match
 
@@ -315,59 +346,45 @@ if success == 0 {
 }
 
 // Otherwise keep going
-else{
-qui drop success success1 success2
-
 di as input "Candidate packages listed below:"
-
 qui{
-gen match = word if _merge==3
-label var match "Candidate package found"
-keep if match !=""
-
+	gen match = word if _merge==3
+	label var match "Candidate package found"
+	keep if match !=""
 }
-
-
-
 di as input "Note: Underscores in package names are omitted (if applicable)"
-
-
-if ("`falsepos'"== "falsepos") {
+if ("`nodropfalsepos'"== "nodropfalsepos") {
 	* rm common FPs according to us
-	di "Removing common false positives"
-	
-	local commonFPs "white missing index dash title cluster pre bys" 
+	di as err "Keeping common false positives (`commonFPs')"
+}
+else {
+	di as input "Dropping common false positives (`commonFPs')"
 	foreach word in `commonFPs' {
 		qui drop if match == "`word'" 
-		
+		*replace success = success - *number of observations deleted in the for loop above*
 	}
-	*replace success = success - *number of observations deleted in the for loop above*
-	
+
 	if success == 0 {
-	di as input "All matched packages found were false positives"
-	exit
+		di as input "All matched packages found were false positives"
+		exit
 	}
 }
-  
-	gsort rank match
-	list match rank probFalsePos, ab(25) 
+
+qui drop success success1 success2
+* the list can be long, so we rely on gsort for fast sorting
+gsort rank match
+list match rank probFalsePos, ab(25) 
 	
-	* if list is empty (only packages found were common FPs), di error message
+* if list is empty (only packages found were common FPs), di error message
 
 preserve
 if ("`filesave'"== "filesave") { 
    	* display list of parsed files with match results
-di "Programs parsed:"	
+	di "Programs parsed:"	
 	use `file_list', clear
 	list dirname filename, table div
-	}
+}
 restore
-	
-	
-	
-// More cleanup
-cap erase "scanned_dofile.dta"
-
 
 
 **************************************************************************
@@ -376,50 +393,47 @@ cap erase "scanned_dofile.dta"
 preserve
 
 if ("`excelsave'"== "excelsave") {
-di as input "Optional Step 5: Export results of the match (candidate packages) to Excel sheet"
+	di as input "Optional Step 5: Export results of the match (candidate packages) to Excel sheet"
 
-global reportfile "`codedir'/candidatepackages.xlsx"
+	global reportfile "`codedir'/candidatepackages.xlsx"
 
-// Set up output export
-gen confirmed_is_used = .
+	// Set up output export
+	gen confirmed_is_used = .
 
-// Sort by rank (incorporates false positive probability) from packagelist file
-if ("`filesave'" != "filesave") {
-gsort rank match
-}
+	// Sort by rank (incorporates false positive probability) from packagelist file
+	if ("`filesave'" != "filesave") {
+		gsort rank match
+	}
 
-// Export missing package list to Excel
-export excel match rank probFalsePos confirmed_is_used using "$reportfile", firstrow(varlabels) keepcellfmt replace sheet("Missing packages")
+	// Export missing package list to Excel
+	export excel match rank probFalsePos confirmed_is_used using "$reportfile", firstrow(varlabels) keepcellfmt replace sheet("Missing packages")
+	di "Missing package list exported to Excel file $reportfile "	
 
    * export file list to report
     if ("`filesave'"== "filesave") {
-	use `file_list', clear
-	export excel dirname filename using "$reportfile", firstrow(varlabels) keepcellfmt sheet("Programs parsed", modify)
+		use `file_list', clear
+		export excel dirname filename using "$reportfile", firstrow(varlabels) keepcellfmt sheet("Programs parsed", modify)
+		di "Complete filelist exported to Excel file $reportfile "	
 	}
 	
-di "Excel sheet saved"	
-	}
+}
 
 restore	
 	
-	qui{
-		
-		
-if ("`installfounds'"== "installfounds") {
-	n di as input "Installing packages found during the scanning process."
-    * Install all found packages (including FPs)
-levelsof match, clean local(foundpackages)
-    if !missing("foundpackages") {
-        foreach pkg in `foundpackages' {
-            n dis "Installing `pkg'"
-            ssc install `pkg', replace
-        }
-    } 
-	n di "All packages found during the scan successfully installed"	
+qui{
+	if ("`installfounds'"== "installfounds") {
+		n di as input "Installing packages found during the scanning process."
+    	* Install all found packages (including FPs)
+		levelsof match, clean local(foundpackages)
+    	if !missing("foundpackages") {
+        	foreach pkg in `foundpackages' {
+            	n dis "Installing `pkg'"
+            	ssc install `pkg', replace
+        	}
+    	} 
+		n di "All packages found during the scan successfully installed"	
 	}
-	
+}
 
-}
-}
 
 end
