@@ -144,13 +144,15 @@ else {
 } // end else domain
 
 * below should happen for both econstats and whatshot
+/*
 foreach v of local p_vars_hot {
 	confirm numeric variable `v'
     if _rc {
-        di as err "The ranking variable `v' is not numeric. Please fix something"
+        di as err "The ranking variable `v' is not numeric. Please fix something. `_rc'"
 		exit 2
     }
 }
+*/
 
 gen word = packagename
 label var rank "Package popularity (rank out of total # of packages)"
