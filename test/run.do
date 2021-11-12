@@ -1,8 +1,5 @@
 /* This will test the packagesearch package */
 /* Note this will run the *local* version, not the to-be-installed version */
-
-packagesearch, codedir(data)
-
 /* expected output: 
 
      +-------------------------------+
@@ -13,4 +10,5 @@ packagesearch, codedir(data)
      +-------------------------------+
 
 */
-exit, clear
+packagesearch, codedir(data)
+exit, clear STATA
