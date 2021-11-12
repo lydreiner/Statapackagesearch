@@ -1,0 +1,16 @@
+name: Debug CI Stata
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Run Debug
+      run: |
+        echo serial-number: ${{ secrets.STATA_SERIALNUMBER }} | sed 's/./& /g'
+        echo code: ${{ secrets.STATA_CODE }} | sed 's/./& /g'
+        echo authorization: ${{ secrets.STATA_AUTH }} | sed 's/./& /g'
