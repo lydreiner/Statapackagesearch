@@ -3,7 +3,7 @@ name: Test CI Stata
 on:
   push:
     branches:
-      - mainly
+      - main
   workflow_dispatch:
 
 jobs:
