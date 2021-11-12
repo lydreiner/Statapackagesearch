@@ -1,14 +1,12 @@
 #!/bin/bash
 
 # Assumes stata-mp is in the path
+# This does not work on Github Actions
 
 stata-mp -b test/run.do
-if [[ -f run.log ]]
+if [[ -f verify_test.sh ]]
 then
-   tail -8 run.log > actual_output.txt
-   diff actual_output.txt test/expected_output.txt || (echo "Not the expected output"; exit 2)
+   ./verify_test.sh
 else
-   echo "Something went wrong with running Stata"
-   exit 2
+   test/verify_test.sh
 fi
-

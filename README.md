@@ -1,12 +1,15 @@
+[![Test CI Stata](https://github.com/AEADataEditor/Statapackagesearch/actions/workflows/test.yml/badge.svg)](https://github.com/AEADataEditor/Statapackagesearch/actions/workflows/test.yml)
+
+
+
 # `Packagesearch`: module to scan Stata .do files and identify SSC packages used by the code
 
 ## Installation
 To install, type the following command into Stata. 
 
 ```
-net install packagesearch, from("https://lydreiner.github.io/Statapackagesearch/")
+net install packagesearch, from("https://aeadataeditor.github.io/Statapackagesearch/")
 ```
-Note: There are two required ancillary files (`signalcommands.txt` and `stopwords.txt`) that are automatically pulled from the repository after the first use of the `packagesearch` command.
 
 ## Syntax: (also available in the help file)
 

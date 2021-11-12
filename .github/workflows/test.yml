@@ -1,0 +1,37 @@
+name: Test CI Stata
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Run Stata
+      id: ci-stata
+      uses: labordynamicsinstitute/continuous-integration-stata@v0.1
+      with:
+        program: test/run.do
+        version: ${{ secrets.STATA_VERSION }}
+        serial-number: ${{ secrets.STATA_SERIALNUMBER }}
+        code: ${{ secrets.STATA_CODE }}
+        authorization: ${{ secrets.STATA_AUTH }}
+        name: ${{ secrets.STATA_NAME }}
+        institution: ${{ secrets.STATA_INSTITUTION }}
+    - name: Verify output Test 1
+      run: "test/verify_test.sh"
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3.8.0
+      with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          user_name: 'Github Action Bot'
+          user_email: lars.vilhuber@cornell.edu
+          publish_branch: gh-pages 
+          keep_files: true
+          commit_message: ${{ github.event.head_commit.message }}
