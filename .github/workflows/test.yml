@@ -12,11 +12,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Run Stata
+    - name: Run Stata Test 1
       id: ci-stata
       uses: labordynamicsinstitute/continuous-integration-stata@v0.2
       with:
-        program: test/run.do
+        program: test/test1.do
         version: ${{ secrets.STATA_VERSION }}
         serial-number: ${{ secrets.STATA_SERIALNUMBER }}
         code: ${{ secrets.STATA_CODE }}
@@ -25,7 +25,7 @@ jobs:
         institution: ${{ secrets.STATA_INSTITUTION }}
         changedir: no
     - name: Verify output Test 1
-      run: "test/verify_test.sh"
+      run: "test/verify_test1.sh"
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3.8.0
       with:
