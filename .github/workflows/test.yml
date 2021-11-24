@@ -33,6 +33,6 @@ jobs:
           publish_dir: .
           user_name: 'Github Action Bot'
           user_email: lars.vilhuber@cornell.edu
-          publish_branch: gh-pages 
+          publish_branch: results
           keep_files: true
           commit_message: ${{ github.event.head_commit.message }}
