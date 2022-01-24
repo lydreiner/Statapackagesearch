@@ -57,7 +57,7 @@
 {phang}{browse "mailto:lars.vilhuber@cornell.edu":lars.vilhuber@cornell.edu}{p_end}
 
 
-{phang}Lydia Reiner, Cornell University{p_end}
+{phang}Lydia Reiner, independent researcher{p_end}
 {phang}{browse "mailto:lr397@cornell.edu":lr397@cornell.edu}{p_end}
 
 
