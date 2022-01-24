@@ -10,5 +10,5 @@
      +-------------------------------+
 
 */
-packagesearch, codedir(data/test1)
+packagesearch, codedir(data/test1) 
 exit, clear STATA
