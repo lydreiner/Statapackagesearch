@@ -1,5 +1,5 @@
 [![Test CI Stata](https://github.com/AEADataEditor/Statapackagesearch/actions/workflows/test.yml/badge.svg)](https://github.com/AEADataEditor/Statapackagesearch/actions/workflows/test.yml)
-
+[![Run](https://github.com/AEADataEditor/Statapackagesearch/actions/workflows/test.yml/badge.svg?event=workflow_run)](https://github.com/AEADataEditor/Statapackagesearch/actions/workflows/test.yml)
 
 
 # `Packagesearch`: module to scan Stata .do files and identify SSC packages used by the code
