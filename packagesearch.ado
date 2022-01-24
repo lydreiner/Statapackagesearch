@@ -1,5 +1,5 @@
 program packagesearch 
-*! version 1.0.0  16april2021
+*! version 1.0.15  23jan2022
     version 14
     syntax , codedir(string) [  FILESave EXCELsave NODROPfalsepos INSTALLfounds domain(string)]
 	
@@ -115,32 +115,8 @@ if ("`domain'" != "") {
 else {
 
     n di "Step 2: Collect (and clean) list of all packages hosted at SSC"
+	p_whatshot, vars(`p_vars_hot')
 
-    qui {
-    	// Collect top hits at SSC for the past month 
-    	tempfile whatshot
-
-    	log using "`whatshot'", name(whatshot) replace text
-    	* if the # of available packages ever exceeds 10000, adjust the line below
-    	n ssc whatshot, n(10000)
-    	log close whatshot
-
-		// Data cleaning (import log file, export cleaned .dta file)
-
-		*May need to adjust the starting value for rowrange- target the first line where the first package is mentioned
-
-    	import delimited whitespace rank hits packagename authors using "`whatshot'", rowrange(14:) delimiters("       ", collapse) clear
-
-    	gen byte notnumeric = real(hits)==.
-    	drop if notnumeric==1
-    	drop authors-notnumeric
-    	drop whitespace
-
-		// clean up 
-    	destring rank, replace
-    	destring hits, replace
-		keep packagename `p_vars_hot'
-	}
 } // end else domain
 
 * below should happen for both econstats and whatshot
@@ -173,14 +149,16 @@ strip packagename, of("_") gen(p_underscore)
 qui replace packagename = p_underscore
 qui drop p_underscore
 	
+sort rank
 qui save "`packagelist'", replace
-di "Package list generated successfully"
+di "Package list generated successfully (`packagelist')"
+li in 1/10
 
 
 ***************************
 * Step 3: Parsing	      *
 ***************************
-
+n di "==========================================================="
 di as input "Step 3 : Parse all .do files in specified directory (split them into words)"
 
 qui {

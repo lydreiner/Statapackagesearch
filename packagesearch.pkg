@@ -3,6 +3,7 @@ d Packagesearch: Module to scan Stata .do files and return list of user-written 
 d Lydia Reiner and Lars Vilhuber, Cornell University
 f packagesearch.ado
 f packagesearch.sthlp
+f p_whatshot.ado
 F p_signalcommands.txt
 F p_stopwords.txt
 F p_stats_econ.dta
