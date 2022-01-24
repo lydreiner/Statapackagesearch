@@ -1,0 +1,9 @@
+file_2=data/test2/longwords_nounderscores.do
+  Processing file data/test2/longwords_nounderscores.do
+w_axthisisalongwordxgoingxupxtoxh invalid name
+             st_addvar():  3300  argument out of range
+               wordbag():     -  function returned error
+            mm_txttool():     -  function returned error
+                 <istmt>:     -  function returned error
+Error: file data/test2/longwords_nounderscores.do contains long string unable t
+> o be processed. It has been omitted from the scanning process.
