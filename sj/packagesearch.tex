@@ -3,17 +3,19 @@
 
 \inserttype[st0001]{article}
 \author{Reiner and Vilhuber}{%
-  Lydia Reiner\\Cornell University\\Ithaca, NY, USA\\lr397@cornell.edu
+  Lydia Reiner\\Independent researcher\\TX, USA\\lr397@cornell.edu
   \and
   Lars Vilhuber\\Cornell University\\Ithaca, NY, USA\\lars.vilhuber@cornell.edu
 }
 \title[{\tt packagesearch}]{Identifying packages used in Stata code}
 \maketitle
 
-\begin{abstract}
-Many researchers work on personal machines, and have accumulated many installed packages over the years. Reproducibility of code requires that all packages used within an analysis be listed. While the robust solution is to install packages once, in a project-specific directory, that seems to not happen very often. We provide a package that parses the Stata code in project directory (and any sub-directories), and lists the most likely packages being used. We outline two use cases for this package. 
 
-\keywords{\inserttag, packagesearch, reproducibility}
+
+\begin{abstract}
+Many researchers work on personal machines, and have accumulated many installed packages over the years. Reproducibility of code requires that all packages used within an analysis be listed. While the robust solution is to install packages once, in a project-specific directory, most users appear to use their system-wide installations to store packages. When the time comes to create a reproducible package, this package helps such users to identify the packages actually used in their code, by parsing the Stata code and listing the most likely packages being used. We outline two use cases for this package. 
+
+\keywords{\inserttag, packagesearch, reproducibility, replication package}
 \end{abstract}
 
 \section{Introduction}
@@ -21,7 +23,9 @@ Many researchers work on personal machines, and have accumulated many installed 
 
 \subsection{Background}
 
-The inspiration for this package comes from research work under the AEA Data Editor, verifying countless Stata-based replication packages. 
+Community-provided packages, published through this Journal, the Boston Statistical Software Components (\texttt{SSC}) archive \citep{cox2010}, and individually hosted ``net installable'' websites, are one of the strengths of Stata. They can be conveniently installed through point-and-click interfaces and Stata commands, and are readily available to augment the capabilities of Stata. In \whmonth{} \whyear{}, the top 10 Stata packages on \texttt{SSC} had a total of \whhits{} downloads.
+
+The inspiration for this package comes from research work under the AEA Data Editor, verifying countless Stata-based replication packages. Amongst replication packages submitted to the AEA journals, 73 percent use Stata at least in part, ahead of Matlab \citep[22 percent, see][]{VilhuberAEAPap.Proc.2020}.
 
 Many fail to provide replication requirements, or said requirements are incomplete. This results in running Stata code without the proper packages installed, leading to a time-consuming process of code breaking, installing the necessary missing package, then restarting the process until all packages have been identified. With this project, we aim to identify the necessary Stata packages in provided .do files before code is run, saving time and frustration for authors and replicators alike.
 
@@ -64,16 +68,17 @@ We are currently running this command on any Stata-based replication package sub
 
 
 \bibliographystyle{sj}
-\bibliography{sj}
+\bibliography{statapackagesearch}
 
 \begin{aboutauthors}
-Lydia Reiner is an undergraduate at Cornell University studying economics.
+Lydia Reiner was an undergraduate at Cornell University studying economics when developing this package. She is now... (UPDATE).
 
-Some background information about the second author.
+Lars Vilhuber is an economist at Cornell University, and currently the Data Editor for the American Economic Association, responsible for verifying the computational reproducibility of manuscripts submitted to the AEA's various journals.
 
 \textbf{Author Contributions}
 LR came up with the idea, did the research, implemented and tested the code, and wrote the manuscript.
 
 LV assisted with the code, tested the code, and wrote the manuscript.
+
 \end{aboutauthors}
 

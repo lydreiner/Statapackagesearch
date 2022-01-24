@@ -1,0 +1,24 @@
+* 00000001
+*! version 1.0.0
+* Do not erase or edit this file
+* It is used by Stata to track the ado and help
+* files you have installed.
+
+S http://www.stata-journal.com/production
+N sjlatex.pkg
+D 24 Jan 2022
+U 1
+d sjlatex:  LaTeX files for the Stata Journal
+d ^sjlatex^ contains the LaTeX document class and packages for the
+d Stata Journal.
+d 
+d The ancillary files should be installed using the ^sjlatex^ command
+d from within Stata.
+d 
+d Distribution-Date: 29aug2018
+f s/sjlatex.ado
+f s/sjlatex.hlp
+f s/sjlog_7.ado
+f s/sjlog.ado
+f s/sjlog.hlp
+e
