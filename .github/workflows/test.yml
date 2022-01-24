@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    
+    - name: Prepare
+      run: "chmod a+rx test/*sh"
     - name: Run Stata Test 1
       id: ci-stata1
       uses: labordynamicsinstitute/continuous-integration-stata@v0.2
