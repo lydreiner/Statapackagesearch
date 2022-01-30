@@ -1,20 +1,53 @@
 % Appendix describes how to compute the domain "econ"
 
 \newpage
-\appendix
+%\appendix
+\begin{center}
+	\large Appendix
+\end{center}
+\setcounter{section}{0}
+\renewcommand{\thesection}{Appendix \arabic{section}}   
 
 \section{Computing domain-specific frequencies}
-\input{appendixa-strings}
+\input{appendixa_strings}
 
 Instead of using the output of \texttt{ssc whatshot} to classify strings into likely package names, we have also allowed for the use of domain-specific frequencies. Such frequencies need to come from a large corpus of verified code. In this appendix, we describe how we computed these frequencies for the economics domain (invoked through option \texttt{domain(econ)}).
 
 As part of the AEA Data Editors work, students download replication packages and attempt to run the code in combination with the available data. They do so in a (nearly) clean environment, by invoking the following commands at the start of the command execution:
 
 \begin{stlog}
-\input{sample-config.do.tex}\nullskip
+\input{sampleconfig.do.tex}\nullskip
 \end{stlog}
 
 These commands should ensure that all necessary packages must be installed into a project specific directory. In rare cases, replication packages may already include \texttt{ado} files, which should then be used. Once installed, the \texttt{ado} \textit{directory} should also be committed to the git repository tracking the reproducibility check.\footnote{Compliance with these instructions is not perfect.} The resulting updated (private) repository thus contains authors' Stata code, and the replicator's installed \texttt{ado} files. 
 
-We thus obtained from our internal records the last known state of \anaearep{} repositories as of July 2021. Of these, \anaearepp{} contained at least one Stata do-file. The average replication package had \adocount{} do-files, and after verification had \aadocount{} ado-files. For each replication package, we ran (an earlier version of) the \texttt{packagesearch} command, and matched against the list of ado-files found. We counted as a \texttt{hit} a package that was confirmed to have the package installed, and counted the hits. We then ranked the list by hits. The resulting list is naturally somewhat different than the \texttt{whatshot} list, and in particular is pruned of spurious package names. 
+We thus obtained from our internal records the last known state of \anaearep{} repositories as of July 2021. Of these, \anaearepp{} contained at least one Stata do-file. The average replication package had \adocount{} do-files, and after verification had \aadocount{} ado-files. For each replication package, we ran (an earlier version of) the \texttt{packagesearch} command, and matched against the list of ado-files found. We counted as a \texttt{hit} a package that was confirmed to have the package installed, and counted the hits. We then ranked the list by hits. The resulting list is naturally somewhat different than the \texttt{whatshot} list, and in particular is pruned of spurious package names. Table~\ref{tab:econ} displays the top ten by the \texttt{domain(econ)} ranking, Table~\ref{tab:whatshot} displays the top ten packages per \texttt{whatshot} and their equivalent \texttt{domain(econ)} ranking.
+
+\begin{table}[ht!]
+		\centering
+		\caption{Top ten \texttt{econ} packages.
+		\label{tab:econ}}
+	\begin{threeparttable}
+		
+\input{03_table1}
+
+		\begin{tablenotes}
+			\item \footnotesize Generated on 2022-01-30.
+		\end{tablenotes}
+	\end{threeparttable}
+\end{table}
+
+\begin{table}[ht!]
+		\centering
+		\caption{Top ten \texttt{whatshot} packages.}
+		\label{tab:whatshot}
+	\begin{threeparttable}
+		
+	\input{03_table2}	
+		
+		\begin{tablenotes}
+			\item \footnotesize Generated on 2022-01-30.
+		\end{tablenotes}
+	\end{threeparttable}
+\end{table}
 

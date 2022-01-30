@@ -3,12 +3,12 @@
 include "config.do"
 sjlog using 03_comparedomain, replace
 
-use "https://github.com/AEADataEditor/Statapackagesearch.data/raw/main/p_stats_econ.dta"
+use "$pkgroot/p_stats_econ.dta"
 rename rank econ
 tempfile econ
 save `econ'
 
-net install packagesearch, from("https://raw.githubusercontent.com/AEADataEditor/Statapackagesearch/main/") replace
+net install packagesearch, from("$pkgroot") replace
 p_whatshot, vars(rank hits)
 rename rank whatshot
 
@@ -18,9 +18,17 @@ preserve
 sort econ
 keep if econ < 11
 li packagename econ whatshot
+/* print to table */
+listtab packagename  econ whatshot using 03_table1.tex , rstyle(tabular) replace head("\begin{tabular}{lrr}\toprule" ///
+            "Packagename&\texttt{econ}&\texttt{whatshot}\\\midrule") foot("\bottomrule\end{tabular}")
+
+
 restore
 sort whatshot
 keep if whatshot < 11
 li packagename econ whatshot
+/* print to table */
+listtab packagename  econ whatshot using 03_table2.tex , rstyle(tabular) replace  head("\begin{tabular}{lrr}\toprule" ///
+            "Packagename&\texttt{econ}&\texttt{whatshot}\\\midrule") foot("\bottomrule\end{tabular}")
 
-sjlog close
+sjlog close, replace

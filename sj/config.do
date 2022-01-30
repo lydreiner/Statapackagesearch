@@ -34,7 +34,7 @@
 
 local scenario "A" 
 * *** Add required packages from SSC to this list ***
-local ssc_packages "distinct"
+local ssc_packages "distinct listtab"
     // Example:
     // local ssc_packages "estout boottest"
     // If you need to "net install" packages, go to the very end of this program, and add them there.
@@ -48,6 +48,12 @@ if "$scenario" == "B" {             // If in Scenario B, we need to change direc
     cd ..
 }
 global rootdir : pwd                // Now capture the directory to use as rootdir
+
+
+/* ===== specific to these programs ====== */
+
+global pkgver  "1.0.16"
+global pkgroot "https://raw.githubusercontent.com/AEADataEditor/Statapackagesearch/${pkgver}"
 
 
 /*================================================================================================================*/

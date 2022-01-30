@@ -1,5 +1,5 @@
 . 
-. use "https://github.com/AEADataEditor/Statapackagesearch.data/raw/main/p_stats_econ.dta"
+. use "$pkgroot/p_stats_econ.dta"
 {\smallskip}
 . rename rank econ
 {\smallskip}
@@ -9,8 +9,7 @@
 file{\bftt{ /tmp/St00001.000001}} saved as .dta format
 {\smallskip}
 . 
-. net install packagesearch, from("https://raw.githubusercontent.com/AEADataEditor/Statapackagesearch/m
-> ain/") replace
+. net install packagesearch, from("$pkgroot") replace
 checking {\bftt{packagesearch}} consistency and verifying not already installed...
 all files already exist and are up to date.
 {\smallskip}
@@ -20,7 +19,7 @@ all files already exist and are up to date.
       name:  whatshot
        log:  /tmp/St00001.000002
   log type:  text
- opened on:  30 Jan 2022, 04:27:49
+ opened on:  30 Jan 2022, 19:19:53
 {\smallskip}
 {\bftt{{\underbar{Top 10000 packages at SSC}}}}
 {\smallskip}
@@ -3453,7 +3452,7 @@ all files already exist and are up to date.
       name:  whatshot
        log:  /tmp/St00001.000002
   log type:  text
- closed on:  30 Jan 2022, 04:27:49
+ closed on:  30 Jan 2022, 19:19:53
 \HLI{103}
 (12 vars, 3,432 obs)
 (1 real change made)
@@ -3503,6 +3502,13 @@ hits: all characters numeric; replaced as double
  10. {\VBAR}     unique     10         20 {\VBAR}
      {\BLC}\HLI{30}{\BRC}
 {\smallskip}
+. /* print to table */
+. listtab packagename  econ whatshot using 03_table1.tex , rstyle(tabular) replace head("\\begin{\lbr}tabular
+> {\rbr}{\lbr}lrr{\rbr}\\toprule" ///
+>             "Packagename\&\\texttt{\lbr}econ{\rbr}\&\\texttt{\lbr}whatshot{\rbr}\\\\\\midrule") foot("\\bottomrule\\end{\lbr}tabular{\rbr}")
+{\smallskip}
+. 
+. 
 . restore
 {\smallskip}
 . sort whatshot
@@ -3522,10 +3528,15 @@ hits: all characters numeric; replaced as double
   5. {\VBAR}  reghdfe      2          5 {\VBAR}
      {\LFTT}\HLI{28}{\RGTT}
   6. {\VBAR}   ftools      5          6 {\VBAR}
-  7. {\VBAR}   logout    123          7 {\VBAR}
+  7. {\VBAR}   logout    119          7 {\VBAR}
   8. {\VBAR}   ivreg2      6          8 {\VBAR}
   9. {\VBAR}  ivreg29      .          9 {\VBAR}
  10. {\VBAR} ivreg210      .         10 {\VBAR}
      {\BLC}\HLI{28}{\BRC}
+{\smallskip}
+. /* print to table */
+. listtab packagename  econ whatshot using 03_table2.tex , rstyle(tabular) replace  head("\\begin{\lbr}tabula
+> r{\rbr}{\lbr}lrr{\rbr}\\toprule" ///
+>             "Packagename\&\\texttt{\lbr}econ{\rbr}\&\\texttt{\lbr}whatshot{\rbr}\\\\\\midrule") foot("\\bottomrule\\end{\lbr}tabular{\rbr}")
 {\smallskip}
 . 

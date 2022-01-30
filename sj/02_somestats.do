@@ -3,7 +3,11 @@
 include "config.do"
 sjlog using 02_somestats, replace
 
-use "https://github.com/AEADataEditor/Statapackagesearch.data/raw/main/aearep-stats.dta"
+/* we take a file from the auxiliary repository             */
+/* should be set to the same version as the main repository */
+
+global auxroot "https://github.com/AEADataEditor/Statapackagesearch.data/raw/${pkgver}"
+use "$auxroot/aearep-stats.dta"
 destring adocount docount dolines, replace
 
 /* how many repositories */
@@ -19,7 +23,7 @@ local naearepp = r(ndistinct)
 collapse (sum) sumado = adocount sumdo = docount sumlines = dolines (mean) adocount docount dolines
 
 
-sjlog close
+sjlog close, replace
 
 replace adocount=round(adocount)
 replace docount =round(docount)

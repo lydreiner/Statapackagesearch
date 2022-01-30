@@ -1,5 +1,10 @@
 . 
-. use "https://github.com/AEADataEditor/Statapackagesearch.data/raw/main/aearep-stats.dta"
+. /* we take a file from the auxiliary repository             */
+. /* should be set to the same version as the main repository */
+. 
+. global auxroot "https://github.com/AEADataEditor/Statapackagesearch.data/raw/${\lbr}pkgver{\rbr}"
+{\smallskip}
+. use "$auxroot/aearep-stats.dta"
 {\smallskip}
 . destring adocount docount dolines, replace
 adocount: all characters numeric; replaced as int
