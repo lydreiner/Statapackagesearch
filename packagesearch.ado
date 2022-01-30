@@ -1,5 +1,5 @@
 program packagesearch 
-*! version 1.0.15  23jan2022
+*! version 1.0.16  29jan2022
     version 14
     syntax , codedir(string) [  FILESave EXCELsave NODROPfalsepos INSTALLfounds domain(string)]
 	
