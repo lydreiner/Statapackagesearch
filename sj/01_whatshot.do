@@ -1,9 +1,9 @@
 * whatshot.do
 set more off
 capture log close
+include "config.do"
 
-sjlog using 01_whatshot.log, replace
-sjlog close, replace
+sjlog using 01_whatshot, replace
 
 tempfile whatshot
 
@@ -41,3 +41,4 @@ file close strings
 
 
 *exit
+sjlog close, replace

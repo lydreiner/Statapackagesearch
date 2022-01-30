@@ -34,7 +34,7 @@
 
 local scenario "A" 
 * *** Add required packages from SSC to this list ***
-local ssc_packages ""
+local ssc_packages "distinct"
     // Example:
     // local ssc_packages "estout boottest"
     // If you need to "net install" packages, go to the very end of this program, and add them there.

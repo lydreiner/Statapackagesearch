@@ -1,0 +1,97 @@
+. 
+. tempfile whatshot
+{\smallskip}
+. 
+. log using "`whatshot'", name(whatshot) replace text
+(file{\bftt{ /tmp/St00001.000001}} not found)
+\HLI{103}
+      name:  whatshot
+       log:  /tmp/St00001.000001
+  log type:  text
+ opened on:  30 Jan 2022, 04:10:14
+{\smallskip}
+. * if the \# of available packages ever exceeds 10000, adjust the line below
+. n ssc whatshot
+{\smallskip}
+{\bftt{{\underbar{Top 10 packages at SSC}}}}
+{\smallskip}
+        Dec 2021   
+  Rank   \# hits    Package       Author(s)
+  \HLI{70}
+     1  67195.2    outreg2       Roy Wada                                
+     2  50282.1    estout        Ben Jann                                
+     3  31921.7    asdoc         Attaullah Shah                          
+     4  28719.7    winsor2       Yujun Lian                              
+     5  17839.2    reghdfe       Sergio Correia                          
+     6  15732.4    ftools        Sergio Correia                          
+     7  13598.7    logout        Roy Wada                                
+     8  13571.0    ivreg2        Mark E Schaffer, Steven Stillman,       
+                                   Christopher F Baum                      
+     9  13567.7    ivreg29       Mark E Schaffer, Christopher F Baum,    
+                                   Steven Stillman                         
+    10  13525.8    ivreg210      Steven Stillman, Christopher F Baum,    
+                                   Mark E Schaffer                         
+  \HLI{70}
+  (Click on package name for description)
+{\smallskip}
+. log close whatshot
+      name:  whatshot
+       log:  /tmp/St00001.000001
+  log type:  text
+ closed on:  30 Jan 2022, 04:10:14
+\HLI{103}
+{\smallskip}
+. 
+. // Data cleaning (import log file)
+. 
+. import delimited whitespace rank hits packagename authors using "`whatshot'", rowrange(14:) delimiter
+> s("       ", collapse) clear
+(encoding automatically selected: ISO-8859-1)
+(11 vars, 23 obs)
+{\smallskip}
+. 
+. gen byte notnumeric = real(hits)==.
+{\smallskip}
+. drop if notnumeric==1
+(13 observations deleted)
+{\smallskip}
+. destring rank, replace
+rank: all characters numeric; replaced as byte
+{\smallskip}
+. destring hits, replace
+hits: all characters numeric; replaced as double
+{\smallskip}
+. 
+. keep if rank < 11
+(0 observations deleted)
+{\smallskip}
+. qui sum hits
+{\smallskip}
+. local hits = r(sum)
+{\smallskip}
+. 
+. // get date
+. 
+. infile str200 string  using "`whatshot'",  clear
+(147 observations read)
+{\smallskip}
+. local month = string[43]
+{\smallskip}
+. local year  = string[44]
+{\smallskip}
+. 
+. // write out for LaTeX by hand
+. 
+. file open strings using "whatshot_strings.tex", write text replace
+{\smallskip}
+. file write strings  "\\newcommand{\lbr}\\whhits{\rbr}{\lbr}`hits'{\rbr}" _n
+{\smallskip}
+. file write strings  "\\newcommand{\lbr}\\whmonth{\rbr}{\lbr}`month'{\rbr}" _n
+{\smallskip}
+. file write strings  "\\newcommand{\lbr}\\whyear{\rbr}{\lbr}`year'{\rbr}" _n
+{\smallskip}
+. file close strings
+{\smallskip}
+. 
+. 
+. *exit

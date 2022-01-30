@@ -1,0 +1,41 @@
+. 
+. use "https://github.com/AEADataEditor/Statapackagesearch.data/raw/main/aearep-stats.dta"
+{\smallskip}
+. destring adocount docount dolines, replace
+adocount: all characters numeric; replaced as int
+(119 missing values generated)
+docount: all characters numeric; replaced as int
+dolines: all characters numeric; replaced as long
+(119 missing values generated)
+{\smallskip}
+. 
+. /* how many repositories */
+. distinct aearep
+{\smallskip}
+        {\VBAR}        Observations
+        {\VBAR}      total   distinct
+\HLI{8}{\PLUS}\HLI{22}
+ aearep {\VBAR}        665        665
+{\smallskip}
+. local naearep = r(ndistinct)
+{\smallskip}
+. 
+. /* how many with Stata code */
+. keep if docount>0
+(119 observations deleted)
+{\smallskip}
+. distinct aearep
+{\smallskip}
+        {\VBAR}        Observations
+        {\VBAR}      total   distinct
+\HLI{8}{\PLUS}\HLI{22}
+ aearep {\VBAR}        546        546
+{\smallskip}
+. local naearepp = r(ndistinct)
+{\smallskip}
+. 
+. /* sum up */
+. collapse (sum) sumado = adocount sumdo = docount sumlines = dolines (mean) adocount docount dolines
+{\smallskip}
+. 
+. 
