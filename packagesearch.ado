@@ -30,28 +30,20 @@ set maxvar 120000
 local pwd : pwd
 
 global codedir "`codedir'"
-// local srcref "https://lydreiner.github.io/Statapackagesearch/"
-// local srcref "/home/vilhuber/Workspace/github/AEA/Statapackagesearch"
+
+// We may need to get additional files from here
 local srcref "https://aeadataeditor.github.io/Statapackagesearch/"
+
 /* This should be generically in the PLUS directory */
 
 local mplus : sysdir PLUS
 local msub  : adosubdir "packagesearch"
+local rootdir "`mplus'/`msub'"
+
+// Common False Positives
 local commonFPs "white missing index dash title cluster pre bys" 
 
-/* check if we are running from an installed version of the file */
-qui which "packagesearch"
-if _rc == 0 {
-	local rootdir "`mplus'/`msub'"
-}
-else {
-	local rootdir "`pwd'"
-	cap confirm file "`rootdir'/packagesearch.ado"
-	if _rc {
-		di as err "Not sure what to do, no ado file in `rootdir' or installed"
-		exit 2
-	}
-}
+// Additional files
 local stopwords      "`rootdir'/p_stopwords.txt"
 local signalcommands "`rootdir'/p_signalcommands.txt"
 local domainstats    "`rootdir'/p_stats_`domain'.dta"
