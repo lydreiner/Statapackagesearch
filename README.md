@@ -72,6 +72,34 @@ The code begins by either collecting a list of all packages hosted at SSC using 
 Next, it identifies all .do files in the specified `codedir` directory and subdirectories, then parses each .do file into individual words using the `txttool` command. 
 Finally, it matches the individual words against the list of common Stata packages and outputs a list of candidate packages that were (likely) used when the Stata code was run.  
 
+## Testing
+
+The Github repository has a few files to test the package. To run, you can do the following:
+
+```{bash}
+GITURL=https://github.com/AEADataEditor/Statapackagesearch/
+git clone $GITURL
+cd Statapackagesearch
+```
+
+and then, if you have Stata installed,
+
+```{bash}
+./test/run.sh
+```
+
+and if you don't, but have access to a Stata license (e.g. on [Github Codespaces with the proper setup](https://github.com/labordynamicsinstitute/codespaces-stata-skeleton))
+    
+```{bash}
+echo "$STATA_LIC_BASE64" | base64 -d > stata.lic
+docker run -it --rm \
+   -v $(pwd)/stata.lic:/usr/local/stata/stata.lic \
+   -v $(pwd):/project \
+   -w /project \
+   --entrypoint /bin/bash dataeditors/stata17:2023-05-16 \
+   ./test/run.sh
+```
+
 ### Questions?
 
 Contact:   

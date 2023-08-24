@@ -2,6 +2,7 @@
 
 # Assumes stata-mp is in the path
 
+stata-mp -b test/install-tmp.do
 stata-mp -b test/test1.do
 if [[ -f verify_test1.sh ]]
 then
