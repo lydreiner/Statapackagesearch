@@ -10,5 +10,8 @@
      +-------------------------------+
 
 */
+
+include "test/install.do"
+which packagesearch
 packagesearch, codedir(data/test1) 
 exit, clear STATA
