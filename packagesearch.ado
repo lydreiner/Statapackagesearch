@@ -31,7 +31,8 @@ local pwd : pwd
 
 global codedir "`codedir'"
 // local srcref "https://lydreiner.github.io/Statapackagesearch/"
-local srcref "/home/vilhuber/Workspace/github/AEA/Statapackagesearch"
+// local srcref "/home/vilhuber/Workspace/github/AEA/Statapackagesearch"
+local srcref "https://aeadataeditor.github.io/Statapackagesearch/"
 /* This should be generically in the PLUS directory */
 
 local mplus : sysdir PLUS
