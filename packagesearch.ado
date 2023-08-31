@@ -1,13 +1,15 @@
 program packagesearch 
-*! version 1.0.18  24aug2023
+*! version 1.0.19  31aug2023
     version 14
-    syntax , codedir(string) [  FILESave EXCELsave NODROPfalsepos INSTALLfounds domain(string)]
+    syntax , codedir(string) [  FILESave EXCELsave CSVsave NODROPfalsepos INSTALLfounds domain(string)]
 	
 // Options
 /*
 filesave = save list of parsed files
 
 excelsave = save list of candidate packages as an excel spreadsheet
+
+csvsave = if you want to save the CSV version of the report.
 
 NODROPfalsepos = rm common FPs according to us 
 - right now, this is: "white missing index dash title cluster pre bys" None of these are in the top 10% of package popularity at SSC 
@@ -365,48 +367,58 @@ restore
 **************************************************************************
 preserve
 
-if ("`excelsave'"== "excelsave") {
-	di as input "Optional Step 5: Export results of the match (candidate packages) to Excel sheet"
+qui sum rank
+dis "Found `r(N)' rows."
 
-	global reportfile "`codedir'/candidatepackages.xlsx"
+if `r(N)' > 0 {
+	if ("`excelsave'"== "excelsave" | "`csvsave'" == "csvsave" ) {
+		di as input "Optional Step 5: Export results of the match (candidate packages)"
 
-	// Set up output export
-	gen confirmed_is_used = .
+		global reportfile "`codedir'/candidatepackages.xlsx"
+		global reportcsv  "`codedir'/candidatepackages.csv"
 
-	// Sort by rank (incorporates false positive probability) from packagelist file
-	if ("`filesave'" != "filesave") {
-		gsort rank match
+		// Set up output export
+		gen confirmed_is_used = .
+
+		// Sort by rank (incorporates false positive probability) from packagelist file
+		if ("`filesave'" != "filesave") {
+			gsort rank match
+		}
+		if ("`excelsave'"== "excelsave")  {
+			// Export missing package list to Excel
+			export excel match rank probFalsePos confirmed_is_used using "$reportfile", firstrow(varlabels) keepcellfmt replace sheet("Missing packages")
+			di "Missing package list exported to Excel file $reportfile "	
+		}
+		if ("`csvsave'" == "csvsave" ) {
+			// Export missing package list to Excel
+			export delimited match rank  probFalsePos confirmed_is_used using "$reportcsv", replace
+			di "Missing package list exported to CSV file $reportcsv "	
+		}
+	* export file list to report
+		if ("`filesave'"== "filesave") {
+			use `file_list', clear
+			export excel dirname filename using "$reportfile", firstrow(varlabels) keepcellfmt sheet("Programs parsed", modify)
+			di "Complete filelist exported to Excel file $reportfile "	
+		}
+		
 	}
 
-	// Export missing package list to Excel
-	export excel match rank probFalsePos confirmed_is_used using "$reportfile", firstrow(varlabels) keepcellfmt replace sheet("Missing packages")
-	di "Missing package list exported to Excel file $reportfile "	
-
-   * export file list to report
-    if ("`filesave'"== "filesave") {
-		use `file_list', clear
-		export excel dirname filename using "$reportfile", firstrow(varlabels) keepcellfmt sheet("Programs parsed", modify)
-		di "Complete filelist exported to Excel file $reportfile "	
+	restore	
+		
+	qui{
+		if ("`installfounds'"== "installfounds") {
+			n di as input "Installing packages found during the scanning process."
+			* Install all found packages (including FPs)
+			levelsof match, clean local(foundpackages)
+			if !missing("foundpackages") {
+				foreach pkg in `foundpackages' {
+					n dis "Installing `pkg'"
+					ssc install `pkg', replace
+				}
+			} 
+			n di "All packages found during the scan successfully installed"	
+		}
 	}
-	
 }
-
-restore	
-	
-qui{
-	if ("`installfounds'"== "installfounds") {
-		n di as input "Installing packages found during the scanning process."
-    	* Install all found packages (including FPs)
-		levelsof match, clean local(foundpackages)
-    	if !missing("foundpackages") {
-        	foreach pkg in `foundpackages' {
-            	n dis "Installing `pkg'"
-            	ssc install `pkg', replace
-        	}
-    	} 
-		n di "All packages found during the scan successfully installed"	
-	}
-}
-
 
 end
